@@ -1,0 +1,106 @@
+== New DB Design
+
+=== PersonTable
+
+==== PersonID of 0
+
+If we add a PersonID of 0 to mean the not-yet known person, then other tables that link to PersonTable.PersonID can perhaps be converted to foreign keys constraints.
+We won't have to alter any other tables, either. They can keep their references to 0.
+
+Is the meaning of some attributes that use 0 overloaded?
+
+And we can then import the RM PersonTable as is, and afterward add PeronsID of 0.
+
+[source, sql]
+----
+SET collation_connection = latin1_german2_ci;
+CREATE TABLE PersonTable (PersonID INTEGER PRIMARY KEY,
+	 UniqueID TEXT,
+	 Sex INTEGER,
+	 ParentID INTEGER,
+     FOREIGN KEY (ParentID), /* Is ParentID even needed. See comments below */
+     REFERENCES FamilyTable (FamilyID),
+	 SpouseID INTEGER,
+	 Color INTEGER,
+	 Relate1 INTEGER,
+	 Relate2 INTEGER,
+	 Flags INTEGER,
+	 Living INTEGER,
+	 IsPrivate INTEGER,
+	 Proof INTEGER,
+	 Bookmark INTEGER,
+	 Note TEXT,
+	 UTCModDate FLOAT);
+----
+
+`ParentID` is often zero. The data definition entry for FamilyTable says:
+
+----
+Parent Identification Number links to FamilyID of FamilyTable, (0 if no parents) [MRIN of one set of parents, possibly last active in Pedigree view or when selected via Parents Status Bar, others?]
+----
+
+What does it mean when a person's ParentID is zero.
+
+These queries of my imported gedcom show it is almost always zero:
+
+[source, bash]
+----
+sqlite> select count(*) from PersonTable where ParentID=0;
+3069
+sqlite> select count(*) from PersonTable where ParentID!=0;
+17
+sqlite> select count(*) from PersonTable as p join FamilyTable as f on p.ParentID=f.FamilyID;
+17
+----
+
+*Note:* If I do introduce a `FamilyID` of 0, then the last query would need to be: `select count(*) from PersonTable as p join FamilyTable as f on p.ParentID=f.FamilyID where FamilyID!=0;` 
+
+My imported gecom has only 17 result rows
+
+[source, bash]
+----
+sqlite> select PersonID, Given, Surname, ParentID from NameTable as n join PersonTable p on n.OwnerID=p.PersonID where ParentID!=0 and IsPrimary=1;
+195|Caroline Philippine Dorothee|Krueckeberg|610
+196|Sophia P|Krueckeberg|126
+198|C W Louise|Krueckeberg|126
+299|Wilhelmine Christine Helene|Krückeberg|126
+301|Christian Heinrich Martin|Krueckeberg|126
+350|Friedrich Christian Wilhelm|Krueckeberg|126
+353|Carl "Charles" Heinrich Wilhelm|Krückeberg|127
+354|Caroline Wilhelmine Marie|Kleinschmidt|722
+355|Carl Friedrich|Krückeberg|128
+356|Luise Dorothea|Weiland|919
+357|Carl Friedrich Gottlieb|Krückeberg|920
+702|Carl H|Krueckeberg|126
+719|Ernst Wilhelm Heinrich|Krueckeberg|126
+1961|Jobste Heinrich|Krückeberg|920
+1963|Johann Heinrich|Krückeberg|609
+1964|Caroline Sophie|Weiland|637
+2301|Johann Heinrich Christian| Kleinschmidt|804
+----
+
+Are these 17 individuals persons whose spouse married a second time, say, after they themselves died or were divorced?
+
+Recall: ParentID is NOT a reference to PersonID. It is the a refernce to the FamilyID key whose attributes also include FatherID and MotherID.
+
+=== NameTable
+
+BirthDate and DeathDate are cached in NameTable for historical reasons. They exist in the EventTable I believe, and I need to figure out how to query for them. 
+We will make OwnerID a foreign key. What about and ParentID, ChildId??
+
+[source, sql]
+----
+CREATE TABLE NameTable (NameID INTEGER PRIMARY KEY, OwnerID INTEGER, Surname TEXT COLLATE ?????, Given TEXT COLLATE ?????, NameType INTEGER, IsPrimary INTEGER, 
+----
+[source, sql]
+----
+CREATE TABLE NameTable (NameID INTEGER PRIMARY KEY, OwnerID INTEGER, Surname TEXT COLLATE ?????, Given TEXT COLLATE ?????, NameType INTEGER, IsPrimary INTEGER, 
+----
+
+Make FatherID and MotherID and ChildID foreign keys refereinceing PersonTabler.PersonID. 
+Make the pair FatherID/MotherID unique, an additional key. I likely can make ChildID a foreign key? Many of the other attributes like SpouseLable, FatherLabel can be ignored. They are only relevant to RM.
+
+[source, sql]
+----
+CREATE TABLE FamilyTable (FamilyID INTEGER PRIMARY KEY, FatherID INTEGER, MotherID INTEGER, ChildID INTEGER, HusbOrder INTEGER, WifeOrder INTEGER, IsPrivate INTEGER, Proof INTEGER, SpouseLabel INTEGER, FatherLabel INTEGER, MotherLabel INTEGER, SpouseLabelStr TEXT, FatherLabelStr TEXT, MotherLabelStr TEXT, Note TEXT, UTCModDate FLOAT );
+----

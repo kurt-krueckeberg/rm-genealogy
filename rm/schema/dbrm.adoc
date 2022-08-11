@@ -1,0 +1,136 @@
+= Rootsmagic Database
+:toc:
+:stylesheet: dark.css
+:stylesdir: ../skins 
+
+== RootsMagic Sqlite3 DB
+RootsMagic 8 (RM8) is a Sqlite3 database that uses a custom collation scheme RMNOCASE that often prevents `Order By` from working.
+
+== SQLite3 Tools
+
+In addition to the Ubuntu command line *Sqlite3* package, https://sqlitetoolsforrootsmagic.com[SQLite Tools] lists other Sqlite3 tools.
+
+== Todo
+
+Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this.
+
+== RootsMagic Database Overview
+
+https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#[RootsMagic4+DataDefs.ods] is a set of spreadsheets summarizing the RootsMagic tables, giving the data definitions(schema), and
+explaind the meaning and values of tables fields.
+
+*Yellow highlighted* text pertains only to RM8.
+
+There is an ER diagram available, file:///C:/Users/kurtk/temp/er-diag.pdf[too].
+
+Below is the excerpted database table summary.
+
+=== SQL Scripts
+
+A list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts].
+
+Searching the page for *rm8.sql* returns the scripts for RM8.
+
+=== Table Summary
+
+*AddressLinkTable*
+
+Translates OwnerID from various tables to the key AddressID in AddressTable.
+
+*AddressTable*
+
+Stores Addresses for Persons in the tree, Repositories, and other entities that need not be in the tree. Note that the Name in this table is not the same as the names in the NameTable.
+
+*ChildTable*
+
+Stores relationship to family(ies) for each child. A child may have two or more families – e.g., birth and adoptive. Links to PersonTable for child and to FamilyTable for parents.
+
+*CitationTable*
+
+Stores Citation details with links to PersonTable, FamilyTable, and EventTable and to the SourceTable for the sources cited. One record per citation.
+
+*ConfigTable*
+
+Stores File settings, Report settings, Fonts, etc to preserve between sessions.
+
+*EventTable*
+
+Stores details for each Fact/Event with links to Persons, Families having the event and to the FactTypeTable for the Fact properties.
+
+*ExclusionTable*
+
+Stores Problem List items indicated by user as Not a problem.
+a
+*FactTypeTable*
+
+Definition of the standard and user-defined Facts related to by the EventTable.
+
+*FamilyTable*
+
+Stores Family pairings, spousal order, and notes.
+
+*GroupTable*
+
+Stores data for Named Groups: ranges of PersonID's from PersonTable that were marked for the group.
+
+*LabelTable*
+
+Stores labels for Named Groups and probably other labels, too.
+
+*LinkAncestryTable*
+
+Identical to LinkTable but specifically for Ancestry TreeShare
+
+*LinkTable*
+
+Links to Family Search Family Tree for matched persons and possible future other online trees
+
+*MediaLinkTable*
+
+Stores relationship between records in MultiMediaTable and Person, Event, Place Tables along with settings for use in reports or scrapbooks, captions, notes (unused?), descriptions in RM4, unused in RM5+.
+
+*MultimediaTable*
+
+Stores path and name to Media files, a type of media code, URL (unused as of 4.0.7.1), and binary thumbnail for image files; caption, refnumber, description, date as of RM5.
+
+*NameTable*
+
+Stores name parts for persons in tree, including Alternate Names as separate records (unlimited), primary and privacy settings, birth year and death year.
+
+*PersonTable*
+
+Stores basic data for persons in tree: globally Unique ID as well as internal PersonID, FamilyID of parent family and PersonID of spouse, calculated relationship to other person in tree, privacy and living flags, and general note.
+
+*PlaceTable*
+
+Stores system pre-defined and user-defined Places and Place Details (or sites) with Name, Abbreviation, Normalized Name, geographical coordinates, and notes. Linked from eventtable.
+
+*ResearchItemTable*
+
+Stores Research Items related to Research Logs as of RM5
+
+*ResearchTable*
+
+Stores Research Logs as of RM5; To-Do tasks in RM4.
+
+*RoleTable*
+
+Stores system pre-defined and user-defined Roles with sentence templates for most FactTypes, linked from WitnessTable.
+
+*SourceTable*
+
+Stores Citation Source details for each unique source, linked from CitationTable (many to 1 allowed);  linked to AddressTable for Source Repository and to SourceTemplateTable for support of Citation data entry and reports.
+
+*SourceTemplateTable*
+
+Stores system pre-defined and user-defined sentence and field templates for different kinds of citation sources, following published guidelines. Linked from SourceTable for support of Citation data entry and reports.
+
+*URLTable*
+
+Stores WebTags
+
+*WitnessTable*
+
+Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.
+
+include::analysis-schema.adoc[]

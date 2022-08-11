@@ -1,0 +1,85 @@
+If we add a PersonID of 0 to mean the "not-yet known" or unknonw person, then other tables that link to PersonTable.PersonID can be made foreign keys, thus making the "link" an actual relational constraint.
+We won't have to alter any other tables, either. They can keep there references to 0.
+Is the meaning of some attributes that use 0 overloaded?
+And we can then import the RM PersonTable as is, and afterward add PeronsID of 0.
+My changes:
+
+- Made UniqueID a unique column. Question: Is this a UUID data tyoe? Should it be something other than TEXT?  See MariaDB UUID type. */
+- UniqueText appears to be a UUID data tyoe, but I don't think it is used in any queries.? */
+- IsPrivate made it `bool`
+
+[source,sql]
+----
+CREATE TABLE Person(id INTEGER PRIMARY KEY,
+	 UniqueID TEXT unique, 
+	 sex INTEGER,
+	 parentid INTEGER,
+	 SpouseID INTEGER,
+	 Color INTEGER,
+	 Relate1 INTEGER,
+	 Relate2 INTEGER,
+	 Flags INTEGER,
+	 Living INTEGER,
+	 IsPrivate bool, 
+	 Proof INTEGER,
+	 Bookmark INTEGER,
+	 Note TEXT,
+	 UTCModDate FLOAT );
+----
+
+
+BirthDate and DeathDate are cached in NameTable for historical reasons. They exist in the EventTable I believe, and I need to figure out how to query for them. 
+Make OwnerID a foreign key. What about and ParentID, ChildId??
+Does MariaDB use 'collate' in this manner, just like Sqlite?
+
+[source,sql]
+----
+CREATE table Name(id integer primary key,
+	 ownerid integer,
+	 surname tinytext collate nocase, 
+	 given tinytext collate NOCASE,
+	 nametype integer,
+	 isprimary integer,
+	 ????); 
+----
+
+Make FatherID and MotherID and ChildID foreign keys refereinceing PersonTabler.PersonID. 
+Make the pair FatherID/MotherID unique, an additional key. I likely can make ChildID a foreign key? Many of the other attributes like SpouseLable, FatherLabel can be ignored. They are only relevant to RM.
+Changes: I made IsPrivate a 'bool'. I made fatherid/motherid pair a unique constraint. 
+
+[source,sql]
+----
+CREATE TABLE Family(id INTEGER PRIMARY KEY,
+	 fatherid INTEGER,
+	 motherid INTEGER,
+	 childid INTEGER,
+	 HusbOrder INTEGER,
+	 WifeOrder INTEGER,
+	 IsPrivate bool, /* <-- changed. Was:  INTEGER, */
+	 Proof INTEGER,
+	 SpouseLabel INTEGER,
+	 FatherLabel INTEGER,
+	 MotherLabel INTEGER,
+	 SpouseLabelStr TINYTEXT,
+	 FatherLabelStr TINYTEXT,
+	 MotherLabelStr TINYTEXT,
+	 Note TEXT, 
+	 UTCModDate FLOAT,
+         unique(fatherid, motherid)); /* <-- New. Add this constraint */
+----
+
+[source,sql]
+----
+CREATE TABLE Child(id INTEGER PRIMARY KEY,
+	 ChildID INTEGER,
+	 FamilyID INTEGER,
+	 RelFather INTEGER,
+	 RelMother INTEGER,
+	 ChildOrder INTEGER,
+	 IsPrivate INTEGER,
+	 ProofFather INTEGER,
+	 ProofMother INTEGER,
+	 Note TEXT,
+	 UTCModDate FLOAT,
+         ChildID foregin key references Peronid) );
+----

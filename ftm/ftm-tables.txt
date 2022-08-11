@@ -1,0 +1,39 @@
+CREATE TABLE token_on_item (
+CREATE TABLE gene_entities_identifier_main_data (
+CREATE TABLE individual_main_data (
+CREATE TABLE individual_data_set (
+CREATE TABLE sqlite_sequence(name,seq);
+CREATE TABLE individual_lang_data (
+CREATE TABLE family_main_data (
+CREATE TABLE family_individual_connection (
+CREATE TABLE places_main_data (
+CREATE TABLE places_lang_data (
+CREATE TABLE individual_fact_main_data (
+CREATE TABLE individual_fact_lang_data (
+CREATE TABLE family_fact_main_data (
+CREATE TABLE family_fact_lang_data (
+CREATE TABLE note_main_data (
+CREATE TABLE note_lang_data (
+CREATE TABLE note_to_item_connection (
+CREATE TABLE media_item_main_data (
+CREATE TABLE media_item_lang_data (
+CREATE TABLE media_item_auxiliary_images (
+CREATE TABLE media_item_to_item_connection (
+CREATE TABLE image_to_individual_face_tagging (
+CREATE TABLE individual_family_connection_order (
+CREATE TABLE project_parameters (	
+CREATE TABLE gedcom_extensions (
+CREATE TABLE album_main_data
+CREATE TABLE album_lang_data
+CREATE TABLE media_item_to_album_connection
+CREATE TABLE citation_main_data 
+CREATE TABLE citation_lang_data
+CREATE TABLE source_main_data 
+CREATE TABLE source_lang_data
+CREATE TABLE repository_main_data 
+CREATE TABLE repository_lang_data
+CREATE TABLE task_main_data (
+CREATE TABLE task_lang_data (
+CREATE TABLE task_to_individual_connection (
+CREATE TABLE intermediate_state (
+CREATE TABLE intermediate_state_ids (
