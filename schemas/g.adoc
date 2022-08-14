@@ -7,11 +7,20 @@
 
 The Gramps Sqlite3 database has a lot of doumentation:
 
+
+This link explains how the SQL database is a sort of port of the prior BSDDB database:
+
 - https://gramps-project.org/wiki/index.php/Gramps_SQL_Database[Gramps SQL Database]
 
-- https://www.gramps-project.org/wiki/index.php/SQL_Schema[Grmps SQL Schema]
+The *Sql Details* section of 
 
 - https://www.gramps-project.org/wiki/index.php/DB-API_Database_Backend[DB-API Database Backend]
+
+explains the Sqlite db is not relational?  
+
+Not sure if there ismuch info at:
+
+- https://sourceforge.net/p/gramps/mailman/message/35406641/[Gramps Database Design]
 
 *todo*
 
