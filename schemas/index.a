@@ -9,12 +9,12 @@ In addition to the Ubuntu command line *Sqlite3* package, https://sqlitetoolsfor
 
 == Gramps
 
-include::g.adoc[]
+include::g.a[]
 
 == Family Tree Builder
 
-include::ftb.adoc[]
+include::dbftb.a[]
 
 == RootsMagic
 
-include::rm.adoc[]
+include::dbrm.a[]

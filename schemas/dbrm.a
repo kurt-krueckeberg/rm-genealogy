@@ -121,4 +121,4 @@ Stores WebTags
 
 Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.
 
-include::rmanal.adoc[]
+include::analrm.a[]

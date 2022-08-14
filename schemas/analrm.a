@@ -10,7 +10,7 @@ used in the `order by` clause below:
 select n.Surname as surname, n.Given as given, p.Sex as Sex from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;
 ----
 
-=== todo
+=== Ideas
 
 - Create (in new db) a "unknown" person that has PersonID of 0 and possibly name of "Unknown". This would allow keys that function as links but are not defined as foreign keys, to function as foreign keys.
 - Does creating an index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this if I want to mimic in MariaDB, the same thing. Doesn't the Data Definitions spreadsheet note this with `I`, too?
@@ -121,7 +121,7 @@ Include keys and foreign keys:
 select n.Surname as surname, n.Given as given, n.BirthYear as birth_year, n.DeathYear as death_year, p.Sex as Sex, n.OwnerID as OwnerId, n.NameID as NameId from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;
 ----
 
-==== todo
+==== Ideas
 
 Create a the sql that queries the EventTable to get the birth and death year and use it above instead of the NameTable.
 
@@ -212,7 +212,9 @@ Question:
 - `MotherLabel` Wife label, from Edit Person screen (0 = Mother, 1 = Wife, 2 = Partner).
 - `Note` Note from Edit Person screen
 
-=== Media Tables todo 
+=== Media Table Files
+
+*todo* 
 
 == Conversion to JSON and XML
 The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch github repo has a `Gedcom2Json` convertor. It explains how to compile it using maven. Run it:

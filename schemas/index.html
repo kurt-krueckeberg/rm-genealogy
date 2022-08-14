@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.16">
+<title>Schema and Designs</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+
+@import url(//fonts.googleapis.com/css?family=Noto+Sans);
+@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css); /* Default asciidoc style framework - important */
+
+/* CUSTOMISATIONS */
+/* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
+:root{
+--maincolor:#282c34;
+--primarycolor:#f39c12;
+--secondarycolor:#03a9f4;
+--tertiarycolor:#4db6ac;
+--sidebarbackground:#21252b;
+--linkcolor:#f44336;
+--linkcoloralternate:#ff9800;
+--white:#FFFFFF;
+}
+
+/* Text styles */
+
+body{font-family: "Noto Sans",sans-serif;background-color: var(--maincolor);color:var(--white);}
+
+h1{color:var(--primarycolor) !important;font-family:"Noto Sans",sans-serif;}
+h2,h3,h4,h5,h6{color:var(--secondarycolor) !important;font-family:"Noto Sans",sans-serif;}
+.title{color:var(--white) !important;font-family:"Noto Sans",sans-serif;font-style: normal; font-weight: normal;}
+p{font-family: "Noto Sans",sans-serif ! important}
+#toc.toc2 a:link{color:var(--linkcolor);}
+blockquote{color:var(--tertiarycolor) !important}
+.quoteblock{color:var(--white)}
+code{color:var(--linkcoloralternate);background-color: var(--sidebarbackground) !important}
+
+
+/* Table styles */
+th{background-color: var(--maincolor);color:var(--white) !important;}
+td{background-color: var(--maincolor);color: var(--linkcoloralternate) !important}
+
+
+#toc.toc2{background-color:var(--sidebarbackground);}
+#toctitle{color:var(--white);}
+
+/* Responsiveness fixes */
+video {
+  max-width: 100%;
+}
+
+@media all and (max-width: 600px) {
+  table {
+    width: 55vw!important;
+    font-size: 3vw;
+  }
+}
+
+.exampleblock > .content {
+  background-color: var(--maincolor);
+}
+
+a {
+  color: var(--secondarycolor);
+}
+
+.admonitionblock td.icon .icon-tip::before {
+  text-shadow: none;
+  color: var(--white);
+}
+.admonitionblock td.icon .icon-note::before {
+  color: var(--tertiarycolor);
+}
+.admonitionblock td.icon .icon-important::before {
+  color: var(--linkcolor);
+}
+/*.admonitionblock td.icon .icon-caution::before {
+  color: var(--linkcoloralternate);
+}*/
+.admonitionblock td.icon .icon-warning::before {
+  color: var(--primarycolor);
+}
+
+#preamble > .sectionbody > .paragraph:first-of-type p {
+  color: var(--white);
+}
+
+.quoteblock blockquote::before {
+  color: var(--primarycolor);
+}
+.quoteblock .attribution cite, .verseblock .attribution cite {
+  color: var(--white);
+}
+.verseblock pre {
+  color: var(--white);
+}
+.quoteblock blockquote, .quoteblock blockquote p {
+  color: var(--white);
+}
+
+.sidebarblock {
+  background: var(--sidebarbackground);
+}
+.literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
+  background: var(--sidebarbackground);
+  color: var(--white);
+}
+
+#header .details {
+  color: var(--white);
+}
+#header .details span.email a {
+  color: var(--linkcoloralternate);
+}
+
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Schema and Designs</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_sqlite3_tools">SQLite3 Tools</a></li>
+<li><a href="#_gramps">Gramps</a>
+<ul class="sectlevel2">
+<li><a href="#_gramps_sqlite3_db">Gramps Sqlite3 DB</a></li>
+</ul>
+</li>
+<li><a href="#_family_tree_builder">Family Tree Builder</a>
+<ul class="sectlevel2">
+<li><a href="#_ftb_sqlite3_db">FTB Sqlite3 DB</a></li>
+</ul>
+</li>
+<li><a href="#_rootsmagic">RootsMagic</a>
+<ul class="sectlevel2">
+<li><a href="#_rootsmagic_database_overview">RootsMagic Database Overview</a></li>
+<li><a href="#_todo">Todo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_sqlite3_tools">SQLite3 Tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to the Ubuntu command line <strong>Sqlite3</strong> package, <a href="https://sqlitetoolsforrootsmagic.com">SQLite Tools</a> lists other Sqlite3 tools.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gramps">Gramps</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_gramps_sqlite3_db">Gramps Sqlite3 DB</h3>
+<div class="paragraph">
+<p>The Gramps Sqlite3 database has a lot of doumentation:</p>
+</div>
+<div class="paragraph">
+<p>This link explains how the SQL database is a sort of port of the prior Berkley Database, <strong>key/value</strong> database store:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://gramps-project.org/wiki/index.php/Gramps_SQL_Database">Gramps SQL Database</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Gramps previously used a hierarchical (nota relational) data model that was stored in a BSDDB. In Gramps 5.1 the default backend is Sqlite, but a relational model is not used. Instead Gramps uses "SQL"</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>in exactly the same way that we used <strong>BSDDB</strong>: all of our data is pickled "blobs" (serialized tuples). However, the
+flat (non-hierarchical) data is also stored in their own column, and indexes are made on each of those. This allows us to have very
+fast ad hoc queries on any non-hierarchical data, and JOINS between primary objects. As far as I know, we always did sequential scans
+in BSDDB. If we connect the SQL WHERE capability up to Filters, then our filters will not require a linear scan through all data. 
+This will be a huge win, but requires a some serious refactoring of views, filters, and the use of the database.</p>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;All of the SQL statements are in a single file <a href="https://github.com/gramps-project/gramps/blob/master/gramps/plugins/db/dbapi/dbapi.py*gramps/plugins/database/dbapi.py">dbapi.py</a>.
+All the SQL statements used in Gramps are stored in the file </p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_family_tree_builder">Family Tree Builder</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ftb_sqlite3_db">FTB Sqlite3 DB</h3>
+<div class="paragraph">
+<p>The db is not documented, but if I compare the Gramps db&#8212;&#8203;after analyzing its sql documentaion&#8212;&#8203;I might be able to figure out how to extract what I want.</p>
+</div>
+<div class="paragraph">
+<p>ftbschema.sql has the schema for ftb.file.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rootsmagic">RootsMagic</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rootsmagic_database_overview">RootsMagic Database Overview</h3>
+<div class="paragraph">
+<p><a href="https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#">RootsMagic4+DataDefs.ods</a> is a set of spreadsheets summarizing the RootsMagic tables, giving the data definitions(schema), and
+explaind the meaning and values of tables fields.</p>
+</div>
+<div class="paragraph">
+<p><strong>Yellow highlighted</strong> text pertains only to RM8.</p>
+</div>
+<div class="paragraph">
+<p>There is an ER diagram available, <a href="file:///C:/Users/kurtk/temp/er-diag.pdf">too</a>.</p>
+</div>
+<div class="paragraph">
+<p>Below is the excerpted database table summary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_todo">Todo</h3>
+<div class="paragraph">
+<p>Does creating and index <code>Create Index &#8230;&#8203;</code> on a table column imply that it is <code>UNIQUE</code>? If so, I need to note this.</p>
+</div>
+<div class="sect3">
+<h4 id="_sql_scripts">SQL Scripts</h4>
+<div class="paragraph">
+<p>A list of <a href="https://sqlitetoolsforrootsmagic.com/sql-files-list/">SQL scripts</a>.</p>
+</div>
+<div class="paragraph">
+<p>Searching the page for <strong>rm8.sql</strong> returns the scripts for RM8.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_table_summary">Table Summary</h4>
+<div class="paragraph">
+<p><strong>AddressLinkTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Translates OwnerID from various tables to the key AddressID in AddressTable.</p>
+</div>
+<div class="paragraph">
+<p><strong>AddressTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Addresses for Persons in the tree, Repositories, and other entities that need not be in the tree. Note that the Name in this table is not the same as the names in the NameTable.</p>
+</div>
+<div class="paragraph">
+<p><strong>ChildTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores relationship to family(ies) for each child. A child may have two or more families – e.g., birth and adoptive. Links to PersonTable for child and to FamilyTable for parents.</p>
+</div>
+<div class="paragraph">
+<p><strong>CitationTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Citation details with links to PersonTable, FamilyTable, and EventTable and to the SourceTable for the sources cited. One record per citation.</p>
+</div>
+<div class="paragraph">
+<p><strong>ConfigTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores File settings, Report settings, Fonts, etc to preserve between sessions.</p>
+</div>
+<div class="paragraph">
+<p><strong>EventTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores details for each Fact/Event with links to Persons, Families having the event and to the FactTypeTable for the Fact properties.</p>
+</div>
+<div class="paragraph">
+<p><strong>ExclusionTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Problem List items indicated by user as Not a problem.
+a
+<strong>FactTypeTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Definition of the standard and user-defined Facts related to by the EventTable.</p>
+</div>
+<div class="paragraph">
+<p><strong>FamilyTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Family pairings, spousal order, and notes.</p>
+</div>
+<div class="paragraph">
+<p><strong>GroupTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores data for Named Groups: ranges of PersonID&#8217;s from PersonTable that were marked for the group.</p>
+</div>
+<div class="paragraph">
+<p><strong>LabelTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores labels for Named Groups and probably other labels, too.</p>
+</div>
+<div class="paragraph">
+<p><strong>LinkAncestryTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Identical to LinkTable but specifically for Ancestry TreeShare</p>
+</div>
+<div class="paragraph">
+<p><strong>LinkTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Links to Family Search Family Tree for matched persons and possible future other online trees</p>
+</div>
+<div class="paragraph">
+<p><strong>MediaLinkTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores relationship between records in MultiMediaTable and Person, Event, Place Tables along with settings for use in reports or scrapbooks, captions, notes (unused?), descriptions in RM4, unused in RM5+.</p>
+</div>
+<div class="paragraph">
+<p><strong>MultimediaTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores path and name to Media files, a type of media code, URL (unused as of 4.0.7.1), and binary thumbnail for image files; caption, refnumber, description, date as of RM5.</p>
+</div>
+<div class="paragraph">
+<p><strong>NameTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores name parts for persons in tree, including Alternate Names as separate records (unlimited), primary and privacy settings, birth year and death year.</p>
+</div>
+<div class="paragraph">
+<p><strong>PersonTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores basic data for persons in tree: globally Unique ID as well as internal PersonID, FamilyID of parent family and PersonID of spouse, calculated relationship to other person in tree, privacy and living flags, and general note.</p>
+</div>
+<div class="paragraph">
+<p><strong>PlaceTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores system pre-defined and user-defined Places and Place Details (or sites) with Name, Abbreviation, Normalized Name, geographical coordinates, and notes. Linked from eventtable.</p>
+</div>
+<div class="paragraph">
+<p><strong>ResearchItemTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Research Items related to Research Logs as of RM5</p>
+</div>
+<div class="paragraph">
+<p><strong>ResearchTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Research Logs as of RM5; To-Do tasks in RM4.</p>
+</div>
+<div class="paragraph">
+<p><strong>RoleTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores system pre-defined and user-defined Roles with sentence templates for most FactTypes, linked from WitnessTable.</p>
+</div>
+<div class="paragraph">
+<p><strong>SourceTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores Citation Source details for each unique source, linked from CitationTable (many to 1 allowed);  linked to AddressTable for Source Repository and to SourceTemplateTable for support of Citation data entry and reports.</p>
+</div>
+<div class="paragraph">
+<p><strong>SourceTemplateTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores system pre-defined and user-defined sentence and field templates for different kinds of citation sources, following published guidelines. Linked from SourceTable for support of Citation data entry and reports.</p>
+</div>
+<div class="paragraph">
+<p><strong>URLTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores WebTags</p>
+</div>
+<div class="paragraph">
+<p><strong>WitnessTable</strong></p>
+</div>
+<div class="paragraph">
+<p>Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.</p>
+</div>
+<div class="paragraph">
+<p>include::analrm.a[]</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-08-14 16:09:42 -0400
+</div>
+</div>
+</body>
+</html>
