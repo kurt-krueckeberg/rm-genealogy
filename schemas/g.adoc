@@ -1,0 +1,18 @@
+= Gramps Database
+:toc:
+:stylesheet: dark.css
+:stylesdir: ../skins 
+
+== Gramps Sqlite3 DB
+
+The Gramps Sqlite3 database has a lot of doumentation:
+
+- https://gramps-project.org/wiki/index.php/Gramps_SQL_Database[Gramps SQL Database]
+
+- https://www.gramps-project.org/wiki/index.php/SQL_Schema[Grmps SQL Schema]
+
+- https://www.gramps-project.org/wiki/index.php/DB-API_Database_Backend[DB-API Database Backend]
+
+*todo*
+
+- Write the queries that will extract information I want. I assume their db imports from `.ged` files everything that RM8 does.
