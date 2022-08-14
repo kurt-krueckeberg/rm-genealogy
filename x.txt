@@ -1,0 +1,13 @@
+
+Gramps previously used a hierarchical (nota relational) data model that was stored in a BSDDB. In Gramps 5.1 the default backend is Sqlite, but a relational model is not used. Instead Gramps uses "SQL"
+
+
+____
+in exactly the same way that we used *BSDDB*: all of our data is pickled "blobs" (serialized tuples). However, the
+flat (non-hierarchical) data is also stored in their own column, and indexes are made on each of those. This allows us to have very
+fast ad hoc queries on any non-hierarchical data, and JOINS between primary objects. As far as I know, we always did sequential scans
+in BSDDB. If we connect the SQL WHERE capability up to Filters, then our filters will not require a linear scan through all data. 
+This will be a huge win, but requires a some serious refactoring of views, filters, and the use of the database.
+
+All the SQL statements used in Gramps are stored in the file *gramps/plugins/database/dbapi.py*.
+

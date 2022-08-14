@@ -1,9 +1,4 @@
-= Family Tree Builder Database
-:toc:
-:stylesheet: dark.css
-:stylesdir: ../skins 
-
-== FTB Sqlite3 DB
+=== FTB Sqlite3 DB
 
 The db is not documented, but if I compare the Gramps db--after analyzing its sql documentaion--I might be able to figure out how to extract what I want.
 

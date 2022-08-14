@@ -1,20 +1,4 @@
-= Rootsmagic Database
-:toc:
-:stylesheet: dark.css
-:stylesdir: ../skins 
-
-== RootsMagic Sqlite3 DB
-RootsMagic 8 (RM8) is a Sqlite3 database that uses a custom collation scheme RMNOCASE that often prevents `Order By` from working.
-
-== SQLite3 Tools
-
-In addition to the Ubuntu command line *Sqlite3* package, https://sqlitetoolsforrootsmagic.com[SQLite Tools] lists other Sqlite3 tools.
-
-== Todo
-
-Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this.
-
-== RootsMagic Database Overview
+=== RootsMagic Database Overview
 
 https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#[RootsMagic4+DataDefs.ods] is a set of spreadsheets summarizing the RootsMagic tables, giving the data definitions(schema), and
 explaind the meaning and values of tables fields.
@@ -25,13 +9,17 @@ There is an ER diagram available, file:///C:/Users/kurtk/temp/er-diag.pdf[too].
 
 Below is the excerpted database table summary.
 
-=== SQL Scripts
+=== Todo
+
+Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this.
+
+==== SQL Scripts
 
 A list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts].
 
 Searching the page for *rm8.sql* returns the scripts for RM8.
 
-=== Table Summary
+==== Table Summary
 
 *AddressLinkTable*
 
@@ -133,4 +121,4 @@ Stores WebTags
 
 Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.
 
-include::analrm.adoc[]
+include::rmanal.adoc[]
