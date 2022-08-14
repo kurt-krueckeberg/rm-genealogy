@@ -3,7 +3,7 @@
 The Gramps Sqlite3 database has a lot of doumentation:
 
 
-This link explains how the SQL database is a sort of port of the prior BSDDB database:
+This link explains how the SQL database is a sort of port of the prior Berkley Database, *key/value* database store:
 
 - https://gramps-project.org/wiki/index.php/Gramps_SQL_Database[Gramps SQL Database]
 
