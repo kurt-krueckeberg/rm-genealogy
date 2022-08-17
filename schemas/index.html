@@ -141,6 +141,26 @@ a {
 <li><a href="#_todo">Todo</a></li>
 </ul>
 </li>
+<li><a href="#_analysis_of_rootsmagic_8_tables_related_to_persons_names_and_relationships">Analysis of RootsMagic 8 Tables Related to Persons, Names, and Relationships</a>
+<ul class="sectlevel2">
+<li><a href="#_ideas">Ideas</a></li>
+<li><a href="#_persontable">PersonTable</a></li>
+<li><a href="#_nametable">NameTable</a></li>
+<li><a href="#_childtable">ChildTable </a></li>
+<li><a href="#_familytable">FamilyTable</a></li>
+<li><a href="#_media_table_files">Media Table Files</a></li>
+</ul>
+</li>
+<li><a href="#_conversion_to_json_and_xml">Conversion to JSON and XML</a></li>
+<li><a href="#_analysis_of_tables_related_to_downloaded_ancestry_media_files">Analysis of Tables Related to Downloaded Ancestry Media Files</a></li>
+<li><a href="#_todoes">Todoes</a>
+<ul class="sectlevel2">
+<li><a href="#_db_questions_to_figure_out">DB Questions to Figure Out</a></li>
+<li><a href="#_ancestry_medis_files">Ancestry Medis Files</a></li>
+<li><a href="#_new_db_with_forign_key_contraints">New DB with Forign Key Contraints</a></li>
+<li><a href="#_other">Other </a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -149,7 +169,7 @@ a {
 <h2 id="_sqlite3_tools">SQLite3 Tools</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In addition to the Ubuntu command line <strong>Sqlite3</strong> package, <a href="https://sqlitetoolsforrootsmagic.com">SQLite Tools</a> lists other Sqlite3 tools.</p>
+<p><a href="https://sqlitetoolsforrootsmagic.com">SQLite Tools</a> has a list of GUI Sqlite tools.</p>
 </div>
 </div>
 </div>
@@ -159,25 +179,14 @@ a {
 <div class="sect2">
 <h3 id="_gramps_sqlite3_db">Gramps Sqlite3 DB</h3>
 <div class="paragraph">
-<p>The Gramps Sqlite3 database has a lot of doumentation:</p>
-</div>
-<div class="paragraph">
-<p>This link explains how the SQL database is a sort of port of the prior Berkley Database, <strong>key/value</strong> database store:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://gramps-project.org/wiki/index.php/Gramps_SQL_Database">Gramps SQL Database</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Gramps previously used a hierarchical (nota relational) data model that was stored in a BSDDB. In Gramps 5.1 the default backend is Sqlite, but a relational model is not used. Instead Gramps uses "SQL"</p>
+<p>Gramps previously used the Berkley database (BSDD), a noSQL database that uses a <strong>key/value</strong> database store. With verion 5, Gramps switched to Sqlite, but their database
+<a href="https://gramps-project.org/wiki/index.php/Gramps_SQL_Database">doumentation</a> explains their Sqlite database is not a relational model, rather a port of the BSDD database:</p>
 </div>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>in exactly the same way that we used <strong>BSDDB</strong>: all of our data is pickled "blobs" (serialized tuples). However, the
+<p>Gramps previously used a hierarchical (not a relational) data model that was stored in a BSDDB. In Gramps 5.1 the default backend is Sqlite, but a relational model is not used. Instead Gramps uses "SQL"
+in exactly the same way that we used <strong>BSDDB</strong>: all of our data is pickled "blobs" (serialized tuples). However, the
 flat (non-hierarchical) data is also stored in their own column, and indexes are made on each of those. This allows us to have very
 fast ad hoc queries on any non-hierarchical data, and JOINS between primary objects. As far as I know, we always did sequential scans
 in BSDDB. If we connect the SQL WHERE capability up to Filters, then our filters will not require a linear scan through all data. 
@@ -390,9 +399,568 @@ a
 <div class="paragraph">
 <p>Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.</p>
 </div>
-<div class="paragraph">
-<p>include::analrm.a[]</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analysis_of_rootsmagic_8_tables_related_to_persons_names_and_relationships">Analysis of RootsMagic 8 Tables Related to Persons, Names, and Relationships</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>RootsMagic uses a custom-defined collation sequence <code>RMNOCASE</code> (Roots Magic No Case), which <a href="https://sqlitetoolsforrootsmagic.com/RMNOCASE-faking-it-in-SQLite-Expert-command-line-shell-et-al/">SQLite Tools for RootsMagic</a>
+discusses <a href="https://sqlitetoolsforrootsmagic.com/RMNOCASE-faking-it-in-SQLite-Expert-command-line-shell-et-al/">here</a>, for several text fieldx like <code>NameTable.Surname</code> and <code>NameTable.Given</code>. It can prevent queries from succeeding. One work around is to force the text to lower case; for example, <code>lower(Surname)</code> is
+used in the <code>order by</code> clause below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">select n.Surname as surname, n.Given as given, p.Sex as Sex from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ideas">Ideas</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Create (in new db) a "unknown" person that has PersonID of 0 and possibly name of "Unknown". This would allow keys that function as links but are not defined as foreign keys, to function as foreign keys.</p>
+</li>
+<li>
+<p>Does creating an index <code>Create Index &#8230;&#8203;</code> on a table column imply that it is <code>UNIQUE</code>? If so, I need to note this if I want to mimic in MariaDB, the same thing. Doesn&#8217;t the Data Definitions spreadsheet note this with <code>I</code>, too?
+<strong>Thus, I probablu should redo the indexed colums in each table.</strong></p>
+</li>
+<li>
+<p>See todo below. Finishing the media tables section and the family table analysis to create queries to get families..parents, sibling, child of the parents, etc.</p>
+</li>
+<li>
+<p>??</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_persontable">PersonTable</h3>
+<div class="sect3">
+<h4 id="_predicate">Predicate</h4>
+<div class="paragraph">
+<p><code>PersonTable</code> has <code>PersonID</code> key that identifies a unique individual (in the family tree) with sex <code>Sex</code>, unique <code>UniqueID</code> (that apparently is a <code>GUID</code> or hash value that is a <strong>GEDCOM</strong> standard field),
+parent(s) <code>ParentID</code>, spouse <code>SpouseID</code> is almost always zero. When it isn&#8217;t, it functions like a foreign key referencing <code>FamilyTable.familyID</code>. </p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.PersonTable</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PersonID Int (Prim Key)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UniqueID TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sex Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ParentID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpouseID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Color Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relate1 Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relate2 Int</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_comments">Comments</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Sex</code> is defined as an int but used as a boolean: <code>0</code> if male, and <code>1</code> if female.</p>
+</li>
+<li>
+<p><code>ParentID</code> is often zero. The data definition spreedsheet says:</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Parent Identification Number, linking to FamilyID of FamilyTable, (0 if no parents) [MRIN of one set of parents, possibly last active in Pedigree view or when selected via Parents Status Bar, others?]</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Comment: So is it a foreign key to FamilyTable.FamilyID. Write some queries to find out. If it can be zero, should I create a FmailyTable.FamilyID of 0, to mean the not-yet known family?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SpouseID</code> is almost always zero. When not zero, it functions like a foreign key referencing <code>FamilyTable.FamilyID</code>. In the referenced <code>FmailyTable</code> row, <code>FatherID</code> or <code>MotherID</code> will be 
+the spouse of <code>PersonID</code>. But <code>SpouseID</code> is not necessary in determing the family that this person is a child of (or a parent of).</p>
+</li>
+<li>
+<p><code>Living</code> is boolean </p>
+</li>
+<li>
+<p><code>Color</code>
+from "color coding" screen ( 0 = None,  1 = Red,  2 = Lime,  3 = Blue,  4 = Fuschia,  5 = Yellow,  6 = Aqua,  7 = Silver,  8 = Maroon,  9 = Green, 10 = Navy, 11 = Purple, 12 = Brown, 13 = Teal, 14 = Gray)</p>
+</li>
+<li>
+<p><code>Relate1</code>
+number of generations from person to ancestor in common with person chosen via Tools &#8594; Set Relationships. See the "Relationship1&amp;2" spreadsheet for exceptions and further explanation. Not relevant.</p>
+</li>
+<li>
+<p><code>Relate2</code>
+number of generations from person chosen via Tools &#8594; Set Relationships to ancestor in common with person. See Relationship1&amp;2 sheet for exceptions and further explanation. Not relevant.</p>
+</li>
+<li>
+<p><code>Flags</code>
+not currently used?</p>
+</li>
+<li>
+<p><code>IsPrivate</code>
+not currently used?</p>
+</li>
+<li>
+<p><code>Proof</code>
+not currently used?</p>
+</li>
+<li>
+<p><code>Note</code>
+A note entered from Edit Person screen</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nametable">NameTable</h3>
+<div class="sect3">
+<h4 id="_predicate_2">Predicate</h4>
+<div class="paragraph">
+<p>The <code>NameTable.NameID</code> key identifies a unique name with surname <code>Surname</code> and given name <code>Given</code>, with <code>OwnerID</code> (a foreign key) referring to <code>PersonTable.PersonID</code>, the name&#8217;s owner.
+<code>BirthYear</code> and <code>DeathYear</code> are attributes unrleated to the table&#8217;s predicate, which are present for historical reasons, cached here so <code>EventTable</code> didn&#8217;t need to be queried in the days when computer speed was slow
+and memory low. However, this prevents normalizing the table because the same birth and date years are repeated in every row with the same <code>OwnerID</code>. To confirm this is the case, consider these two queries </p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">SELECT OwnerID, count(*) as total_names from NameTable group by OwnerID having total_names &gt; 1 order by OwnerID;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total from NameTable group by OwnerID, BirthYear, DeathYear having tuple_total &gt; 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first select rows for persons with more than one name assigned to them. The second query selects rows where any of three attributes <strong>OwnerID, BirthYear or DeathYear</strong> ever diifer. Both queries return the exactly the same 
+results. If their results are joined on <code>OwnerID</code> and filtered by a <strong>where clause</strong> where the total number of names is not equal to the total number of the unique groupings of <strong>OwnerID, BirthYear, and DeathYear</strong>.
+The query always returns nothing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
+ from 
+ (SELECT OwnerID, count(*) as total_names from NameTable group by OwnerID having total_names &gt; 1) as r1
+    join
+ (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total from NameTable group by OwnerID, BirthYear, DeathYear having tuple_total &gt; 1) as r2
+    on r1.OwnerID=r2.OwnerID
+ WHERE total_names!=tuple_total;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Other self-descriptiive attributes are <code>Prefix</code>, <code>Suffix</code> and <code>Nickname</code>. <code>IsPrimary</code> is 1 if it the primary name and 0 if it is an alternate name.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<caption class="title">Table 1. NameTable</caption>
+<colgroup>
+<col style="width: 17%;">
+<col style="width: 3%;">
+<col style="width: 4%;">
+<col style="width: 3%;">
+<col style="width: 3%;">
+<col style="width: 3%;">
+<col style="width: 4%;">
+<col style="width: 4%;">
+<col style="width: 3%;">
+<col style="width: 5%;">
+<col style="width: 4%;">
+<col style="width: 4%;">
+<col style="width: 3%;">
+<col style="width: 4%;">
+<col style="width: 3%;">
+<col style="width: 4%;">
+<col style="width: 4%;">
+<col style="width: 3%;">
+<col style="width: 4%;">
+<col style="width: 5%;">
+<col style="width: 4%;">
+<col style="width: 4%;">
+<col style="width: 5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NameID Int (Prim Key)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OwnerID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Surname TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Given TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suffix TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nickname TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NameType Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SortDate
+BigInt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsPrimary Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsPrivate Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proof Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sentence TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BirthYear Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeathYear Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTCModDate Float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SurnameMP TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GivenMP TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NicknameMP TEXT</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_queries">Queries</h4>
+<div class="paragraph">
+<p>Select the primary name, birth and death years and sex.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">select n.Surname as surname, n.Given as given, n.BirthYear as birth_year, n.DeathYear as death_year, p.Sex as Sex from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Include keys and foreign keys:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>select n.Surname as surname, n.Given as given, n.BirthYear as birth_year, n.DeathYear as death_year, p.Sex as Sex, n.OwnerID as OwnerId, n.NameID as NameId from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ideas_2">Ideas</h4>
+<div class="paragraph">
+<p>Create a the sql that queries the EventTable to get the birth and death year and use it above instead of the NameTable.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_childtable">ChildTable </h3>
+<div class="paragraph">
+<p>The <code>ChildTable</code> stores relationship to family(ies) for each child. A child may have two or more families, say, a birth and adoptive family. This table provides the links to <code>PersonTable.PersonID</code> for the child and to FamilyTable for their parents.</p>
+</div>
+<div class="paragraph">
+<p><code>ChildTable</code> has key <code>RecID</code>; child identifier <code>ChildID</code>, a foreign key referencing the <code>PersonTable.PersonID</code>; <code>FamilyID</code>, a foreign key referencing <code>FamilyTable.FamilyID</code>; and <code>RelFather</code> and <code>RelMother</code>, relationships
+to the father and mother.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 97%;">
+<caption class="title">Table 2. ChildTable</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 14%;">
+<col style="width: 14%;">
+<col style="width: 14%;">
+<col style="width: 14%;">
+<col style="width: 14%;">
+<col style="width: 14%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RecID Int (Prim Key)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChildID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FamilyID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RelFather Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RelMother Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChildOrder Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Private Int</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>There are also other unimportant attributes:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. ChildTable&#8217;s other attributes</caption>
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsPrivate</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ProofFather</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ProofMother</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Note</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="literalblock">
+<div class="content">
+<pre>- These mean:
+- `IsPrivate` 0 or 1.	1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
+- `ProofFather` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-DisputedComments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.
+- `ProofMother` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
+- `Note` unused?                                                                                                         [source]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sqlite&gt; select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.PersonID;
+2147
+sqlite&gt; select count(*) from ChildTable;
+2147
+sqlite&gt; select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.PersonID;
+2147</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These mean:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ChildID</code> foreign key referencing in <code>PersonTable.PersonID</code>.</p>
+</li>
+<li>
+<p><code>FamilyID</code> references <code>FamilyTable.FamilyID</code> or Marriage Record Identication Number (MRIN). </p>
+</li>
+<li>
+<p><code>RelFather</code> the relationship to the father: 0-Birth,1-Adopted, 2- Step,etc</p>
+</li>
+<li>
+<p><code>RelMother</code> the relationship to mother: 0-Birth,1-Adopted, 2- Step,etc</p>
+</li>
+<li>
+<p><code>ChildOrder</code> 0 means in record order; 1,2,&#8230;&#8203; revises the order for the family but 1000 also observed for child added w/o birthdate, and 501 sometimes noted when no other children in family.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_comments_2">Comments</h4>
+<div class="paragraph">
+<p>All children with the same <code>FamilyID</code> have the same set of parents.  Not every <code>PersonID</code> appears in the <code>ChildTable</code>. Not every person has at least one parent; for example,
+the olders ancestors don&#8217;t have assigned parents.</p>
+</div>
+<div class="paragraph">
+<p>The ChildTable has only 2047 rows. Thus only 2047 ChildIDs (which is a foreign key referencing PersonTable) out of 3086 occur in the ChildTable.</p>
+</div>
+<div class="paragraph">
+<p>Can a child belong to more than one family? And what if a person does not yet have any or both assigned parents. In this case, there should be no entry for them in the <code>ChildTable</code> or <code>FamilyTable</code>.</p>
+</div>
+<div class="paragraph">
+<p>select 
+Question: 
+The unique pair <code>FatherID</code> plus <code>MotherID</code> can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for <code>FamilyTable</code> has not been verified.
+Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_familytable">FamilyTable</h3>
+<div class="paragraph">
+<p><code>FamilyTable</code> has <code>FamilyID</code> key identifying each unique family, each couple that might (has?) produced children. <code>FatherID</code> and <code>MotherID</code> function like foreign keys referencing <code>PersonTable.PersonID</code>, but they
+can be zero, meaning, I believe, that that parent is unknown. It is never true that both <code>FatherID</code> and <code>MotherID</code> are zero. Thus,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">select * from FamilyTable where FatherID=0 and MotherID=0;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will never return results. <code>ChildID</code> is almost always 0, so I don&#8217;t know what it means. It references PersonID in a few rarer situations.</p>
+</div>
+<div class="paragraph">
+<p>Question:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID&#8217;s in the PersonTable, link to the same row in the FamilyTable?  </p>
+</li>
+<li>
+<p><strong>{HusbandID, MotherID}</strong> is a key-is it not?</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<caption class="title">Table 4. FamilyTable</caption>
+<colgroup>
+<col style="width: 18%;">
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 4%;">
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 4%;">
+<col style="width: 6%;">
+<col style="width: 6%;">
+<col style="width: 6%;">
+<col style="width: 7%;">
+<col style="width: 7%;">
+<col style="width: 7%;">
+<col style="width: 4%;">
+<col style="width: 6%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FamilyID Int (Prim Key)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FatherID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MotherID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChildID Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HusbOrder Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WifeOrder Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsPrivate Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proof Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpouseLabel Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FatherLabel Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MotherLabel Int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpouseLabelStr TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FatherLabelStr TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MotherLabelStr TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note TEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTCModDate Float</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FamilyID</code> primary key</p>
+</li>
+<li>
+<p><code>FatherID</code> foreign key referencing <code>Person.TablePersonID</code> </p>
+</li>
+<li>
+<p><code>MotherID</code> foreign key referencing <code>Person.TablePersonID</code></p>
+</li>
+<li>
+<p><code>ChildID</code> id referencing <code>Person.TablePersonID</code>. 0 if no children exist.[RIN of one of children, possibly last active in Pedigree view, others?]</p>
+</li>
+<li>
+<p><code>HusbOrder</code> husband order from rearrange spouses screen. 0 if never rearranged. [There are some oddities, such as value of 2, but only one husband?]</p>
+</li>
+<li>
+<p><code>WifeOrder</code> wife order from rearrange Spouses screen (0 if never rearranged) [some oddities such as value of 2, but only one wife?]</p>
+</li>
+<li>
+<p><code>IsPrivate</code> Private from Edit Person screen (0 = Not Private (unchecked), 1 = Private (checked))</p>
+</li>
+<li>
+<p><code>Proof</code> Proof from Edit Person screen (0 = [blank], 1 = Proven, 2 = Disproven, 3 = Disputed)</p>
+</li>
+<li>
+<p><code>SpouseLabel</code> not currently supported?</p>
+</li>
+<li>
+<p><code>FatherLabel</code> husband label set from Edit Person screen (0 = Father, 1 = Husband, 2 = Partner).</p>
+</li>
+<li>
+<p><code>MotherLabel</code> Wife label, from Edit Person screen (0 = Mother, 1 = Wife, 2 = Partner).</p>
+</li>
+<li>
+<p><code>Note</code> Note from Edit Person screen</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_media_table_files">Media Table Files</h3>
+<div class="paragraph">
+<p><strong>todo</strong> </p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conversion_to_json_and_xml">Conversion to JSON and XML</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/FamilySearch/gedcom5-java">gedcom5-java</a> FamilySearch github repo has a <code>Gedcom2Json</code> convertor. It explains how to compile it using maven. Run it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json </code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analysis_of_tables_related_to_downloaded_ancestry_media_files">Analysis of Tables Related to Downloaded Ancestry Media Files</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_todoes">Todoes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_db_questions_to_figure_out">DB Questions to Figure Out</h3>
+<div class="paragraph">
+<p>Figure out if "family" means there must be a child. To test this use my Frankenstein tree. Give a wife to the son, but give them no children, expert and import to rootsmagic.
+And create a SQL join statment, left or right join, to determine if there persons with no parents.</p>
+</div>
+<div class="paragraph">
+<p>SQL to show persons with no children is also desired.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ancestry_medis_files">Ancestry Medis Files</h3>
+<div class="paragraph">
+<p>Incorporate my notes for assigning Ancestry Media Gallery files to the correct person.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_db_with_forign_key_contraints">New DB with Forign Key Contraints</h3>
+<div class="paragraph">
+<p>After figure out the question above, dump the Rootsmagic db and import it into a new DB that has the foreign key contraints described above.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other">Other </h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Look into an alternate solution of:</p>
+</li>
+<li>
+<p>Github FamilySearch Converting GEDCOM 5 to GECOM X, and then</p>
+</li>
+<li>
+<p>Github FamilySearch GEDCOM 5 Parser</p>
+</li>
+<li>
+<p>Using Github FamilySearch PHP Gecom X library to extract the details.</p>
+</li>
+<li>
+<p>Look into Webtrees and its tables.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -400,7 +968,7 @@ a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-14 16:09:42 -0400
+Last updated 2022-08-17 10:44:27 -0400
 </div>
 </div>
 </body>

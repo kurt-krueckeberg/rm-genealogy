@@ -1,3 +1,131 @@
+=== RootsMagic Database Overview
+
+https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#[RootsMagic4+DataDefs.ods] is a set of spreadsheets summarizing the RootsMagic tables, giving the data definitions(schema), and
+explaind the meaning and values of tables fields.
+
+*Yellow highlighted* text pertains only to RM8.
+
+There is an ER diagram available, file:///C:/Users/kurtk/temp/er-diag.pdf[too].
+
+Below is the excerpted database table summary.
+
+=== Todo
+
+Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this.
+
+Investigate this blog https://sqlitetoolsforrootsmagic.com/a-sample-query-created-with-views/[post] describing how to build complex SQL because the queries used fetch data I am interested in!!
+
+
+==== SQL Scripts
+
+A list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts].
+
+Searching the page for *rm8.sql* returns the scripts for RM8.
+
+==== Table Summary
+
+The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitetoolsforrootsmagic.com/rm-database-design/, but this info is from te spreadsheet(s) mentioned above.
+
+*AddressLinkTable*
+
+Translates OwnerID from various tables to the key AddressID in AddressTable.
+
+*AddressTable*
+
+Stores Addresses for Persons in the tree, Repositories, and other entities that need not be in the tree. Note that the Name in this table is not the same as the names in the NameTable.
+
+*ChildTable*
+
+Stores relationship to family(ies) for each child. A child may have two or more families – e.g., birth and adoptive. Links to PersonTable for child and to FamilyTable for parents.
+
+*CitationTable*
+
+Stores Citation details with links to PersonTable, FamilyTable, and EventTable and to the SourceTable for the sources cited. One record per citation.
+
+*ConfigTable*
+
+Stores File settings, Report settings, Fonts, etc to preserve between sessions.
+
+*EventTable*
+
+Stores details for each Fact/Event with links to Persons, Families having the event and to the FactTypeTable for the Fact properties.
+
+*ExclusionTable*
+
+Stores Problem List items indicated by user as Not a problem.
+a
+*FactTypeTable*
+
+Definition of the standard and user-defined Facts related to by the EventTable.
+
+*FamilyTable*
+
+Stores Family pairings, spousal order, and notes.
+
+*GroupTable*
+
+Stores data for Named Groups: ranges of PersonID's from PersonTable that were marked for the group.
+
+*LabelTable*
+
+Stores labels for Named Groups and probably other labels, too.
+
+*LinkAncestryTable*
+
+Identical to LinkTable but specifically for Ancestry TreeShare
+
+*LinkTable*
+
+Links to Family Search Family Tree for matched persons and possible future other online trees
+
+*MediaLinkTable*
+
+Stores relationship between records in MultiMediaTable and Person, Event, Place Tables along with settings for use in reports or scrapbooks, captions, notes (unused?), descriptions in RM4, unused in RM5+.
+
+*MultimediaTable*
+
+Stores path and name to Media files, a type of media code, URL (unused as of 4.0.7.1), and binary thumbnail for image files; caption, refnumber, description, date as of RM5.
+
+*NameTable*
+
+Stores name parts for persons in tree, including Alternate Names as separate records (unlimited), primary and privacy settings, birth year and death year.
+
+*PersonTable*
+
+Stores basic data for persons in tree: globally Unique ID as well as internal PersonID, FamilyID of parent family and PersonID of spouse, calculated relationship to other person in tree, privacy and living flags, and general note.
+
+*PlaceTable*
+
+Stores system pre-defined and user-defined Places and Place Details (or sites) with Name, Abbreviation, Normalized Name, geographical coordinates, and notes. Linked from eventtable.
+
+*ResearchItemTable*
+
+Stores Research Items related to Research Logs as of RM5
+
+*ResearchTable*
+
+Stores Research Logs as of RM5; To-Do tasks in RM4.
+
+*RoleTable*
+
+Stores system pre-defined and user-defined Roles with sentence templates for most FactTypes, linked from WitnessTable.
+
+*SourceTable*
+
+Stores Citation Source details for each unique source, linked from CitationTable (many to 1 allowed);  linked to AddressTable for Source Repository and to SourceTemplateTable for support of Citation data entry and reports.
+
+*SourceTemplateTable*
+
+Stores system pre-defined and user-defined sentence and field templates for different kinds of citation sources, following published guidelines. Linked from SourceTable for support of Citation data entry and reports.
+
+*URLTable*
+
+Stores WebTags
+
+*WitnessTable*
+
+Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.
+
 
 == Analysis of RootsMagic 8 Tables Related to Persons, Names, and Relationships
 
@@ -36,9 +164,9 @@ parent(s) `ParentID`, spouse `SpouseID` is almost always zero. When it isn't, it
 - `Sex` is defined as an int but used as a boolean: `0` if male, and `1` if female.
 - `ParentID` is often zero. The data definition spreedsheet says:
 
-----
+____
 Parent Identification Number, linking to FamilyID of FamilyTable, (0 if no parents) [MRIN of one set of parents, possibly last active in Pedigree view or when selected via Parents Status Bar, others?]
-----
+____
 
 Comment: So is it a foreign key to FamilyTable.FamilyID. Write some queries to find out. If it can be zero, should I create a FmailyTable.FamilyID of 0, to mean the not-yet known family?
 
@@ -129,11 +257,31 @@ Create a the sql that queries the EventTable to get the birth and death year and
 
 The `ChildTable` stores relationship to family(ies) for each child. A child may have two or more families, say, a birth and adoptive family. This table provides the links to `PersonTable.PersonID` for the child and to FamilyTable for their parents.
 
-`ChildTable` has key `RecID`, child identifier `ChildID`, a foreign key referencing the `PersonTable.PersonID`, and `FamilyID`, a foreign key referencing `FamilyTable.FamilyID`. 
+`ChildTable` has key `RecID`; child identifier `ChildID`, a foreign key referencing the `PersonTable.PersonID`; `FamilyID`, a foreign key referencing `FamilyTable.FamilyID`; and `RelFather` and `RelMother`, relationships
+to the father and mother.
 
-Comments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.
+.ChildTable
+[width="97%",cols="16%,14%,14%,14%,14%,14%,14%",]
+|===
+|RecID Int (Prim Key) |ChildID Int |FamilyID Int |RelFather Int |RelMother Int |ChildOrder Int |Is Private Int
+|===
 
-[source]
+There are also other unimportant attributes:
+
+.ChildTable's other attributes
+|===
+|`IsPrivate` 
+|`ProofFather` 
+|`ProofMother` 
+|`Note`
+|===
+ 
+- These mean:
+- `IsPrivate` 0 or 1.	1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
+- `ProofFather` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-DisputedComments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.
+- `ProofMother` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
+- `Note` unused?                                                                                                         [source]
+
 ----
 sqlite> select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.PersonID;
 2147
@@ -143,24 +291,14 @@ sqlite> select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.P
 2147
 ----
 
+These mean:
+
 - `ChildID` foreign key referencing in `PersonTable.PersonID`.
 - `FamilyID` references `FamilyTable.FamilyID` or Marriage Record Identication Number (MRIN). 
 - `RelFather` the relationship to the father: 0-Birth,1-Adopted, 2- Step,etc
 - `RelMother` the relationship to mother: 0-Birth,1-Adopted, 2- Step,etc
 - `ChildOrder` 0 means in record order; 1,2,... revises the order for the family but 1000 also observed for child added w/o birthdate, and 501 sometimes noted when no other children in family.
 
-These next three attributes are important:
-
-- `IsPrivate` 0 or 1.	1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
-- `ProofFather` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
-- `ProofMother` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
-- `Note` unused?
-
-.ChildTable
-[width="97%",cols="16%,14%,14%,14%,14%,14%,14%",]
-|===
-|RecID Int (Prim Key) |ChildID Int |FamilyID Int |RelFather Int |RelMother Int |Chi ldOrder Int |Is Private Int
-|===
 
 ==== Comments
 All children with the same `FamilyID` have the same set of parents.  Not every `PersonID` appears in the `ChildTable`. Not every person has at least one parent; for example,

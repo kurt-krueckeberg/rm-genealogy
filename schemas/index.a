@@ -5,7 +5,7 @@
 
 == SQLite3 Tools
 
-In addition to the Ubuntu command line *Sqlite3* package, https://sqlitetoolsforrootsmagic.com[SQLite Tools] lists other Sqlite3 tools.
+https://sqlitetoolsforrootsmagic.com[SQLite Tools] has a list of GUI Sqlite tools.
 
 == Gramps
 
@@ -13,8 +13,8 @@ include::g.a[]
 
 == Family Tree Builder
 
-include::dbftb.a[]
+include::ftb.a[]
 
 == RootsMagic
 
-include::dbrm.a[]
+include::rm.a[]
