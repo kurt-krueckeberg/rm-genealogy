@@ -1,0 +1,12 @@
+|AllCitations-RM8.sql
+|AllCitations-cte-version-RM8.sql
+|CitationSort-RM8.sql
+|DeleteDuplicateCitationLinks-RM8.sql
+|Facts_shared-ChangeType-RM8.sql
+|MasterSources-RM8.sql
+|Media-UsersList4-RM8.sql
+|Name-Add_Married-RM8.sql
+|RMTREE_Properties.sql
+|SharableFacts2-RM8.sql
+|SourceList-RM8.sql
+|cte-facts-citations-RM8.sql

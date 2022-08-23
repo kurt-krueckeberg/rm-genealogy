@@ -124,7 +124,15 @@ a {
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_sqlite3_tools">SQLite3 Tools</a></li>
+<li><a href="#_general">General</a>
+<ul class="sectlevel2">
+<li><a href="#_tools">Tools</a></li>
+<li><a href="#_common_table_expressions_cte_explained">Common Table Expressions (CTE) Explained</a></li>
+<li><a href="#_workaround_for_rmnocase">Workaround for RMNOCASE</a></li>
+<li><a href="#_questions">Questions</a></li>
+<li><a href="#_views">Views</a></li>
+</ul>
+</li>
 <li><a href="#_gramps">Gramps</a>
 <ul class="sectlevel2">
 <li><a href="#_gramps_sqlite3_db">Gramps Sqlite3 DB</a></li>
@@ -138,7 +146,7 @@ a {
 <li><a href="#_rootsmagic">RootsMagic</a>
 <ul class="sectlevel2">
 <li><a href="#_rootsmagic_database_overview">RootsMagic Database Overview</a></li>
-<li><a href="#_todo">Todo</a></li>
+<li><a href="#_sql_scripts">SQL Scripts</a></li>
 </ul>
 </li>
 <li><a href="#_analysis_of_rootsmagic_8_tables_related_to_persons_names_and_relationships">Analysis of RootsMagic 8 Tables Related to Persons, Names, and Relationships</a>
@@ -146,7 +154,7 @@ a {
 <li><a href="#_ideas">Ideas</a></li>
 <li><a href="#_persontable">PersonTable</a></li>
 <li><a href="#_nametable">NameTable</a></li>
-<li><a href="#_childtable">ChildTable </a></li>
+<li><a href="#_childtable">ChildTable</a></li>
 <li><a href="#_familytable">FamilyTable</a></li>
 <li><a href="#_media_table_files">Media Table Files</a></li>
 </ul>
@@ -158,7 +166,7 @@ a {
 <li><a href="#_db_questions_to_figure_out">DB Questions to Figure Out</a></li>
 <li><a href="#_ancestry_medis_files">Ancestry Medis Files</a></li>
 <li><a href="#_new_db_with_forign_key_contraints">New DB with Forign Key Contraints</a></li>
-<li><a href="#_other">Other </a></li>
+<li><a href="#_other">Other</a></li>
 </ul>
 </li>
 </ul>
@@ -166,10 +174,44 @@ a {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_sqlite3_tools">SQLite3 Tools</h2>
+<h2 id="_general">General</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_tools">Tools</h3>
 <div class="paragraph">
-<p><a href="https://sqlitetoolsforrootsmagic.com">SQLite Tools</a> has a list of GUI Sqlite tools.</p>
+<p><a href="https://sqlitetoolsforrootsmagic.com">SQLite Tools</a> lists Sqlite tools.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_common_table_expressions_cte_explained">Common Table Expressions (CTE) Explained</h3>
+<div class="paragraph">
+<p>SQL Common Table Expressions (CTE) are like subqueries that can be reused. See this <a href="https://sqlitetoolsforrootsmagic.com/common-table-expressions-the-building-blocks-of-sql/">explanation</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_workaround_for_rmnocase">Workaround for RMNOCASE</h3>
+<div class="paragraph">
+<p>This custom RM collation sequence prevents <code>order by</code> in SQL statements. Instead use <code>lower(column-name)</code> for comparisions or in <code>order by</code> clauses.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_questions">Questions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Does creating and index <code>Create Index &#8230;&#8203;</code> on a table column imply that it is <code>UNIQUE</code>? If so, I need to note this. If so, I need to note this if I want to mimic it in my "extracted" MariaDB db.</p>
+</li>
+<li>
+<p>Does the Data Definitions spreadsheet note this with <code>I</code>, too?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_views">Views</h3>
+<div class="paragraph">
+<p>Investigate this blog <a href="https://sqlitetoolsforrootsmagic.com/a-sample-query-created-with-views/">post</a> describing how to build complex SQL because the queries used fetch data I am interested in!!</p>
+</div>
 </div>
 </div>
 </div>
@@ -189,12 +231,12 @@ a {
 in exactly the same way that we used <strong>BSDDB</strong>: all of our data is pickled "blobs" (serialized tuples). However, the
 flat (non-hierarchical) data is also stored in their own column, and indexes are made on each of those. This allows us to have very
 fast ad hoc queries on any non-hierarchical data, and JOINS between primary objects. As far as I know, we always did sequential scans
-in BSDDB. If we connect the SQL WHERE capability up to Filters, then our filters will not require a linear scan through all data. 
+in BSDDB. If we connect the SQL WHERE capability up to Filters, then our filters will not require a linear scan through all data.
 This will be a huge win, but requires a some serious refactoring of views, filters, and the use of the database.</p>
 </div>
 <div class="paragraph">
 <p>&#8230;&#8203;All of the SQL statements are in a single file <a href="https://github.com/gramps-project/gramps/blob/master/gramps/plugins/db/dbapi/dbapi.py*gramps/plugins/database/dbapi.py">dbapi.py</a>.
-All the SQL statements used in Gramps are stored in the file </p>
+All the SQL statements used in Gramps are stored in the file</p>
 </div>
 </blockquote>
 </div>
@@ -221,35 +263,28 @@ All the SQL statements used in Gramps are stored in the file </p>
 <div class="sect2">
 <h3 id="_rootsmagic_database_overview">RootsMagic Database Overview</h3>
 <div class="paragraph">
-<p><a href="https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#">RootsMagic4+DataDefs.ods</a> is a set of spreadsheets summarizing the RootsMagic tables, giving the data definitions(schema), and
-explaind the meaning and values of tables fields.</p>
+<p>See <a href="https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#">RootsMagic4+DataDefs.ods</a>. Yellow highlighted text applies to RM8 only.</p>
 </div>
 <div class="paragraph">
-<p><strong>Yellow highlighted</strong> text pertains only to RM8.</p>
-</div>
-<div class="paragraph">
-<p>There is an ER diagram available, <a href="file:///C:/Users/kurtk/temp/er-diag.pdf">too</a>.</p>
+<p>RootsMagic doesn&#8217;t explictly use foreign keys, and this ER <a href="file:///C:/Users/kurtk/temp/er-diag.pdf">diagram</a> isn&#8217;t the greatest.</p>
 </div>
 <div class="paragraph">
 <p>Below is the excerpted database table summary.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_todo">Todo</h3>
+<h3 id="_sql_scripts">SQL Scripts</h3>
 <div class="paragraph">
-<p>Does creating and index <code>Create Index &#8230;&#8203;</code> on a table column imply that it is <code>UNIQUE</code>? If so, I need to note this.</p>
+<p>From this list of <a href="https://sqlitetoolsforrootsmagic.com/sql-files-list/">SQL scripts</a>, these are the RM8 ./scripts[scripts]:</p>
 </div>
-<div class="sect3">
-<h4 id="_sql_scripts">SQL Scripts</h4>
-<div class="paragraph">
-<p>A list of <a href="https://sqlitetoolsforrootsmagic.com/sql-files-list/">SQL scripts</a>.</p>
-</div>
-<div class="paragraph">
-<p>Searching the page for <strong>rm8.sql</strong> returns the scripts for RM8.</p>
-</div>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<caption class="title">Table 1. Rootmagic 8 SQL scripts</caption>
+</table>
 <div class="sect3">
 <h4 id="_table_summary">Table Summary</h4>
+<div class="paragraph">
+<p>The RM 4-7 database documentation and an ER diagram of RM8 is at <a href="https://sqlitetoolsforrootsmagic.com/rm-database-design/" class="bare">https://sqlitetoolsforrootsmagic.com/rm-database-design/</a>, but this info is from te spreadsheet(s) mentioned above.</p>
+</div>
 <div class="paragraph">
 <p><strong>AddressLinkTable</strong></p>
 </div>
@@ -421,17 +456,7 @@ used in the <code>order by</code> clause below:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Create (in new db) a "unknown" person that has PersonID of 0 and possibly name of "Unknown". This would allow keys that function as links but are not defined as foreign keys, to function as foreign keys.</p>
-</li>
-<li>
-<p>Does creating an index <code>Create Index &#8230;&#8203;</code> on a table column imply that it is <code>UNIQUE</code>? If so, I need to note this if I want to mimic in MariaDB, the same thing. Doesn&#8217;t the Data Definitions spreadsheet note this with <code>I</code>, too?
-<strong>Thus, I probablu should redo the indexed colums in each table.</strong></p>
-</li>
-<li>
-<p>See todo below. Finishing the media tables section and the family table analysis to create queries to get families..parents, sibling, child of the parents, etc.</p>
-</li>
-<li>
-<p>??</p>
+<p>In a "excerpts" db, make the <code>PersonTable</code> key <strong>not</strong> auto-incremented, and add a "yet-unknown" person whose <code>PersonID</code> is 0 (with possibly a name of "Unknown"). This way (I think) <code>PersonID</code> can be used as a foreign key.</p>
 </li>
 </ul>
 </div>
@@ -442,7 +467,7 @@ used in the <code>order by</code> clause below:</p>
 <h4 id="_predicate">Predicate</h4>
 <div class="paragraph">
 <p><code>PersonTable</code> has <code>PersonID</code> key that identifies a unique individual (in the family tree) with sex <code>Sex</code>, unique <code>UniqueID</code> (that apparently is a <code>GUID</code> or hash value that is a <strong>GEDCOM</strong> standard field),
-parent(s) <code>ParentID</code>, spouse <code>SpouseID</code> is almost always zero. When it isn&#8217;t, it functions like a foreign key referencing <code>FamilyTable.familyID</code>. </p>
+parent(s) <code>ParentID</code>, spouse <code>SpouseID</code> is almost always zero. When it isn&#8217;t, it functions like a foreign key referencing <code>FamilyTable.familyID</code>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -499,11 +524,11 @@ parent(s) <code>ParentID</code>, spouse <code>SpouseID</code> is almost always z
 <div class="ulist">
 <ul>
 <li>
-<p><code>SpouseID</code> is almost always zero. When not zero, it functions like a foreign key referencing <code>FamilyTable.FamilyID</code>. In the referenced <code>FmailyTable</code> row, <code>FatherID</code> or <code>MotherID</code> will be 
+<p><code>SpouseID</code> is almost always zero. When not zero, it functions like a foreign key referencing <code>FamilyTable.FamilyID</code>. In the referenced <code>FmailyTable</code> row, <code>FatherID</code> or <code>MotherID</code> will be
 the spouse of <code>PersonID</code>. But <code>SpouseID</code> is not necessary in determing the family that this person is a child of (or a parent of).</p>
 </li>
 <li>
-<p><code>Living</code> is boolean </p>
+<p><code>Living</code> is boolean</p>
 </li>
 <li>
 <p><code>Color</code>
@@ -542,9 +567,16 @@ A note entered from Edit Person screen</p>
 <div class="sect3">
 <h4 id="_predicate_2">Predicate</h4>
 <div class="paragraph">
-<p>The <code>NameTable.NameID</code> key identifies a unique name with surname <code>Surname</code> and given name <code>Given</code>, with <code>OwnerID</code> (a foreign key) referring to <code>PersonTable.PersonID</code>, the name&#8217;s owner.
-<code>BirthYear</code> and <code>DeathYear</code> are attributes unrleated to the table&#8217;s predicate, which are present for historical reasons, cached here so <code>EventTable</code> didn&#8217;t need to be queried in the days when computer speed was slow
-and memory low. However, this prevents normalizing the table because the same birth and date years are repeated in every row with the same <code>OwnerID</code>. To confirm this is the case, consider these two queries </p>
+<p>The <code>NameTable.NameID</code> key identifies a unique surname <code>Surname</code> plus given name <code>Given</code> pair for a given <code>PersonID</code>, with <code>OwnerID</code> (a foreign key) referring to <code>PersonTable.PersonID</code>, the name&#8217;s owner.
+It has a boolean-like attribute <code>IsPrimary</code> set to 1 if this <code>NameID</code> is the primary name and 0 if it is an alternate name.  Other self-descriptiive attributes are <code>Prefix</code>, <code>Suffix</code> and <code>Nickname</code>.</p>
+</div>
+<div class="paragraph">
+<p>Note: <code>BirthYear</code> and <code>DeathYear</code> are attributes unrleated to the table&#8217;s predicate, which are present for historical reasons, likely cached here so <code>EventTable</code> didn&#8217;t need to be queried in the days when computer speed was slow
+and memory low. However, this prevents normalizing the table because the same birth and date years are repeated in every row with the same <code>OwnerID</code>. To confirm this is the case, consider these two queries</p>
+</div>
+<div class="paragraph">
+<p>Comment: The pair <code>Surname</code> plus <code>Given</code> may not be unique outside of the set of names with the same <code>OwnerID</code>. A large Smith family tree, for example, could conceiveably have several people with the same surname and
+given name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -560,14 +592,14 @@ and memory low. However, this prevents normalizing the table because the same bi
 </div>
 </div>
 <div class="paragraph">
-<p>The first select rows for persons with more than one name assigned to them. The second query selects rows where any of three attributes <strong>OwnerID, BirthYear or DeathYear</strong> ever diifer. Both queries return the exactly the same 
+<p>The first select rows for persons with more than one name assigned to them. The second query selects rows where any of three attributes <strong>OwnerID, BirthYear or DeathYear</strong> ever diifer. Both queries return the exactly the same
 results. If their results are joined on <code>OwnerID</code> and filtered by a <strong>where clause</strong> where the total number of names is not equal to the total number of the unique groupings of <strong>OwnerID, BirthYear, and DeathYear</strong>.
 The query always returns nothing:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-sql" data-lang="sql">select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
- from 
+ from
  (SELECT OwnerID, count(*) as total_names from NameTable group by OwnerID having total_names &gt; 1) as r1
     join
  (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total from NameTable group by OwnerID, BirthYear, DeathYear having tuple_total &gt; 1) as r2
@@ -576,13 +608,10 @@ The query always returns nothing:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Other self-descriptiive attributes are <code>Prefix</code>, <code>Suffix</code> and <code>Nickname</code>. <code>IsPrimary</code> is 1 if it the primary name and 0 if it is an alternate name.</p>
-</div>
-<div class="paragraph">
 <p><strong>Note</strong>: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 99%;">
-<caption class="title">Table 1. NameTable</caption>
+<caption class="title">Table 2. NameTable</caption>
 <colgroup>
 <col style="width: 17%;">
 <col style="width: 3%;">
@@ -665,7 +694,7 @@ BigInt</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_childtable">ChildTable </h3>
+<h3 id="_childtable">ChildTable</h3>
 <div class="paragraph">
 <p>The <code>ChildTable</code> stores relationship to family(ies) for each child. A child may have two or more families, say, a birth and adoptive family. This table provides the links to <code>PersonTable.PersonID</code> for the child and to FamilyTable for their parents.</p>
 </div>
@@ -674,7 +703,7 @@ BigInt</p></td>
 to the father and mother.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 97%;">
-<caption class="title">Table 2. ChildTable</caption>
+<caption class="title">Table 3. ChildTable</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 14%;">
@@ -700,7 +729,7 @@ to the father and mother.</p>
 <p>There are also other unimportant attributes:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. ChildTable&#8217;s other attributes</caption>
+<caption class="title">Table 4. ChildTable&#8217;s other attributes</caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -719,14 +748,24 @@ to the father and mother.</p>
 </tr>
 </tbody>
 </table>
-<div class="literalblock">
-<div class="content">
-<pre>- These mean:
-- `IsPrivate` 0 or 1.	1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
-- `ProofFather` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-DisputedComments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.
-- `ProofMother` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
-- `Note` unused?                                                                                                         [source]</pre>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>These mean:</p>
+</li>
+<li>
+<p><code>IsPrivate</code> 0 or 1.	1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.</p>
+</li>
+<li>
+<p><code>ProofFather</code> 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-DisputedComments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.</p>
+</li>
+<li>
+<p><code>ProofMother</code> 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed</p>
+</li>
+<li>
+<p><code>Note</code> unused?                                                                                                         [source]</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -747,7 +786,7 @@ sqlite&gt; select count(*) from ChildTable as c join PersonTable p on c.ChildID=
 <p><code>ChildID</code> foreign key referencing in <code>PersonTable.PersonID</code>.</p>
 </li>
 <li>
-<p><code>FamilyID</code> references <code>FamilyTable.FamilyID</code> or Marriage Record Identication Number (MRIN). </p>
+<p><code>FamilyID</code> references <code>FamilyTable.FamilyID</code> or Marriage Record Identication Number (MRIN).</p>
 </li>
 <li>
 <p><code>RelFather</code> the relationship to the father: 0-Birth,1-Adopted, 2- Step,etc</p>
@@ -773,8 +812,8 @@ the olders ancestors don&#8217;t have assigned parents.</p>
 <p>Can a child belong to more than one family? And what if a person does not yet have any or both assigned parents. In this case, there should be no entry for them in the <code>ChildTable</code> or <code>FamilyTable</code>.</p>
 </div>
 <div class="paragraph">
-<p>select 
-Question: 
+<p>select
+Question:
 The unique pair <code>FatherID</code> plus <code>MotherID</code> can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for <code>FamilyTable</code> has not been verified.
 Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.</p>
 </div>
@@ -800,7 +839,7 @@ can be zero, meaning, I believe, that that parent is unknown. It is never true t
 <div class="ulist">
 <ul>
 <li>
-<p>For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID&#8217;s in the PersonTable, link to the same row in the FamilyTable?  </p>
+<p>For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID&#8217;s in the PersonTable, link to the same row in the FamilyTable?</p>
 </li>
 <li>
 <p><strong>{HusbandID, MotherID}</strong> is a key-is it not?</p>
@@ -808,7 +847,7 @@ can be zero, meaning, I believe, that that parent is unknown. It is never true t
 </ul>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 99%;">
-<caption class="title">Table 4. FamilyTable</caption>
+<caption class="title">Table 5. FamilyTable</caption>
 <colgroup>
 <col style="width: 18%;">
 <col style="width: 5%;">
@@ -854,7 +893,7 @@ can be zero, meaning, I believe, that that parent is unknown. It is never true t
 <p><code>FamilyID</code> primary key</p>
 </li>
 <li>
-<p><code>FatherID</code> foreign key referencing <code>Person.TablePersonID</code> </p>
+<p><code>FatherID</code> foreign key referencing <code>Person.TablePersonID</code></p>
 </li>
 <li>
 <p><code>MotherID</code> foreign key referencing <code>Person.TablePersonID</code></p>
@@ -892,7 +931,7 @@ can be zero, meaning, I believe, that that parent is unknown. It is never true t
 <div class="sect2">
 <h3 id="_media_table_files">Media Table Files</h3>
 <div class="paragraph">
-<p><strong>todo</strong> </p>
+<p><strong>todo</strong></p>
 </div>
 </div>
 </div>
@@ -905,7 +944,7 @@ can be zero, meaning, I believe, that that parent is unknown. It is never true t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json </code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json</code></pre>
 </div>
 </div>
 </div>
@@ -942,7 +981,7 @@ And create a SQL join statment, left or right join, to determine if there person
 </div>
 </div>
 <div class="sect2">
-<h3 id="_other">Other </h3>
+<h3 id="_other">Other</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -968,7 +1007,7 @@ And create a SQL join statment, left or right join, to determine if there person
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-17 10:44:27 -0400
+Last updated 2022-08-23 12:02:08 -0400
 </div>
 </div>
 </body>

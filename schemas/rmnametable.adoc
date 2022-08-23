@@ -1,7 +1,7 @@
-When there is more than one name in the NameTable, the BirthYear and DeathYear attributes are always the same. Even if a person has several names (say, several different given name variations), the BirthYear and DeathYear
-are identical for every name.
+When there is more than one name in the NameTable, the BirthYear and DeathYear attributes are always the same. Even if a person has several
+names (say, several different given name variations), the BirthYear and DeathYear are identical for every name.
 
-And the rows selected by the query
+Thus, if we count the the count of the rows selected by the query
 
 [source, sql]
 ----
