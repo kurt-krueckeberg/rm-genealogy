@@ -274,18 +274,17 @@ There are also other unimportant attributes:
 
 .ChildTable's other attributes
 |===
-|`IsPrivate` 
-|`ProofFather` 
-|`ProofMother` 
-|`Note`
+|`IsPrivate` |`ProofFather` |`ProofMother` |`Note`
 |===
  
-- These mean:
-- `IsPrivate` 0 or 1.	1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
+These mean:
+
+- `IsPrivate` 0 or 1. 1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
 - `ProofFather` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-DisputedComments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.
 - `ProofMother` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
 - `Note` unused?                                                                                                         [source]
 
+[source,bash]
 ----
 sqlite> select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.PersonID;
 2147
