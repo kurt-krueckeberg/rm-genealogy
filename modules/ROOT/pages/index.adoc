@@ -33,11 +33,3 @@ use in `order by` clauses or for string comparisons.
 === Views
  
 Investigate this blog https://sqlitetoolsforrootsmagic.com/a-sample-query-created-with-views/[post] describing how to build complex SQL because the queries used fetch data I am interested in!!
-
-== Gramps
-
-include::gramps.adoc[]
-
-== RootsMagic
-
-include::roots-magic.adoc[]
