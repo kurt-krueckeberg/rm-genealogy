@@ -305,7 +305,7 @@ These mean:
 - `ChildOrder` 0 means in record order; 1,2,... revises the order for the family but 1000 also observed for child added w/o birthdate, and 501 sometimes noted when no other children in family.
 
 
-=== Comments
+==== Comments
 All children with the same `FamilyID` have the same set of parents.  Not every `PersonID` appears in the `ChildTable`. Not every person has at least one parent; for example,
 the olders ancestors don't have assigned parents.
 
@@ -318,7 +318,7 @@ Question:
 The unique pair `FatherID` plus `MotherID` can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for `FamilyTable` has not been verified.
 Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.
 
-== FamilyTable
+=== FamilyTable
 
 `FamilyTable` has `FamilyID` key identifying each unique family, each couple that might (has?) produced children. `FatherID` and `MotherID` function like foreign keys referencing `PersonTable.PersonID`, but they
 can be zero, meaning, I believe, that that parent is unknown. It is never true that both `FatherID` and `MotherID` are zero. Thus,

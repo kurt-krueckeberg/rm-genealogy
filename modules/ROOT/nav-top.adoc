@@ -6,4 +6,4 @@
 ** xref:roots-magicqueries.adoc[]
 ** xref:roots-magicextract.adoc[]
 * xref:gramps.adoc[]
-* xref:family-tree-builder.adoc[]
+* xref:familytree-builder.adoc[]
