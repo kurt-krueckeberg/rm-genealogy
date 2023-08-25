@@ -1,7 +1,7 @@
 = Schema and Designs
 :toc:
 :stylesheet: dark.css
-:stylesdir: /home/kurt/asciidoctor-skins/css/dark.css
+:stylesdir: /home/kurt/asciidoctor-skins/css
 
 == General
 
