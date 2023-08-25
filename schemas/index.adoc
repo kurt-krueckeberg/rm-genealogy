@@ -1,7 +1,7 @@
 = Schema and Designs
 :toc:
 :stylesheet: dark.css
-:stylesdir: /home/kurt/skins 
+:stylesdir: /home/kurt/asciidoctor-skins/css/dark.css
 
 == General
 
@@ -36,4 +36,4 @@ include::ftb.adoc[]
 
 == RootsMagic
 
-include::rm.adoc[]
+include::roots-magic.adoc[]
