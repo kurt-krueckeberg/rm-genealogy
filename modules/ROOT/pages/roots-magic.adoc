@@ -1,4 +1,4 @@
-=== RootsMagic Database Overview
+= RootsMagic Database Overview
 
 See https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#[RootsMagic4+DataDefs.ods]. 
 The yellow highlighted text applies to RootsMagic versio 8 (RMM8) only.
@@ -7,7 +7,7 @@ RootsMagic doesn't explictly use foreign keys, and this ER file:///C:/Users/kurt
 
 Below is the excerpted database table summary.
 
-=== SQL Scripts
+== SQL Scripts
 
 From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts], these are the RM8 ./scripts[scripts]:
 
@@ -30,7 +30,7 @@ From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scrip
 |
 |===
 
-==== Table Summary
+== Table Summary
 
 The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitetoolsforrootsmagic.com/rm-database-design/, but this info is from te spreadsheet(s) mentioned above.
 
@@ -194,6 +194,7 @@ Comment: So is it a foreign key to FamilyTable.FamilyID. Write some queries to f
 === NameTable
 
 ==== Predicate
+
 The `NameTable.NameID` key identifies a unique surname `Surname` plus given name `Given` pair for a given `PersonID`, with `OwnerID` (a foreign key) referring to `PersonTable.PersonID`, the name's owner.
 It has a boolean-like attribute `IsPrimary` set to 1 if this `NameID` is the primary name and 0 if it is an alternate name.  Other self-descriptiive attributes are `Prefix`, `Suffix` and `Nickname`.
 
@@ -304,7 +305,7 @@ These mean:
 - `ChildOrder` 0 means in record order; 1,2,... revises the order for the family but 1000 also observed for child added w/o birthdate, and 501 sometimes noted when no other children in family.
 
 
-==== Comments
+=== Comments
 All children with the same `FamilyID` have the same set of parents.  Not every `PersonID` appears in the `ChildTable`. Not every person has at least one parent; for example,
 the olders ancestors don't have assigned parents.
 
@@ -317,7 +318,7 @@ Question:
 The unique pair `FatherID` plus `MotherID` can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for `FamilyTable` has not been verified.
 Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.
 
-=== FamilyTable
+== FamilyTable
 
 `FamilyTable` has `FamilyID` key identifying each unique family, each couple that might (has?) produced children. `FatherID` and `MotherID` function like foreign keys referencing `PersonTable.PersonID`, but they
 can be zero, meaning, I believe, that that parent is unknown. It is never true that both `FatherID` and `MotherID` are zero. Thus,

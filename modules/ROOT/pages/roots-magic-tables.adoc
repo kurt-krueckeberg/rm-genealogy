@@ -1,0 +1,421 @@
+= Roots Magic Table Relationships
+
+I believe this information helps use how to understand and extract from/copy from theo Ancestry.com media that Roots Magic downloads.
+
+=== Tables and Relationships
+
+.table AddressLinkTable 
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|OwnerType Int
+|AddressID Int
+|OwnerID Int
+|AddressNum Int
+|Details Text
+|UTCModDate FLOAT
+|===
+
+.table AddressTable
+[frame="none"]
+|===
+|AddressID Int Primary Key
+|AddressType Int
+|Name Text COLLATE RMNOCASE
+|Street1 Text
+|Street2 Text
+|City Text
+|State Text
+|Zip Text
+|Country Text
+|Phone1 Text
+|Phone2 Text
+|Fax Text
+|Email Text
+|URL Text
+|Latitude Int
+|Longitude Int
+|Note Text
+|UTCModDate FLOAT
+|===
+
+.table AncestryTable
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|LinkType Int
+|rmID Int
+|anID Text
+|Modified Int
+|anVersion Text
+|anDate FLOAT
+|Status Int
+|UTCModDate FLOAT
+|===
+
+.table ChildTable
+[frame="none"]
+|===
+|RecID Int Primary Key
+|ChildID Int
+|FamilyID Int
+|RelFather Int
+|RelMother Int
+|ChildOrder Int
+|IsPrivate Int
+|ProofFather Int
+|ProofMother Int
+|Note Text
+|UTCModDate FLOAT
+|===
+
+.table CitationLinkTable
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|CitationID Int
+|OwnerType Int
+|OwnerID Int
+|SortOrder Int
+|Quality Text
+|IsPrivate Int
+|Flags Int
+|UTCModDate FLOAT
+|===
+
+.table CitationTable
+[frame="none"]
+|===
+|CitationID Int Primary Key
+|SourceID Int
+|Comments Text
+|ActualText Text
+|RefNumber Text
+|Footnote Text
+|ShortFootnote Text
+|Bibliography Text
+|Fields BLOB
+|UTCModDate FLOAT
+|CitationName Text
+|===
+
+.table ConfigTable
+[frame="none"]
+|===
+|RecID Int Primary Key
+|RecType Int
+|Title Text
+|DataRec BLOB
+|UTCModDate FLOAT
+|===
+
+.table EventTable
+[frame="none"]
+|===
+|EventID Int Primary Key
+|EventType Int
+|OwnerType Int
+|OwnerID Int
+|FamilyID Int
+|PlaceID Int
+|SiteID Int
+|Date Text
+|SortDate BigInt
+|IsPrimary Int
+|IsPrivate Int
+|Proof Int
+|Status Int
+|Sentence Text
+|Details Text
+|Note Text
+|UTCModDate FLOAT
+|===
+
+.table ExclusionTable
+[frame="none"]
+|===
+|RecID Int Primary Key
+|ExclusionType Int
+|ID1 Int
+|ID2 Int
+|UTCModDate FLOAT
+|===
+
+.table FactTypeTable
+[frame="none"]
+|===
+|FactTypeID Int Primary Key
+|OwnerType Int
+|Name Text COLLATE RMNOCASE
+|Abbrev Text
+|GedcomTag Text
+|UseValue Int
+|UseDate Int
+|UsePlace Int
+|Sentence Text
+|Flags Int
+|UTCModDate FLOAT
+|===
+
+.table FamilySearchTable
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|LinkType Int
+|rmID Int
+|fsID Text
+|Modified Int
+|fsVersion Text
+|fsDate FLOAT
+|Status Int
+|UTCModDate FLOAT
+|===
+
+.table FamilyTable
+[frame="none"]
+|===
+|FamilyID Int Primary Key
+|FatherID Int
+|MotherID Int
+|ChildID Int
+|HusbOrder Int
+|WifeOrder Int
+|IsPrivate Int
+|Proof Int
+|SpouseLabel Int
+|FatherLabel Int
+|MotherLabel Int
+|SpouseLabelStr Text
+|FatherLabelStr Text
+|MotherLabelStr Text
+|Note Text
+|UTCModDate FLOAT
+|===
+
+.table GroupTable
+[frame="none"]
+|===
+|RecID Int Primary Key
+|GroupID Int
+|StartID Int
+|EndID Int
+|UTCModDate FLOAT
+|===
+
+.table MediaLinkTable
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|MediaID Int
+|OwnerType Int
+|OwnerID Int
+|IsPrimary Int
+|Include1 Int
+|Include2 Int
+|Include3 Int
+|Include4 Int
+|SortOrder Int
+|RectLeft Int
+|RectTop Int
+|RectRight Int
+|RectBottom Int
+|Comments Text
+|UTCModDate FLOAT
+|===
+
+.table MultimediaTable
+[frame="none"]
+|===
+|MediaID Int Primary Key
+|MediaType Int
+|MediaPath Text
+|MediaFile Text COLLATE RMNOCASE
+|URL Text
+|Thumbnail BLOB
+|Caption Text COLLATE RMNOCASE
+|RefNumber Text COLLATE RMNOCASE
+|Date Text
+|SortDate BigInt
+|Description Text
+|UTCModDate FLOAT
+|===
+
+.table NameTable
+[frame="none"]
+|===
+|NameID Int Primary Key
+|OwnerID Int
+|Surname Text COLLATE RMNOCASE
+|Given Text COLLATE RMNOCASE
+|Prefix Text COLLATE RMNOCASE
+|Suffix Text COLLATE RMNOCASE
+|Nickname Text COLLATE RMNOCASE
+|NameType Int
+|Date Text
+|SortDate BigInt
+|IsPrimary Int
+|IsPrivate Int
+|Proof Int
+|Sentence Text
+|Note Text
+|BirthYear Int
+|DeathYear Int
+|Display Int
+|Language Text
+|UTCModDate FLOAT
+|SurnameMP Text
+|GivenMP Text
+|NicknameMP Text
+|===
+
+.table PersonTable
+[frame="none"]
+|===
+|PersonID Int Primary Key
+|UniqueID Text
+|Sex Int
+|ParentID Int
+|SpouseID Int
+|Color Int
+|Relate1 Int
+|Relate2 Int
+|Flags Int
+|Living Int
+|IsPrivate Int
+|Proof Int
+|Bookmark Int
+|Note Text
+|UTCModDate FLOAT
+|===
+
+.table PlaceTable
+[frame="none"]
+|===
+|PlaceID Int Primary Key
+|PlaceType Int
+|Name Text COLLATE RMNOCASE
+|Abbrev Text
+|Normalized Text
+|Latitude Int
+|Longitude Int
+|LatLongExact Int
+|MasterID Int
+|Note Text
+|Reverse Text COLLATE RMNOCASE
+|fsID Int
+|anID Int
+|UTCModDate FLOAT
+|===
+
+.table RoleTable
+[frame="none"]
+|===
+|RoleID Int Primary Key
+|RoleName Text COLLATE RMNOCASE
+|EventType Int
+|RoleType Int
+|Sentence Text
+|UTCModDate FLOAT
+|===
+
+.table SourceTable
+[frame="none"]
+|===
+|SourceID Int Primary Key
+|Name Text COLLATE RMNOCASE
+|RefNumber Text
+|ActualText Text
+|Comments Text
+|IsPrivate Int
+|TemplateID Int
+|Fields BLOB
+|UTCModDate FLOAT
+|===
+
+.table SourceTemplateTable
+[frame="none"]
+|===
+|TemplateID Int Primary Key
+|Name Text COLLATE RMNOCASE
+|Description Text
+|Favorite Int
+|Category Text
+|Footnote Text
+|ShortFootnote Text
+|Bibliography Text
+|FieldDefs BLOB
+|UTCModDate FLOAT
+|===
+
+.table TagTable
+[frame="none"]
+|===
+|TagID Int Primary Key
+|TagType Int
+|TagValue Int
+|TagName Text COLLATE RMNOCASE
+|Description Text
+|UTCModDate FLOAT
+|===
+
+.table TaskLinkTable
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|TaskID Int
+|OwnerType Int
+|OwnerID Int
+|UTCModDate FLOAT
+|===
+
+.table TaskTable
+[frame="none"]
+|===
+|TaskID Int Primary Key
+|TaskType Int
+|RefNumber Text
+|Name Text COLLATE RMNOCASE
+|Status Int
+|Priority Int
+|Date1 Text
+|Date2 Text
+|Date3 Text
+|SortDate1 BigInt
+|SortDate2 BigInt
+|SortDate3 BitInt
+|Filename Text
+|Details Text
+|Results Text
+|UTCModDate FLOAT
+|Exclude Int
+|===
+
+.table URLTable
+[frame="none"]
+|===
+|LinkID Int Primary Key
+|OwnerType Int
+|OwnerID Int
+|LinkType Int
+|Name Text
+|URL Text
+|Note Text
+|UTCModDate FLOAT
+|===
+
+.table WitnessTable
+[frame="none"]
+|===
+|WitnessID Int Primary Key
+|EventID Int
+|PersonID Int
+|WitnessOrder Int
+|Role Int
+|Sentence Text
+|Note Text
+|Given Text COLLATE RMNOCASE
+|Surname Text COLLATE RMNOCASE
+|Prefix Text COLLATE RMNOCASE
+|Suffix Text COLLATE RMNOCASE
+|UTCModDate FLOAT
+|===

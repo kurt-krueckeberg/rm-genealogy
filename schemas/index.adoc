@@ -28,11 +28,7 @@ Investigate this blog https://sqlitetoolsforrootsmagic.com/a-sample-query-create
 
 == Gramps
 
-include::g.adoc[]
-
-== Family Tree Builder
-
-include::ftb.adoc[]
+include::gramps.adoc[]
 
 == RootsMagic
 

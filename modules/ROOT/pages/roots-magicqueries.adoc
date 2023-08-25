@@ -1,0 +1,20 @@
+= Roots Magic Example Queries
+
+- Name, Sex, Birth, Death
+  Select the primary name, birth and death years and sex.
+
+[source, sql]
+----
+select n.Surname as surname, n.Given as given, n.BirthYear as birth_year, n.DeathYear as death_year, p.Sex as Sex from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;
+----
+
+Include keys and foreign keys:
+
+[source]
+----
+select n.Surname as surname, n.Given as given, n.BirthYear as birth_year, n.DeathYear as death_year, p.Sex as Sex, n.OwnerID as OwnerId, n.NameID as NameId from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;
+----
+
+Use EventTable to get birth and death years
+
+// todo

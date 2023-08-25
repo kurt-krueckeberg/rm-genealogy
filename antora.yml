@@ -1,0 +1,12 @@
+name: genealogy-schemas
+title: Genealogy PC Software SQLite3 Schemas
+version: '' 
+start_page: genealogy-schemas::index.adoc
+asciidoc:
+  attributes:
+    source-language: asciidoc@
+    table-caption: false
+  extensions:
+  - '@antora/lunr-extension'`
+nav:
+  - modules/ROOT/nav-top.adoc
