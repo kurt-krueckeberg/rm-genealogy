@@ -1,4 +1,4 @@
-=== Gramps Sqlite3 DB
+= Gramps Sqlite3 DB
 
 Gramps previously used the Berkley database (BSDD), a noSQL database that uses a *key/value* database store. With verion 5, Gramps switched to Sqlite, but their database
 https://gramps-project.org/wiki/index.php/Gramps_SQL_Database[doumentation] explains their Sqlite database is not a relational model, rather a port of the BSDD database:
