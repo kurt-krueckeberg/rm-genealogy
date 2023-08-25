@@ -7,6 +7,6 @@ asciidoc:
     source-language: asciidoc@
     table-caption: false
   extensions:
-  - '@antora/lunr-extension'`
+  - '@antora/lunr-extension'
 nav:
   - modules/ROOT/nav-top.adoc
