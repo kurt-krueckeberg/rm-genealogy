@@ -1,4 +1,4 @@
-= Overview Genealoy Software Schemas Analyzed
+= Overview of Genealoy Software Schemas Analyzed
 :toc:
 :stylesheet: dark.css
 :stylesdir: /home/kurt/asciidoctor-skins/css
