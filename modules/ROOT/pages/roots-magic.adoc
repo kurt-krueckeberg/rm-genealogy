@@ -35,7 +35,7 @@ From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scrip
 |cte-facts-citations-RM8.sql
 |===
 
-=== Tables Summary
+== Tables Summarized
 
 The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitetoolsforrootsmagic.com/rm-database-design/, but this info is from the spreadsheet(s) mentioned above.
 .Tables and their purpose
@@ -119,7 +119,7 @@ The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitet
 |Stores data for individual and family Event sharing among persons in tree and outside the tree, with links to RoleTable (Witness, Doctor, user-defined), EventTable, and to PersonTable (if in tree). Stores note for shared event plus name of person if not in tree. If person is not in tree, nothing of this record appears in reports.
 |===
 
-= Analysis of RootsMagic 8 Tables Related to Persons, Names, and Relationships
+== Analysis of RootsMagic 8 Tables Related to Persons, Names, and Relationships
 
 RootsMagic uses a custom-defined collation sequence `RMNOCASE` (Roots Magic No Case), which https://sqlitetoolsforrootsmagic.com/RMNOCASE-faking-it-in-SQLite-Expert-command-line-shell-et-al/[SQLite Tools for RootsMagic]
 discusses https://sqlitetoolsforrootsmagic.com/RMNOCASE-faking-it-in-SQLite-Expert-command-line-shell-et-al/[here], for several text fieldx like `NameTable.Surname` and `NameTable.Given`. It can prevent queries from succeeding. One work around is to force the text to lower case; for example, `lower(Surname)` is
@@ -285,7 +285,7 @@ select n.Surname as surname, n.Given as given, n.BirthYear as birth_year, n.Deat
 
 Create a the sql that queries the EventTable to get the birth and death year and use it above instead of the NameTable.
 
-== ChildTable 
+=== ChildTable 
 
 The `ChildTable` stores relationship to family(ies) for each child. A child may have two or more families, say, a birth and adoptive family. This table provides the links to `PersonTable.PersonID` for the child and to FamilyTable for their parents.
 
@@ -330,7 +330,7 @@ These mean:
 - `RelMother` the relationship to mother: 0-Birth,1-Adopted, 2- Step,etc
 - `ChildOrder` 0 means in record order; 1,2,... revises the order for the family but 1000 also observed for child added w/o birthdate, and 501 sometimes noted when no other children in family.
 
-=== Comments
+==== Comments
 All children with the same `FamilyID` have the same set of parents.  Not every `PersonID` appears in the `ChildTable`. Not every person has at least one parent; for example,
 the olders ancestors don't have assigned parents.
 
@@ -343,7 +343,7 @@ Question:
 The unique pair `FatherID` plus `MotherID` can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for `FamilyTable` has not been verified.
 Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.
 
-== FamilyTable
+=== FamilyTable
 
 `FamilyTable` has `FamilyID` key identifying each unique family, each couple that might (has?) produced children. `FatherID` and `MotherID` function like foreign keys referencing `PersonTable.PersonID`, but they
 can be zero, meaning, I believe, that that parent is unknown. It is never true that both `FatherID` and `MotherID` are zero. Thus,
@@ -380,7 +380,7 @@ Question:
 - `MotherLabel` Wife label, from Edit Person screen (0 = Mother, 1 = Wife, 2 = Partner).
 - `Note` Note from Edit Person screen
 
-== Media Table Files
+=== Media Table Files
 
 *todo* 
 
@@ -392,26 +392,26 @@ The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch gith
 $ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json 
 ----
 
-= Analysis of Tables Related to Downloaded Ancestry Media Files
+== Analysis of Tables Related to Downloaded Ancestry Media Files
 
-= Todoes
+== Todoes
 
-== DB Questions to Figure Out
+=== DB Questions to Figure Out
 
 Figure out if "family" means there must be a child. To test this use my Frankenstein tree. Give a wife to the son, but give them no children, expert and import to rootsmagic.
 And create a SQL join statment, left or right join, to determine if there persons with no parents.
 
 SQL to show persons with no children is also desired.
 
-== Ancestry Medis Files
+=== Ancestry Medis Files
 
 Incorporate my notes for assigning Ancestry Media Gallery files to the correct person.
 
-== New DB with Forign Key Contraints
+=== New DB with Foreign Key Contraints
 
 After figure out the question above, dump the Rootsmagic db and import it into a new DB that has the foreign key contraints described above.
 
-== Other 
+=== Other 
 
 - Look into an alternate solution of:
 
