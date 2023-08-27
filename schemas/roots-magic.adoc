@@ -1,7 +1,7 @@
 === RootsMagic Database Overview
 
-See https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#[RootsMagic4+DataDefs.ods]. 
-The yellow highlighted text applies to RootsMagic versio 8 (RMM8) only.
+See https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/pubhtml#[RootsMagic 4 + Database Tables Summary]. 
+The yellow highlighted text applies to RootsMagic version 8 (RM8) only.
 
 RootsMagic doesn't explictly use foreign keys, and this ER file:///C:/Users/kurtk/temp/er-diag.pdf[diagram] isn't the greatest.
 
@@ -30,7 +30,7 @@ From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scrip
 |
 |===
 
-==== Table Summary
+==== Tables Summary
 
 The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitetoolsforrootsmagic.com/rm-database-design/, but this info is from te spreadsheet(s) mentioned above.
 
