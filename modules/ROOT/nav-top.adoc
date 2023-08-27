@@ -1,5 +1,5 @@
 * xref:index.adoc[]
-* Roots Magic Schema
+* Roots Magic
 ** xref:roots-magicnametable.adoc[]
 ** xref:roots-magic.adoc[]
 ** xref:roots-magic-tables.adoc[]
