@@ -37,7 +37,7 @@ From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scrip
 
 === Tables Summary
 
-The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitetoolsforrootsmagic.com/rm-database-design/, but this info is from te spreadsheet(s) mentioned above.
+The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitetoolsforrootsmagic.com/rm-database-design/, but this info is from the spreadsheet(s) mentioned above.
 .Tables and their purpose
 [%autowidth]
 |===
