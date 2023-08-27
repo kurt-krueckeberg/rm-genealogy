@@ -17,7 +17,7 @@ Below is the excerpted database table summary.
 From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts], these are the RM8 link:./scripts[scripts]:
 
 .Rootmagic 8 SQL scripts
-[%autowidths]
+[%autowidth]
 |===
 |Script
 |AllCitations-RM8.sql
