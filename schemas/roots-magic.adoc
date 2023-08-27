@@ -14,7 +14,7 @@ Below is the excerpted database table summary.
 
 == SQL Scripts
 
-From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts], these are the RM8 ./scripts[scripts]:
+From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scripts], these are the RM8 link:./scripts[scripts]:
 
 .Rootmagic 8 SQL scripts
 [width="99%",cols="17%,3%,4%,3%,3%,3%,4%,4%,3%,5%,4%,4%,3%,4%,3%,4%,4%,3%,4%,5%,4%,4%,5%",]
