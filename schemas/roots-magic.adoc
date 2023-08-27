@@ -41,6 +41,8 @@ The RM 4-7 database documentation and an ER diagram of RM8 is at https://sqlitet
 .Tables and their purpose
 [%autowidth]
 |===
+|Name|Purpose
+
 |AddressLinkTable
 |Translates OwnerID from various tables to the key AddressID in AddressTable.
 
