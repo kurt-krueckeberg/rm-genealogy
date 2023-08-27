@@ -140,11 +140,52 @@ select n.Surname as surname, n.Given as given, p.Sex as Sex from NameTable as n 
 `PersonTable` has `PersonID` key that identifies a unique individual (in the family tree) with sex `Sex`, unique `UniqueID` (that apparently is a `GUID` or hash value that is a **GEDCOM** standard field),
 parent(s) `ParentID`, spouse `SpouseID` is almost always zero. When it isn't, it functions like a foreign key referencing `FamilyTable.familyID`. 
 
- .PersonTable
-[width="99%"]
+.Person table
+[%autowidth]
 |===
-|PersonID Int (Prim Key) |UniqueID TEXT |Sex Int |ParentID Int |SpouseID Int |Color Int |Relate1 Int |Relate2 Int
-|Flags Int |Living Int |IsPrivate Int |Proof Int |Bookmark Int |Note TEXT |UTCModDate Float
+|Atribute|Data type
+
+|PersonID
+| Int (Prim Key) 
+
+|UniqueID TEXT 
+|Sex Int 
+
+|ParentID
+|Int 
+
+|SpouseID 
+|Int
+ 
+|Color 
+|Int
+ 
+|Relate1 
+|Int
+ 
+|Relate2 
+|Int
+
+|Flags 
+|Int
+ 
+|Living 
+|Int
+ 
+|IsPrivate 
+|Int
+ 
+|Proof 
+|Int
+ 
+|Bookmark 
+|Int
+ 
+|Note
+|TEXT 
+
+|UTCModDate
+|Float
 |===
 
 === Comments
