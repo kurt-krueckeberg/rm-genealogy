@@ -384,7 +384,7 @@ Question:
 
 *todo* 
 
-= Conversion to JSON and XML
+== Conversion to JSON and XML
 The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch github repo has a `Gedcom2Json` convertor. It explains how to compile it using maven. Run it:
 
 [source,bash]
@@ -403,7 +403,7 @@ And create a SQL join statment, left or right join, to determine if there person
 
 SQL to show persons with no children is also desired.
 
-=== Ancestry Medis Files
+=== Ancestry Media Files
 
 Incorporate my notes for assigning Ancestry Media Gallery files to the correct person.
 
