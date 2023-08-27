@@ -1,9 +1,4 @@
-= Overview of Genealoy Software Schemas Analyzed
-:toc:
-:stylesheet: dark.css
-:stylesdir: /home/kurt/asciidoctor-skins/css
-
-== General
+= Overview of Genealoy Software Schemas 
 
 This is an analysis mainly of Roots Magic's Sqlite3 database. Much of the information came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
 
