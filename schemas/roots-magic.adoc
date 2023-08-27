@@ -20,6 +20,7 @@ From this list of https://sqlitetoolsforrootsmagic.com/sql-files-list/[SQL scrip
 [%autowidth]
 |===
 |Script
+
 |AllCitations-RM8.sql
 |AllCitations-cte-version-RM8.sql
 |CitationSort-RM8.sql
