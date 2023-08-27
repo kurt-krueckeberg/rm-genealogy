@@ -137,8 +137,9 @@ select n.Surname as surname, n.Given as given, p.Sex as Sex from NameTable as n 
 == PersonTable
 
 === Predicate
-`PersonTable` has `PersonID` key that identifies a unique individual (in the family tree) with sex `Sex`, unique `UniqueID` (that apparently is a `GUID` or hash value that is a **GEDCOM** standard field),
-parent(s) `ParentID`, spouse `SpouseID` is almost always zero. When it isn't, it functions like a foreign key referencing `FamilyTable.familyID`. 
+`PersonTable` has `PersonID` primary key (although `primary keys` are not actually used) that identifies a unique individual (in the family tree) with sex `Sex`, unique `UniqueID`
+(that apparently is a `GUID` or hash value that is a **GEDCOM** standard field), parent(s) `ParentID`, spouse `SpouseID` is almost always zero. When it isn't, it functions like a
+foreign key referencing `FamilyTable.familyID`. 
 
 .Person table
 [%autowidth]
