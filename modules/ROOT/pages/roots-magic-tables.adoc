@@ -29,8 +29,9 @@ I believe this information helps use how to understand and extract from/copy fro
 |FLOAT
 |===
 
+
 .table AddressTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
