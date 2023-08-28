@@ -1,4 +1,4 @@
-= Roots Magic Person table Ideas
+= Person table Ideas
 
 If we add a PersonID of 0 to mean the "not-yet known" or unknonw person, then other tables that link to PersonTable.PersonID can be
 made foreign keys, thus making the "link" an actual relational constraint. We won't have to alter any other tables, either. They can
