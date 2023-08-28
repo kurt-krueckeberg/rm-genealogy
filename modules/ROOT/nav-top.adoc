@@ -1,8 +1,10 @@
 * xref:index.adoc[]
+* xref:tools.adoc[]
 * Roots Magic
-** xref:roots-magicnametable.adoc[]
-** xref:roots-magic.adoc[]
-** xref:roots-magic-tables.adoc[]
+** xref:rm.adoc[]
+** xref:rm-nametable.adoc[]
+** xref:rm-tables.adoc[]
+** xref:rm-table-relationships.adoc[]
 ** xref:roots-magicqueries.adoc[]
 ** xref:roots-magicextract.adoc[]
 * xref:gramps.adoc[]
