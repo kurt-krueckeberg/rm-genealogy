@@ -1,4 +1,4 @@
-= Overview of Genealoy Software Schemas 
+= Overview
 
 A couple of genealogy software packages use a SQLite database. You can use the tools below
 to view and analyze the databases.

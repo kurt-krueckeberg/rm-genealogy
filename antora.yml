@@ -1,5 +1,5 @@
 name: genealogy-schemas
-title: Genealogy PC Software SQLite3 Schemas
+title: Genealogy Software Schemas
 version: '' 
 start_page: genealogy-schemas::index.adoc
 asciidoc:
