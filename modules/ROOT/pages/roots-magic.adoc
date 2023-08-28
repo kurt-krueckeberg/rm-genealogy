@@ -127,7 +127,11 @@ used in the `order by` clause below:
 
 [source, sql]
 ----
-select n.Surname as surname, n.Given as given, p.Sex as Sex from NameTable as n join PersonTable as p on p.PersonID=n.OwnerID where n.IsPrimary=1 order by lower(Surname), OwnerID, NameID;
+select n.Surname as surname, n.Given as given, p.Sex as Sex
+ from NameTable as n
+ join PersonTable as p on p.PersonID=n.OwnerID
+ where n.IsPrimary=1
+ order by lower(Surname), OwnerID, NameID;
 ----
 
 == Ideas
