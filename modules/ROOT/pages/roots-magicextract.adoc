@@ -31,8 +31,11 @@ CREATE TABLE Person(id INTEGER PRIMARY KEY,
 ----
 
 
-BirthDate and DeathDate are cached in NameTable for historical reasons. They exist in the EventTable I believe, and I need to figure out how to query for them. 
+BirthDate and DeathDate are cached in NameTable for historical reasons. They exist in the
+`EventTable`, I believe, and I need to figure out how to query for them. 
+
 Make OwnerID a foreign key. What about and ParentID, ChildId??
+
 Does MariaDB use 'collate' in this manner, just like Sqlite?
 
 [source,sql]
@@ -47,7 +50,12 @@ CREATE table Name(id integer primary key,
 ----
 
 Make FatherID and MotherID and ChildID foreign keys refereinceing PersonTabler.PersonID. 
-Make the pair FatherID/MotherID unique, an additional key. I likely can make ChildID a foreign key? Many of the other attributes like SpouseLable, FatherLabel can be ignored. They are only relevant to RM.
+
+Make the pair FatherID/MotherID unique, an additional key. I likely can make `ChildID`
+a foreign key? Many of the other attributes like SpouseLable, FatherLabel can be ignored.
+
+They are only relevant to RM.
+
 Changes: I made IsPrivate a 'bool'. I made fatherid/motherid pair a unique constraint. 
 
 [source,sql]
