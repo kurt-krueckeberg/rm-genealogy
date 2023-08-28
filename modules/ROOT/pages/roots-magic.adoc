@@ -229,16 +229,22 @@ and memory low. However, this prevents normalizing the table because the same bi
 
 Comment: The pair `Surname` plus `Given` may not be unique outside of the set of names with the same `OwnerID`. A large Smith family tree, for example, could conceiveably have several people with the same surname and
 given name.
+
 [source, sql]
 ----
-SELECT OwnerID, count(*) as total_names from NameTable group by OwnerID having total_names > 1 order by OwnerID;
+SELECT OwnerID, count(*) as total_names from NameTable
+  group by OwnerID having total_names > 1
+   order by OwnerID;
 ----
 
 and
 
 [source, sql]
 ----
-SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total from NameTable group by OwnerID, BirthYear, DeathYear having tuple_total > 1
+SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
+ from NameTable
+ group by OwnerID, BirthYear, DeathYear
+    having tuple_total > 1
 ----
 
 The first select rows for persons with more than one name assigned to them. The second query selects rows where any of three attributes *OwnerID, BirthYear or DeathYear* ever diifer. Both queries return the exactly the same 
@@ -249,21 +255,91 @@ The query always returns nothing:
 ----
 select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
  from 
- (SELECT OwnerID, count(*) as total_names from NameTable group by OwnerID having total_names > 1) as r1
+ (SELECT OwnerID, count(*) as total_names
+ from NameTable
+ group by OwnerID having total_names > 1) as r1
     join
- (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total from NameTable group by OwnerID, BirthYear, DeathYear having tuple_total > 1) as r2
+ (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
+ from NameTable
+ group by OwnerID, BirthYear, DeathYear
+ having tuple_total > 1) as r2
     on r1.OwnerID=r2.OwnerID
  WHERE total_names!=tuple_total;
 ----
 
-*Note*: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.
+NOTE: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.
 
 .NameTable
-[width="99%",cols="17%,3%,4%,3%,3%,3%,4%,4%,3%,5%,4%,4%,3%,4%,3%,4%,4%,3%,4%,5%,4%,4%,5%",]
+[%autowdith]
 |===
-|NameID Int (Prim Key) |OwnerID Int |Surname TEXT |Given TEXT |Prefix TEXT |Suffix TEXT |Nickname TEXT |NameType Int |Date TEXT |SortDate
-BigInt |IsPrimary Int |IsPrivate Int |Proof Int |Sentence TEXT |Note TEXT |BirthYear Int |DeathYear Int |Display Int |Language TEXT
-|UTCModDate Float |SurnameMP TEXT |GivenMP TEXT |NicknameMP TEXT
+| Column | Data Type
+
+|NameID 
+|Int (Prim Key) 
+
+|OwnerID 
+|Int
+ 
+|Surname 
+|TEXT
+ 
+|Given 
+|TEXT
+ 
+|Prefix 
+|TEXT
+ 
+|Suffix 
+|TEXT
+ 
+|Nickname 
+|TEXT
+ 
+|NameType Int 
+|Date 
+|TEXT
+ 
+|SortDate
+|BigInt 
+
+|IsPrimary
+|Int
+ 
+|IsPrivate
+|Int
+ 
+|Proof
+|Int 
+
+|Sentence 
+|TEXT
+ 
+|Note 
+|TEXT
+ 
+|BirthYear
+|Int
+ 
+|DeathYear
+|Int
+ 
+|Display
+|Int
+ 
+|Language 
+|TEXT
+
+|UTCModDate
+|Float
+ 
+|SurnameMP
+|TEXT 
+
+|GivenMP
+|TEXT 
+
+|NicknameMP
+|TEXT
 |===
 
 === Queries
