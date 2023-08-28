@@ -4,7 +4,7 @@
 //** xref:rm.adoc[]
 ** xref:rm-nametable.adoc[]
 ** xref:rm-tables.adoc[]
-** xref:rm-table-relationships.adoc[]
+** xref:rm-relationships.adoc[]
 ** xref:rm-queries.adoc[]
 ** xref:roots-magicextract.adoc[]
 * xref:gramps.adoc[]
