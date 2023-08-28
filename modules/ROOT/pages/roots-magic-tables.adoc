@@ -4,7 +4,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 == Tables and Relationships
 
-.table AddressLinkTable 
+.AddressLinkTable 
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -32,7 +32,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 
-.table AddressTable
+.AddressTable
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -92,7 +92,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |FLOAT
 |===
 
-.table AncestryTable
+.AncestryTable
 [frame="none"]
 |===
 |Name|Type
@@ -125,7 +125,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |FLOAT
 |===
 
-.table ChildTable
+.ChildTable
 [frame="none"]
 |===
 |Name|Type
@@ -165,7 +165,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table CitationLinkTable
+.CitationLinkTable
 [frame="none"]
 |===
 |Name|Type
@@ -199,7 +199,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table CitationTable
+.CitationTable
 [frame="none"]
 |===
 |Name|Type
@@ -239,7 +239,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table ConfigTable
+.ConfigTable
 [frame="none"]
 |===
 |Name|Type
@@ -261,7 +261,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table EventTable
+.EventTable
 [frame="none"]
 |===
 |Name|Type
@@ -319,7 +319,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table ExclusionTable
+.ExclusionTable
 [frame="none"]
 |===
 |Name|Type
@@ -341,7 +341,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table FactTypeTable
+.FactTypeTable
 [frame="none"]
 |===
 |Name|Type
@@ -381,7 +381,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table FamilySearchTable
+.FamilySearchTable
 [frame="none"]
 |===
 |Name|Type
@@ -415,7 +415,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table FamilyTable
+.FamilyTable
 [frame="none"]
 |===
 |Name|Type
@@ -470,7 +470,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table GroupTable
+.GroupTable
 [frame="none"]
 |===
 |Name|Type
@@ -492,7 +492,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table MediaLinkTable
+.MediaLinkTable
 [frame="none"]
 |===
 |Name|Type
@@ -547,7 +547,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table MultimediaTable
+.MultimediaTable
 [frame="none"]
 |===
 |Name|Type
@@ -590,7 +590,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table NameTable
+.NameTable
 [frame="none"]
 |===
 |Name|Type
@@ -666,7 +666,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table PersonTable
+.PersonTable
 [frame="none"]
 |===
 |Name|Type
@@ -718,7 +718,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table PlaceTable
+.PlaceTable
 [frame="none"]
 |===
 |Name|Type
@@ -767,7 +767,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table RoleTable
+.RoleTable
 [frame="none"]
 |===
 |Name|Type
@@ -792,7 +792,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table SourceTable
+.SourceTable
 [frame="none"]
 |===
 |Name|Type
@@ -826,7 +826,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table SourceTemplateTable
+.SourceTemplateTable
 [frame="none"]
 |===
 |Name|Type
@@ -863,7 +863,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table TagTable
+.TagTable
 [frame="none"]
 |===
 |TagID
@@ -886,7 +886,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table TaskLinkTable
+.TaskLinkTable
 [frame="none"]
 |===
 |Name|Type
@@ -908,7 +908,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table TaskTable
+.TaskTable
 [frame="none"]
 |===
 |Name|Type
@@ -964,7 +964,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table URLTable
+.URLTable
 [frame="none"]
 |===
 |Name|Type
@@ -995,7 +995,7 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-.table WitnessTable
+.WitnessTable
 [frame="none"]
 |===
 |Name|Type
