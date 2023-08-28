@@ -1,3 +1,7 @@
+= Gramps SQL 
+
+[source,sql]
+---
 CREATE TABLE person (handle VARCHAR(50) PRIMARY KEY NOT NULL,
 	 given_name TEXT,
 	 surname TEXT,
@@ -139,4 +143,4 @@ CREATE INDEX repository_gramps_id ON repository(gramps_id);
 CREATE INDEX note_gramps_id ON note(gramps_id);
 
 CREATE INDEX reference_obj_handle ON reference(obj_handle);
-
+---

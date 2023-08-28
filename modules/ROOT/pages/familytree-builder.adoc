@@ -1,27 +1,17 @@
-= Family Tree Builder
+= Family Tree Build (MyHeritage)
 
-Family Tree Builder is freely available on https://myheritage.com[MyHeritage]. It's schema (at least two years ago) was
-in SQLite3, but it is not formally documented. A dump of the schema is given below.
-
-== Schema
-
-Using tools like DBeaver you can dump a Family Tree Builder database, which
-reveals this schema:
-
-[source, sql]
----- 
+[,sql]
+----
 CREATE TABLE token_on_item (
     token_on_item_id  INTEGER PRIMARY KEY NOT NULL,
     entity_id INT NOT NULL default 0,
     item_type TINYINT UNSIGNED NOT NULL default 0 -- (pre-defined numbers representing supported Genealogy entity types, 0 = default no type defined)
 );
-
 CREATE TABLE gene_entities_identifier_main_data (
     gene_entity_type_id  INTEGER PRIMARY KEY NOT NULL, -- (pre-defined numbers representing supported Genealogy entity types, 0 = default no type defined)
     next_identifier_value INT NOT NULL default 0, -- next value for permanent identifier (all values are positive increments +1)
     next_temp_identifier_value INT NOT NULL default -1000 -- next value for temp identifier (all values are negative increments -1)
 );
-
 CREATE TABLE individual_main_data (
 	individual_id INTEGER PRIMARY KEY NOT NULL,
 	privacy_level tinyint UNSIGNED default 0,  
