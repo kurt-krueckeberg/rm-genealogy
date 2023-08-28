@@ -341,7 +341,8 @@ will never return results. `ChildID` is almost always 0, so I don't know what it
 
 Question:
 
-- For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID's in the PersonTable, link to the same row in the FamilyTable?  
+- For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID's in the PersonTable, 
+link to the same row in the FamilyTable?  
 - *{HusbandID, MotherID}* is a key-is it not?
 
 .FamilyTable
