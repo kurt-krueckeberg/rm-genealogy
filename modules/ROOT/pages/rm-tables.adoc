@@ -1,4 +1,4 @@
-= Roots Magic Tables
+= Persons and Relationships Tables
 
 == PersonTable
 

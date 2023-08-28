@@ -1,16 +1,12 @@
 = Overview
 
-A couple of genealogy software packages use a SQLite database. You can use the tools below
-to view and analyze the databases.
+Gramps, Family Tree Builder by MyHeritage, and Roots Magic use SQLite database.
+It is an open source SQL implementation that manages--I believe--a sort of in-memory database.
 
-Much of the analysis of Roots Magoc came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
+There are several tools and utilites you can use to analyze and view
+SQLite3 databases:
 
-.Tools for SQL Databases
-* https://sqlitebrowser.org/[DB Broser for SQLite]
-* https://sqlitestudio.pl/[SQLiteStudio]
-* https://github.com/little-brother/sqlite-gui[sqlite-gui]
-* https://www.beekeeperstudio.io/[Beekeeper Studio] - also works with MySQL, Postgress and SQL Server
-* https://dbeaver.io[DB Beaver]
+Musch of the analysis of Roots Magic came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
 
 == Common Table Expressions (CTE) Explained
 

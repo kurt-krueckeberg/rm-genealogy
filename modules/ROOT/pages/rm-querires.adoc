@@ -1,4 +1,4 @@
-= Roots Magic Example Queries
+= Example Queries
 
 - Name, Sex, Birth, Death
   Select the primary name, birth and death years and sex.

@@ -2,6 +2,17 @@
 
 == Ubuntu Packages
 
+Third party toools include:
+
+* https://sqlitebrowser.org/[DB Broser for SQLite]
+* https://sqlitestudio.pl/[SQLiteStudio]
+* https://github.com/little-brother/sqlite-gui[sqlite-gui]
+* https://www.beekeeperstudio.io/[Beekeeper Studio] - also works with MySQL, Postgress and SQL Server
+* https://dbeaver.io[DB Beaver]
+
+Ubuntu packages iclude:
+
+.Ubuntu SQLite3 Packages
 * `sqlite3-tools` contains these programs:
 ** `showdb`
 ** `sqlite3_analyzer`
@@ -12,7 +23,7 @@
 * `sqlite3-pcre` is an extension for sqlite3 that uses libpcre to provide +
 the REGEXP() function.provides the `REGEXP()` function to
 
-== Convert GEDCOM to JSON or XML
+== Converting GEDCOM to JSON or XML
 
 The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch github repo has a `Gedcom2Json` convertor.
 It explains how to compile it using maven. Run it:
