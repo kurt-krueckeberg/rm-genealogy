@@ -3,7 +3,7 @@
 A couple of genealogy software packages use a SQLite database. You can use the tools below
 to view and analyze the databases.
 
-Much of the database information for Roots Magoc came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
+Much of the analysis of Roots Magoc came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
 
 .Tools for SQL Databases
 * https://sqlitebrowser.org/[DB Broser for SQLite]
