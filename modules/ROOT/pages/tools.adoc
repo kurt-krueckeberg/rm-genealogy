@@ -1,0 +1,11 @@
+= Tools
+
+== Convert GEDCOM to JSON or XML
+
+The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch github repo has a `Gedcom2Json` convertor.
+It explains how to compile it using maven. Run it:
+
+[source,bash]
+----
+$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json 
+----

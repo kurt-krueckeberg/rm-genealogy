@@ -1,0 +1,34 @@
+= Ideas
+
+- In a "excerpts" db, make the `PersonTable` key *not* auto-incremented, and add a "yet-unknown" person whose `PersonID` is 0 (with possibly a name of "Unknown"). This way (I think) `PersonID` can be used as a foreign key.
+
+== Analysis of Tables Related to Downloaded Ancestry Media Files
+
+== Todoes
+
+=== DB Questions to Figure Out
+
+Figure out if "family" means there must be a child. To test this use my Frankenstein tree. Give a wife to the son, but give them no children, expert and import to rootsmagic.
+And create a SQL join statment, left or right join, to determine if there persons with no parents.
+
+SQL to show persons with no children is also desired.
+
+=== Ancestry Media Files
+
+Incorporate my notes for assigning Ancestry Media Gallery files to the correct person.
+
+=== New DB with Foreign Key Contraints
+
+After figure out the question above, dump the Rootsmagic db and import it into a new DB that has the foreign key contraints described above.
+
+=== Other 
+
+- Look into an alternate solution of:
+
+  - Github FamilySearch Converting GEDCOM 5 to GECOM X, and then
+
+  - Github FamilySearch GEDCOM 5 Parser
+
+  - Using Github FamilySearch PHP Gecom X library to extract the details.
+
+- Look into Webtrees and its tables.
