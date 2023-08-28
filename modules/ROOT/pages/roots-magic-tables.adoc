@@ -93,7 +93,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .AncestryTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -126,7 +126,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .ChildTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -166,7 +166,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .CitationLinkTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -200,7 +200,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .CitationTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -240,7 +240,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .ConfigTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -262,7 +262,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .EventTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -320,7 +320,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .ExclusionTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -342,7 +342,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .FactTypeTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -382,7 +382,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .FamilySearchTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -416,7 +416,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .FamilyTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -471,7 +471,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .GroupTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -493,7 +493,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .MediaLinkTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -548,7 +548,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .MultimediaTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -591,7 +591,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .NameTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -667,7 +667,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .PersonTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -719,7 +719,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .PlaceTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -768,7 +768,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .RoleTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -793,7 +793,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .SourceTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -827,7 +827,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .SourceTemplateTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -864,7 +864,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .TagTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |TagID
 |Int Primary Key
@@ -887,7 +887,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .TaskLinkTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -909,7 +909,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .TaskTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -965,7 +965,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .URLTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
@@ -996,7 +996,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 .WitnessTable
-[frame="none"]
+[%autowidth,frame="none"]
 |===
 |Name|Type
 
