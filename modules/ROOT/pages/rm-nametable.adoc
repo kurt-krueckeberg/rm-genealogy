@@ -7,7 +7,9 @@ To reach this conclusion, these queries were done. First, if you count the numbe
 
 [source, sql]
 ----
-SELECT OwnerID, count(*) as total_names
+SELECT
+   OwnerID,
+   count(*) as total_names
 from NameTable
 group by OwnerID having total_names > 1
 order by OwnerID;
@@ -17,7 +19,11 @@ they are the same as when you attempt to further refine the grouping: `group by 
 
 [source, sql]
 ----
-SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
+SELECT 
+   OwnerID,
+   BirthYear,
+   DeathYear,
+   count(*) as tuple_total
 from NameTable
 group by OwnerID, BirthYear, DeathYear
 having tuple_total > 1
@@ -29,12 +35,18 @@ Thus, joining these queries and selecting results and joining them  `where total
 ----
 select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
   from 
-  (SELECT OwnerID, count(*) as total_names
+  (SELECT 
+     OwnerID,
+     count(*) as total_names
    from NameTable
    group by OwnerID
      having total_names > 1) as r1
  join
-   (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
+   (SELECT 
+       OwnerID,
+       BirthYear,
+       DeathYear,
+       count(*) as tuple_total
     from NameTable
     group by OwnerID, BirthYear, DeathYear
     having tuple_total > 1) as r2
