@@ -1,30 +1,32 @@
 = Overview of Genealoy Software Schemas 
 
-This is an analysis mainly of Roots Magic's Sqlite3 database. Much of the information came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
+A couple of genealogy software packages use a SQLite database. You can use the tools below
+to view and analyze the databases.
 
-=== Tools
+Much of the database information for Roots Magoc came from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
 
+.Tools for SQL Databases
 * https://sqlitebrowser.org/[DB Broser for SQLite]
 * https://sqlitestudio.pl/[SQLiteStudio]
 * https://github.com/little-brother/sqlite-gui[sqlite-gui]
 * https://www.beekeeperstudio.io/[Beekeeper Studio] - also works with MySQL, Postgress and SQL Server
 * https://dbeaver.io[DB Beaver]
 
-=== Common Table Expressions (CTE) Explained
+== Common Table Expressions (CTE) Explained
 
 SQL Common Table Expressions (CTE) are like subqueries that can be reused. See this
 https://sqlitetoolsforrootsmagic.com/common-table-expressions-the-building-blocks-of-sql/[explanation]. 
 
-=== Workaround for RMNOCASE 
+== Workaround for RMNOCASE 
 
 This is a custom RootsMagic collation sequence. It prevents `order by` from working in SQL statements. Instead use `lower(column-name)` for
 use in `order by` clauses or for string comparisons.
 
-=== Questions
+== Questions
 
 - Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this. If so, I need to note this if I want to mimic it in my "extracted" MariaDB db. 
 - Does the Data Definitions spreadsheet note this with `I`, too?
 
-=== Views
+== Building Views
  
 Investigate this blog https://sqlitetoolsforrootsmagic.com/a-sample-query-created-with-views/[post] describing how to build complex SQL because the queries used fetch data I am interested in!!
