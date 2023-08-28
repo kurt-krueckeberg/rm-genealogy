@@ -6,6 +6,6 @@
 ** xref:rm-tables.adoc[]
 ** xref:rm-relationships.adoc[]
 ** xref:rm-queries.adoc[]
-** xref:roots-magicextract.adoc[]
+** xref:rm-extract.adoc[]
 * xref:gramps.adoc[]
 * xref:familytree-builder.adoc[]
