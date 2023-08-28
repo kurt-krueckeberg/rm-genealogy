@@ -1,4 +1,16 @@
-= Tools
+= SQLite3 Tools
+
+== Ubuntu Packages
+
+* `sqlite3-tools` contains these programs:
+  * `showdb`
+  * `sqlite3_analyzer`
+  * `showjournal`
+  * `showal`
+  * `sqldiff`
+* `sqlitebrowser`
+* `sqlite3-pcre` is an extension for sqlite3 that uses libpcre to provide +
+the REGEXP() function.provides the `REGEXP()` function to
 
 == Convert GEDCOM to JSON or XML
 
