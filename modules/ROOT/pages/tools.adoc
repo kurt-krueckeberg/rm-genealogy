@@ -5,6 +5,7 @@
 Third party toools include:
 
 * https://sqlitebrowser.org/[DB Broser for SQLite]
+** Included in Ubuntu as `sqlitebrowser` package
 * https://sqlitestudio.pl/[SQLiteStudio]
 * https://github.com/little-brother/sqlite-gui[sqlite-gui]
 * https://www.beekeeperstudio.io/[Beekeeper Studio] - also works with MySQL, Postgress and SQL Server
@@ -12,14 +13,6 @@ Third party toools include:
 
 Ubuntu packages iclude:
 
-.Ubuntu SQLite3 Packages
-* `sqlite3-tools` contains these programs:
-** `showdb`
-** `sqlite3_analyzer`
-** `showjournal`
-** `showal`
-** `sqldiff`
-* `sqlitebrowser`
 * `sqlite3-pcre` is an extension for sqlite3 that uses libpcre to provide +
 the REGEXP() function.provides the `REGEXP()` function to
 
