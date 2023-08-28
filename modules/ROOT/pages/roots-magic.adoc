@@ -274,7 +274,7 @@ select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
 NOTE: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.
 
 .NameTable
-[%autowdith]
+[%autowwidth]
 |===
 | Column | Data Type
 
