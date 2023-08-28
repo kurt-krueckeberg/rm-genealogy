@@ -386,16 +386,41 @@ The `ChildTable` stores relationship to family(ies) for each child. A child may 
 to the father and mother.
 
 .ChildTable
-[width="97%",cols="16%,14%,14%,14%,14%,14%,14%",]
+[%autowidth]
 |===
-|RecID Int (Prim Key) |ChildID Int |FamilyID Int |RelFather Int |RelMother Int |ChildOrder Int |Is Private Int
+|Column Name|Data type
+
+|RecID
+|Int
+ (Prim Key) 
+|ChildID
+|Int
+ 
+|FamilyID
+|Int
+ 
+|RelFather
+|Int
+ 
+|RelMother
+|Int
+ 
+|ChildOrder
+|Int
+ 
+|Is Private
+|Int
 |===
 
 There are also other unimportant attributes:
 
 .ChildTable's other attributes
+[%autowidth]
 |===
-|`IsPrivate` |`ProofFather` |`ProofMother` |`Note`
+|`IsPrivate`
+|`ProofFather`
+|`ProofMother`
+|`Note`
 |===
  
 These mean:
@@ -403,15 +428,19 @@ These mean:
 - `IsPrivate` 0 or 1. 1 if Private checked in Parents pane of Edit Person dialog. Effect on reports is not apparent.
 - `ProofFather` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-DisputedComments: The queries below show that ChildID is an actual foreign key. It is never zero, and the row count of ChildTable equals the row count of the join of ChildTable to PersonTable on childID=PersonID.
 - `ProofMother` 0,1,2,3	Set by Proof listbox in Parents pane of Edit Persons. 0-blank, 1-Proven, 2-Disproven, 3-Disputed
-- `Note` unused?                                                                                                         [source]
+- `Note` unused?
 
 [source,bash]
 ----
-sqlite> select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.PersonID;
+sqlite> select count(*) from ChildTable as c
+ join PersonTable p
+   on c.ChildID=p.PersonID;
 2147
 sqlite> select count(*) from ChildTable;
 2147
-sqlite> select count(*) from ChildTable as c join PersonTable p on c.ChildID=p.PersonID;
+sqlite> select count(*) from ChildTable as c
+ join PersonTable p
+ on c.ChildID=p.PersonID;
 2147
 ----
 
@@ -454,10 +483,55 @@ Question:
 - *{HusbandID, MotherID}* is a key-is it not?
 
 .FamilyTable
-[width="99%",cols="18%,5%,5%,4%,5%,5%,5%,4%,6%,6%,6%,7%,7%,7%,4%,6%",]
+[%autowidth]
 |===
-|FamilyID Int (Prim Key) |FatherID Int |MotherID Int |ChildID Int |HusbOrder Int |WifeOrder Int |IsPrivate Int |Proof Int |SpouseLabel Int
-|FatherLabel Int |MotherLabel Int |SpouseLabelStr TEXT |FatherLabelStr TEXT |MotherLabelStr TEXT |Note TEXT |UTCModDate Float
+|Column Name|Data Type
+
+|FamilyID
+|Int (Prim Key) 
+
+|FatherID
+|Int 
+
+|MotherID
+|Int 
+
+|ChildID
+|Int 
+
+|HusbOrder
+|Int 
+
+|WifeOrder
+|Int 
+
+|IsPrivate
+|Int 
+
+|Proof
+|Int 
+
+|SpouseLabel Int
+|FatherLabel
+|Int 
+
+|MotherLabel
+|Int 
+
+|SpouseLabelStr
+|TEXT 
+
+|FatherLabelStr
+|TEXT 
+
+|MotherLabelStr
+|TEXT 
+
+|Note
+|TEXT 
+
+|UTCModDate
+|Float
 |===
 
 - `FamilyID` primary key
@@ -478,6 +552,7 @@ Question:
 *todo* 
 
 == Conversion to JSON and XML
+
 The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch github repo has a `Gedcom2Json` convertor. It explains how to compile it using maven. Run it:
 
 [source,bash]
