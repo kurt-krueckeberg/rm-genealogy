@@ -1,23 +1,26 @@
 = Name table Explained
 
-When there is more than one name in the NameTable, the BirthYear and DeathYear attributes are always the same. Even if a person has several
-names (say, several different given name variations), the BirthYear and DeathYear are identical for every name.
+When a unique person in the Roots Magic database more than one associated name, the `NameTable.OwnerID` occurs more than once in `NameTable`. The `BirthYear` and
+`DeathYear` attributes, however, are always the same.
 
-Thus, if we count the the count of the rows selected by the query
+To reach this conclusion, these queries were done. First, if you count the number rows selected by the query
 
 [source, sql]
 ----
-SELECT OwnerID, count(*) as total_names from NameTable group by OwnerID having total_names > 1 order by OwnerID;
+SELECT OwnerID, count(*) as total_names
+from NameTable
+group by OwnerID having total_names > 1
+order by OwnerID;
 ----
 
-are the same as when you `group by OwnerID, BirthYear, DeathYear`:
+they are the same as when you attempt to further refine the grouping: `group by OwnerID, BirthYear, DeathYear`
 
 [source, sql]
 ----
 SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total from NameTable group by OwnerID, BirthYear, DeathYear having tuple_total > 1
 ----
 
-So joining these queries and selecting results from the join where total_names != tuple_total never returns anything:
+Thus, joining these queries and selecting results and joining them  `where total_names != tuple_total` never returns anything:
 
 [source, sql]
 ----
