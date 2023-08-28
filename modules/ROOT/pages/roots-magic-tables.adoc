@@ -262,6 +262,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table EventTable
 [frame="none"]
 |===
+|Name|Type
+
 |EventID
 |Int Primary Key
 
@@ -318,6 +320,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table ExclusionTable
 [frame="none"]
 |===
+|Name|Type
+
 |RecID
 |Int Primary Key
 
@@ -338,6 +342,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table FactTypeTable
 [frame="none"]
 |===
+|Name|Type
+
 |FactTypeID
 |Int Primary Key
 
@@ -376,6 +382,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table FamilySearchTable
 [frame="none"]
 |===
+|Name|Type
+
 |LinkID
 |Int Primary Key
 
@@ -408,6 +416,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table FamilyTable
 [frame="none"]
 |===
+|Name|Type
+
 |FamilyID
 |Int Primary Key
 
@@ -461,6 +471,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table GroupTable
 [frame="none"]
 |===
+|Name|Type
+
 |RecID
 |Int Primary Key
 
@@ -481,6 +493,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table MediaLinkTable
 [frame="none"]
 |===
+|Name|Type
+
 |LinkID
 |Int Primary Key
 
@@ -534,6 +548,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table MultimediaTable
 [frame="none"]
 |===
+|Name|Type
+
 |MediaID
 |Int Primary Key
 
@@ -575,6 +591,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table NameTable
 [frame="none"]
 |===
+|Name|Type
+
 |NameID
 |Int Primary Key
 
@@ -649,6 +667,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table PersonTable
 [frame="none"]
 |===
+|Name|Type
+
 |PersonID
 |Int Primary Key
 
@@ -699,6 +719,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table PlaceTable
 [frame="none"]
 |===
+|Name|Type
+
 |PlaceID
 |Int Primary Key
 
@@ -746,6 +768,8 @@ I believe this information helps use how to understand and extract from/copy fro
 .table RoleTable
 [frame="none"]
 |===
+|Name|Type
+
 |RoleID
 |Int Primary Key
 
