@@ -4,7 +4,7 @@
 
 Third party toools include:
 
-* https://sqlitebrowser.org/[DB Broser for SQLite]
+* https://sqlitebrowser.org/[DB Browser for SQLite]
 ** Included in Ubuntu as `sqlitebrowser` package
 * https://sqlitestudio.pl/[SQLiteStudio]
 * https://github.com/little-brother/sqlite-gui[sqlite-gui]
