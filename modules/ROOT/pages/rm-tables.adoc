@@ -224,7 +224,7 @@ select n.Surname as surname, n.Given as given, n.BirthYear as birth_year,
 
 Include keys and foreign keys:
 
-[source]
+[,sql]
 ----
 select n.Surname as surname, n.Given as given, n.BirthYear as birth_year,
  n.DeathYear as death_year, p.Sex as Sex, n.OwnerID as OwnerId,
