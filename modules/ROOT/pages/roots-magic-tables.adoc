@@ -32,7 +32,6 @@ I believe this information helps use how to understand and extract from/copy fro
 |===
 
 
-+
 .table AddressTable
 [%autowidth,frame="none"]
 |===
@@ -93,7 +92,6 @@ I believe this information helps use how to understand and extract from/copy fro
 |FLOAT
 |===
 
-+
 .table AncestryTable
 [frame="none"]
 |===
@@ -127,7 +125,6 @@ I believe this information helps use how to understand and extract from/copy fro
 |FLOAT
 |===
 
-+
 .table ChildTable
 [frame="none"]
 |===
@@ -168,7 +165,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table CitationLinkTable
 [frame="none"]
 |===
@@ -203,7 +199,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table CitationTable
 [frame="none"]
 |===
@@ -244,7 +239,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table ConfigTable
 [frame="none"]
 |===
@@ -267,7 +261,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table EventTable
 [frame="none"]
 |===
@@ -326,7 +319,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table ExclusionTable
 [frame="none"]
 |===
@@ -349,7 +341,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table FactTypeTable
 [frame="none"]
 |===
@@ -390,7 +381,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table FamilySearchTable
 [frame="none"]
 |===
@@ -425,7 +415,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table FamilyTable
 [frame="none"]
 |===
@@ -481,7 +470,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table GroupTable
 [frame="none"]
 |===
@@ -504,7 +492,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table MediaLinkTable
 [frame="none"]
 |===
@@ -560,7 +547,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table MultimediaTable
 [frame="none"]
 |===
@@ -604,7 +590,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table NameTable
 [frame="none"]
 |===
@@ -681,7 +666,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table PersonTable
 [frame="none"]
 |===
@@ -734,7 +718,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table PlaceTable
 [frame="none"]
 |===
@@ -784,7 +767,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table RoleTable
 [frame="none"]
 |===
@@ -810,7 +792,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table SourceTable
 [frame="none"]
 |===
@@ -845,7 +826,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table SourceTemplateTable
 [frame="none"]
 |===
@@ -883,7 +863,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table TagTable
 [frame="none"]
 |===
@@ -907,7 +886,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table TaskLinkTable
 [frame="none"]
 |===
@@ -930,7 +908,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table TaskTable
 [frame="none"]
 |===
@@ -987,7 +964,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table URLTable
 [frame="none"]
 |===
@@ -1019,7 +995,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |===
 
-+
 .table WitnessTable
 [frame="none"]
 |===
