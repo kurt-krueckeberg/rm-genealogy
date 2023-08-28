@@ -1,7 +1,6 @@
 * xref:index.adoc[]
 * xref:tools.adoc[]
-* Roots Magic
-//** xref:rm.adoc[]
+* xref:rm.adoc[]
 ** xref:rm-nametable.adoc[]
 ** xref:rm-tables.adoc[]
 ** xref:rm-relationships.adoc[]

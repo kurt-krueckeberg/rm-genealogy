@@ -13,11 +13,6 @@ Musch of the analysis of Roots Magic came from https://sqlitetoolsforrootsmagic.
 SQL Common Table Expressions (CTE) are like subqueries that can be reused. See this
 https://sqlitetoolsforrootsmagic.com/common-table-expressions-the-building-blocks-of-sql/[explanation]. 
 
-== Workaround for RMNOCASE 
-
-This is a custom RootsMagic collation sequence. It prevents `order by` from working in SQL statements. Instead use `lower(column-name)` for
-use in `order by` clauses or for string comparisons.
-
 == Questions
 
 - Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this. If so, I need to note this if I want to mimic it in my "extracted" MariaDB db. 
