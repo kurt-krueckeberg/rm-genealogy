@@ -1,4 +1,6 @@
-= Roots Magic 8 Links
+= Roots Magic 8
+
+== Links
 
 * https://sqlitetoolsforrootsmagic.com/understanding-the-roots-magic-8-database-database-diagram/[Understanding the Roots Magic 8 Database – Database Diagram]
 * https://sqlitetoolsforrootsmagic.com/rm8-data-definitions-spreadsheet-database-datadefinitions/[RM8 Data Definitions Spreadsheet]
