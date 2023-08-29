@@ -5,7 +5,7 @@
 Third party toools include:
 
 * https://sqlitebrowser.org/[Sqlitebrower (DB Browser for SQLite)]
-* https://jookdb.com/{JookDB]
+* https://jookdb.com/[JookDB]
 ** Included in Ubuntu as `sqlitebrowser` package
 * https://sqlitestudio.pl/[SQLiteStudio]
 * https://github.com/little-brother/sqlite-gui[sqlite-gui]
