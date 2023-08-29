@@ -8,9 +8,7 @@ Third party toools include:
 +
 Included in Ubuntu as `sqlitebrowser` package
 * https://jookdb.com/[JookDB]
-
 * https://sqlitestudio.pl/[SQLiteStudio]
-* https://github.com/little-brother/sqlite-gui[sqlite-gui]
 * https://www.beekeeperstudio.io/[Beekeeper Studio] - also works with MySQL, Postgress and SQL Server
 * https://dbeaver.io[DB Beaver]
 
