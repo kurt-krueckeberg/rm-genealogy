@@ -1,7 +1,7 @@
 = Name table Explained
 
-When a unique person in the Roots Magic database more than one associated name, the `NameTable.OwnerID` occurs more than once in `NameTable`. The `BirthYear` and
-`DeathYear` attributes, however, are always the same.
+When a unique person in the Roots Magic database has more than one associated name, the `NameTable.OwnerID` occurs more than once in `NameTable`.
+The `BirthYear` and `DeathYear` attributes, however, are always the same.
 
 To reach this conclusion, these queries were done. First, if you count the number rows selected by the query
 
