@@ -1,0 +1,9 @@
+= Open Questions
+
+== General SQL Questions
+
+- Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this. If so, I need to note this if I want to mimic it in my "extracted" MariaDB db. 
+
+== How do You Build SQL Views
+ 
+Investigate this blog https://sqlitetoolsforrootsmagic.com/a-sample-query-created-with-views/[post] describing how to build complex SQL because the queries used fetch data I am interested in!!

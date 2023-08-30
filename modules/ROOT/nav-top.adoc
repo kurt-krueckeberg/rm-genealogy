@@ -1,5 +1,5 @@
 * xref:index.adoc[]
-* xref:tools.adoc[]
+//* xref:tools.adoc[]
 * xref:rm.adoc[]
 ** xref:rm8.adoc[]
 ** xref:rm-nametable.adoc[]

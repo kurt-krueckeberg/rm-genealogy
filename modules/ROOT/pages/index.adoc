@@ -3,19 +3,41 @@
 Gramps, Family Tree Builder by MyHeritage and Roots Magic all use the open source SQLite
 databases. There are several tools for viewing and querying these SQLite3 databases:
 
-Much of this analysis of the Roots Magic database came from the https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic]
+Much of the analysis of the Roots Magic database comes from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic]
 site.
+
+== SQLite Tools
+
+=== Ubuntu Packages
+
+Third party toools include:
+
+* https://sqlitebrowser.org/[Sqlitebrower (DB Browser for SQLite)]
++
+Included in Ubuntu as `sqlitebrowser` package
+* `sqlite3-pcre` is an extension for sqlite3 that uses libpcre to provide +
+the REGEXP() function.provides the `REGEXP()` function to
+
+Other package are:
+
+* https://jookdb.com/[JookDB] - SQLite support is only free during a 2 week trial.
+* https://sqlitestudio.pl/[SQLiteStudio]
+* https://www.beekeeperstudio.io/[Beekeeper Studio] - also works with MySQL, Postgress and SQL Server
+* https://dbeaver.io[DB Beaver] - is an Eclipse-based product.
+
+=== GEDCOM Tools
+
+To convert GEDCOM to JSON or XML
+
+The https://github.com/FamilySearch/gedcom5-java[gedcom5-java] FamilySearch github repo has a `Gedcom2Json` convertor.
+It explains how to compile it using maven. Run it:
+
+[source,bash]
+----
+$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json 
+----
 
 == Common Table Expressions (CTE)
 
 SQL Common Table Expressions (CTE) are like subqueries introduced before the main query that
 can be reused throughout the query they precede. See https://www.sqlservertutorial.net/sql-server-basics/sql-server-cte/[Mastering Common Table Expressions].
-
-== General SQL Questions
-
-- Does creating and index `Create Index ...` on a table column imply that it is `UNIQUE`? If so, I need to note this. If so, I need to note this if I want to mimic it in my "extracted" MariaDB db. 
-- Does the Data Definitions spreadsheet note this with `I`, too?
-
-== How to Build SQL Views
- 
-Investigate this blog https://sqlitetoolsforrootsmagic.com/a-sample-query-created-with-views/[post] describing how to build complex SQL because the queries used fetch data I am interested in!!
