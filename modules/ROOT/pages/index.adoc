@@ -1,6 +1,6 @@
 = Overview
 
-Gramps, Family Tree Builder by MyHeritage, and Roots Magic all use SQLite,
+Gramps, Family Tree Builder by MyHeritage and Roots Magic all use SQLite,
 an open source SQL database. There are several tools you can use to view 
 and query SQLite3 databases:
 
