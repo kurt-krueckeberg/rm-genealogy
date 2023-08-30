@@ -69,25 +69,25 @@ ____
 
 Comment: So is it a foreign key to `FamilyTable.FamilyID`. Write some queries to find out. If it can be zero, should I create a FmailyTable.FamilyID of 0, to mean the not-yet known family?
 
-- `SpouseID` is almost always zero, when not, it functions like a foreign key referencing `FamilyTable.FamilyID`. In the referenced `FamilyTable` row,
-`FatherID` or `MotherID` will be the spouse of `PersonID`. 
+- **SpouseID** is almost always zero, when not, it functions like a foreign key referencing **FamilyTable.FamilyID**. In the referenced **FamilyTable** row,
+**FatherID** or **MotherID** will be the spouse of **PersonID**. 
 
-NOTE: `SpouseID` is not necessary in determing the family that this person is a child of (or a parent of).
+NOTE: **SpouseID** is not necessary in determing the family that this person is a child of (or a parent of).
 
-- `Living` is boolean 
-- `Color`
+- **Living** is boolean 
+- **Color**
   from "color coding" screen ( 0 = None,  1 = Red,  2 = Lime,  3 = Blue,  4 = Fuschia,  5 = Yellow,  6 = Aqua,  7 = Silver,  8 = Maroon,  9 = Green, 10 = Navy, 11 = Purple, 12 = Brown, 13 = Teal, 14 = Gray)
-- `Relate1`
+- **Relate1**
   number of generations from person to ancestor in common with person chosen via Tools -> Set Relationships. See the "Relationship1&2" spreadsheet for exceptions and further explanation. Not relevant.
-- `Relate2`
+- **Relate2**
   number of generations from person chosen via Tools -> Set Relationships to ancestor in common with person. See Relationship1&2 sheet for exceptions and further explanation. Not relevant.
-- `Flags`
+- **Flags**
   not currently used?
-- `IsPrivate`
+- **IsPrivate**
   not currently used?
-- `Proof`
+- **Proof**
   not currently used?
-- `Note`
+- **Note**
   A note entered from Edit Person screen
 
 == NameTable
