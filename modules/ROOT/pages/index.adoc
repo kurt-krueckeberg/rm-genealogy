@@ -37,5 +37,5 @@ $ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.jso
 
 == Common Table Expressions (CTE)
 
-SQL Common Table Expressions (CTE) are like subqueries introduced before the main query that
-can be reused throughout the query they precede. See https://www.sqlservertutorial.net/sql-server-basics/sql-server-cte/[Mastering Common Table Expressions].
+SQL Common Table Expressions (CTE) are variables that represent named subqueries. They are introduced before the main query
+in which they are used. See https://www.sqlservertutorial.net/sql-server-basics/sql-server-cte/[Mastering Common Table Expressions].
