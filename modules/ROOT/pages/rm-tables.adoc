@@ -3,9 +3,9 @@
 == PersonTable
 
 === Predicate
-`PersonTable` has `PersonID` primary key (although `primary keys` are not actually used) that identifies a unique individual (in the family tree) with sex `Sex`, unique `UniqueID`
-(that apparently is a `GUID` or hash value that is a **GEDCOM** standard field), parent(s) `ParentID`, spouse `SpouseID` is almost always zero. When it isn't, it functions like a
-foreign key referencing `FamilyTable.familyID`. 
+`PersonTable` has `PersonID` primary key (although `primary keys` are not actually used) a unique individual in the family tree with sex of `Sex`,
+with a unique `UniqueID` (apparently a `GUID` or hash value that is a standard **GEDCOM** field), parent or parents `ParentID` and spouse `SpouseID`
+that is almost always zero. When it isn't, it functions like a foreign key referencing `FamilyTable.familyID`. 
 
 .Person table
 [%autowidth]
