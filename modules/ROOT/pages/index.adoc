@@ -31,7 +31,8 @@ It explains how to compile it using maven. Run it:
 
 [source,bash]
 ----
-$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i k.ged -o k.json 
+$ java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json
+-i k.ged -o k.json 
 ----
 
 == Common Table Expressions (CTE)
