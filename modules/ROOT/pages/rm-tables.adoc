@@ -15,8 +15,11 @@ that is almost always zero. When it isn't, it functions like a foreign key refer
 |PersonID
 | Int (Prim Key) 
 
-|UniqueID TEXT 
-|Sex Int 
+|UniqueID 
+|TEXT 
+
+|Sex
+|Int 
 
 |ParentID
 |Int 
