@@ -1,12 +1,11 @@
 = Overview
 
-Gramps, Family Tree Builder by MyHeritage and Roots Magic all use the open source SQLite
-databases. There are several tools for viewing and querying these SQLite3 databases:
+Gramps, Family Tree Builder by MyHeritage and Roots Magic all SQLite databases.
+Listed below aree several SQLite database browsers.
 
-Much of the analysis of the Roots Magic database comes from https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic]
-site.
+Much of the analysis of the Roots Magic database derives from content on https://sqlitetoolsforrootsmagic.com[SQLite Tools for RootsMagic].
 
-== SQLite Tools
+== SQLite Database Browsers and Tools
 
 === Ubuntu Packages
 
