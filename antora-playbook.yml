@@ -5,7 +5,7 @@ site:
   start_page: genealogy-schemas::index.adoc
 content:
   sources:
-    - url: git@github.com:kurt-krueckeberg/roots-magic-analyzed
+    - url: git@github.com:kurt-krueckeberg/sqlite3-genealogy
       branches: HEAD
       # start_path: docs
       # setting edit_url to false disables the Edit this Page link for any page that originates from this repository
