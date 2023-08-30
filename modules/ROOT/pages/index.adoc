@@ -10,15 +10,13 @@ site.
 
 === Ubuntu Packages
 
-Third party toools include:
-
 * https://sqlitebrowser.org/[Sqlitebrower (DB Browser for SQLite)]
 +
 Included in Ubuntu as `sqlitebrowser` package
 * `sqlite3-pcre` is an extension for sqlite3 that uses libpcre to provide +
 the REGEXP() function.provides the `REGEXP()` function to
 
-Other package are:
+Other third party packages are:
 
 * https://jookdb.com/[JookDB] - SQLite support is only free during a 2 week trial.
 * https://sqlitestudio.pl/[SQLiteStudio]
