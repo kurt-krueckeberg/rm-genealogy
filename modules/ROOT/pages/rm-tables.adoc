@@ -60,14 +60,14 @@ that is almost always zero. When it isn't, it functions like a foreign key refer
 
 === Comments
 
-- `Sex` is defined as an int but used as a boolean: `0` if male, and `1` if female.
+- `Sex` is an int but used as a boolean: `0` if male, and `1` if female.
 - `ParentID` is often zero. The data definition spreedsheet says:
 
 ____
 Parent Identification Number, linking to FamilyID of FamilyTable, (0 if no parents) [MRIN of one set of parents, possibly last active in Pedigree view or when selected via Parents Status Bar, others?]
 ____
 
-Comment: So is it a foreign key to FamilyTable.FamilyID. Write some queries to find out. If it can be zero, should I create a FmailyTable.FamilyID of 0, to mean the not-yet known family?
+Comment: So is it a foreign key to `FamilyTable.FamilyID`. Write some queries to find out. If it can be zero, should I create a FmailyTable.FamilyID of 0, to mean the not-yet known family?
 
 - `SpouseID` is almost always zero. When not zero, it functions like a foreign key referencing `FamilyTable.FamilyID`. In the referenced `FmailyTable` row, `FatherID` or `MotherID` will be 
    the spouse of `PersonID`. But `SpouseID` is not necessary in determing the family that this person is a child of (or a parent of).
