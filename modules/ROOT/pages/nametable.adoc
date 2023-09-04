@@ -11,9 +11,9 @@ SELECT
    OwnerID,
    count(*) as total_names
 from NameTable
-group by OwnerID 
-having total_names > 1
-order by OwnerID;
+  group by OwnerID 
+    having total_names > 1
+  order by OwnerID;
 ----
 
 they are the same as when you attempt to further refine the grouping: `group by OwnerID, BirthYear, DeathYear`
