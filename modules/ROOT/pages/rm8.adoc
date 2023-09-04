@@ -2,9 +2,9 @@
 
 == Links
 
-* https://sqlitetoolsforrootsmagic.com/understanding-the-roots-magic-8-database-database-diagram/[Understanding the Roots Magic 8 Database – Database Diagram]
-* https://docs.google.com/spreadsheets/d/1ZqZfLtir2fZ1QAVY_TZ-MNXmAjSVusM4/edit?pli=1#gid=659623635[RM8 Data Definitions Spreadsheet]
-* https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-type-decodes/[Understanding the RootsMagic 8 database - Type decodes]
-* https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-ownership/[Understanding the RootsMagic 8 database – Ownership]
+* https://sqlitetoolsforrootsmagic.com/understanding-the-roots-magic-8-database-database-diagram/[Roots Magic 8 database diagram]
+* https://docs.google.com/spreadsheets/d/1ZqZfLtir2fZ1QAVY_TZ-MNXmAjSVusM4/edit?pli=1#gid=529657640[Roots Magic 8 Data Definitions]
+* https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-type-decodes/[Roots Magic 8 - decoding database types]
+* https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-ownership/[RootsMagic 8 - database ownership explained]
 * https://sqlitetoolsforrootsmagic.com/media-users-list-query/[Media Users List Query]
 

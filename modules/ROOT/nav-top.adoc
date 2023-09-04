@@ -4,7 +4,7 @@
 ** xref:rm8.adoc[]
 ** xref:nametable.adoc[]
 ** xref:tables.adoc[]
-** xref:ancestry.adoc[]
+** xref:ancestry-media.adoc
 ** xref:queries.adoc[]
 ** xref:person-ideas.adoc[]
 * xref:gramps.adoc[]
