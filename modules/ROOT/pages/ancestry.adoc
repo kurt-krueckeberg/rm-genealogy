@@ -162,7 +162,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .CitationLinkTable
@@ -196,7 +195,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .CitationTable
@@ -236,7 +234,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |CitationName
 |Text
-
 |===
 
 .ConfigTable
@@ -258,7 +255,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .EventTable
@@ -338,7 +334,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .FactTypeTable
@@ -378,7 +373,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .FamilySearchTable
@@ -412,7 +406,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .FamilyTable
@@ -467,7 +460,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .GroupTable
@@ -489,7 +481,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .MediaLinkTable
@@ -544,7 +535,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .MultimediaTable
@@ -587,7 +577,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .NameTable
@@ -663,7 +652,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |NicknameMP
 |Text
-
 |===
 
 .PersonTable
@@ -715,7 +703,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .PlaceTable
@@ -764,7 +751,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .RoleTable
@@ -789,7 +775,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .SourceTable
@@ -860,7 +845,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .TagTable
@@ -905,7 +889,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .TaskTable
@@ -992,7 +975,6 @@ I believe this information helps use how to understand and extract from/copy fro
 
 |UTCModDate
 |FLOAT
-
 |===
 
 .WitnessTable
