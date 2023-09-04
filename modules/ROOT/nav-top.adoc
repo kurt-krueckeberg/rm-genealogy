@@ -7,5 +7,5 @@
 ** xref:ancestry-media.adoc
 ** xref:queries.adoc[]
 ** xref:person-ideas.adoc[]
-* xref:gramps.adoc[]
-* xref:familytree-builder.adoc[]
+//* xref:gramps.adoc[]
+//* xref:familytree-builder.adoc[]
