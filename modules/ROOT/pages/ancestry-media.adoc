@@ -44,7 +44,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 +
 :table-caption: MediaLinkTable
 
-.Join table between media, their owners and the Ancestry table
+.Join table between media, their owners and Ancestry table
 [%autowidth,frame="none"]
 |===
 |Name|Type
