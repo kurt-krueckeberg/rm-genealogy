@@ -1,4 +1,4 @@
-= Tables for Managing Downloaded Ancestry Media
+= Ancestry Media related Tables
 
 Below are tables related to managing the downloaded Ancestry..com media files and determing:
 
