@@ -10,7 +10,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |OwnerType
 |Int
@@ -38,7 +38,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |AddressID
-|Int Primary Key
+|Int, Primary Key
 
 |AddressType
 |Int
@@ -98,7 +98,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |LinkType
 |Int
@@ -131,7 +131,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |RecID
-|Int Primary Key
+|Int, Primary Key
 
 |ChildID
 |Int
@@ -171,7 +171,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |CitationID
 |Int
@@ -205,7 +205,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |CitationID
-|Int Primary Key
+|Int, Primary Key
 
 |SourceID
 |Int
@@ -245,7 +245,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |RecID
-|Int Primary Key
+|Int, Primary Key
 
 |RecType
 |Int
@@ -267,7 +267,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |EventID
-|Int Primary Key
+|Int, Primary Key
 
 |EventType
 |Int
@@ -325,7 +325,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |RecID
-|Int Primary Key
+|Int, Primary Key
 
 |ExclusionType
 |Int
@@ -347,7 +347,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |FactTypeID
-|Int Primary Key
+|Int, Primary Key
 
 |OwnerType
 |Int
@@ -387,7 +387,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |LinkType
 |Int
@@ -421,7 +421,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |FamilyID
-|Int Primary Key
+|Int, Primary Key
 
 |FatherID
 |Int
@@ -476,7 +476,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |RecID
-|Int Primary Key
+|Int, Primary Key
 
 |GroupID
 |Int
@@ -498,7 +498,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |MediaID
 |Int
@@ -553,7 +553,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |MediaID
-|Int Primary Key
+|Int, Primary Key
 
 |MediaType
 |Int
@@ -596,7 +596,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |NameID
-|Int Primary Key
+|Int, Primary Key
 
 |OwnerID
 |Int
@@ -672,7 +672,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |PersonID
-|Int Primary Key
+|Int, Primary Key
 
 |UniqueID
 |Text
@@ -724,7 +724,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |PlaceID
-|Int Primary Key
+|Int, Primary Key
 
 |PlaceType
 |Int
@@ -773,7 +773,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |RoleID
-|Int Primary Key
+|Int, Primary Key
 
 |RoleName
 |Text COLLATE RMNOCASE
@@ -798,7 +798,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |SourceID
-|Int Primary Key
+|Int, Primary Key
 
 |Name
 |Text COLLATE RMNOCASE
@@ -832,7 +832,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |TemplateID
-|Int Primary Key
+|Int, Primary Key
 
 |Name
 |Text COLLATE RMNOCASE
@@ -867,7 +867,7 @@ I believe this information helps use how to understand and extract from/copy fro
 [%autowidth,frame="none"]
 |===
 |TagID
-|Int Primary Key
+|Int, Primary Key
 
 |TagType
 |Int
@@ -892,7 +892,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |TaskID
 |Int
@@ -914,7 +914,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |TaskID
-|Int Primary Key
+|Int, Primary Key
 
 |TaskType
 |Int
@@ -970,7 +970,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |LinkID
-|Int Primary Key
+|Int, Primary Key
 
 |OwnerType
 |Int
@@ -1001,7 +1001,7 @@ I believe this information helps use how to understand and extract from/copy fro
 |Name|Type
 
 |WitnessID
-|Int Primary Key
+|Int, Primary Key
 
 |EventID
 |Int
