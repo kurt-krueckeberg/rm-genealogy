@@ -5,6 +5,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 * The path and name of each file
 * the person to whom it corresponds.
 
++
 :table-caption: AncestryTable
 
 .Ancestry.com related data
@@ -40,6 +41,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
++
 :table-caption: MediaLinkTable
 
 .Join table for between media files and their owner (and owner type) the Ancestry table
@@ -96,6 +98,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
++
 :table-caption: MultimediaTable
 
 .The actual media table with the path and file name
@@ -140,6 +143,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
++
 :table-caption: NameTable
 
 .The table with person's names of those in the tree
@@ -217,6 +221,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |Text
 |===
 
++
 :table-caption: PersonTable
 
 .Data about each person in the tree
