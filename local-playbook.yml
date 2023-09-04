@@ -2,7 +2,7 @@ site:
   title: Understand the Roots Magic SQLite Schema
   # the 404 page and sitemap files only get generated when the url property is set
   url: https://localhost
-  start_page: genealogy-schemas::index.adoc
+  start_page: schemas::index.adoc
 content:
   sources:
     - url: ./ 

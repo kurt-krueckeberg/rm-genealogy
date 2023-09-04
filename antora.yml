@@ -1,7 +1,7 @@
-name: genealogy-schemas
+name: schemas
 title: Genealogy Software Schemas
 version: '' 
-start_page: genealogy-schemas::index.adoc
+start_page: schemas::index.adoc
 asciidoc:
   attributes:
     source-language: asciidoc@
