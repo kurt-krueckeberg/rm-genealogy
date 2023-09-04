@@ -1,13 +1,14 @@
 = Family Relationships Tables
 
+
+NOTE: `primary keys` are not actually implemented. Not sure why.
+
 == PersonTable
 
-=== Predicate
-
-`PersonTable` has `PersonID` primary key (although `primary keys` are not actually enforced like in traditional
-SQL database) a unique individual in the family tree with sex of `Sex`, with a unique `UniqueID` (apparently a
-`GUID` or hash value that is a standard **GEDCOM** field), parent or parents `ParentID` and spouse `SpouseID`,
-which is almost always zero. When it isn't, it functions like a foreign key referencing `FamilyTable.familyID`. 
+**Predicate:** `PersonTable` has primary key `PersonID`  a unique individual in the family tree with sex of `Sex`,
+with a unique `UniqueID` (apparently a `GUID` or hash value that is a standard **GEDCOM** field), parent or parents
+`ParentID` and spouse `SpouseID`, which is almost always zero. When it isn't, it functions like a foreign key
+referencing `FamilyTable.familyID`. 
 
 .Person table
 [%autowidth]
