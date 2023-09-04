@@ -11,9 +11,9 @@ SELECT
   OwnerID, 
   count(*) as total_names
 from NameTable
-  group by OwnerID 
-    having total_names > 1
-  order by OwnerID;
+group by OwnerID 
+having total_names > 1
+order by OwnerID;
 ----
 
 they are the same as when you attempt to further refine the grouping: `group by OwnerID, BirthYear, DeathYear`
@@ -26,8 +26,8 @@ SELECT
   DeathYear,
   count(*) as tuple_total
 from NameTable
-  group by OwnerID, BirthYear, DeathYear
-    having tuple_total > 1
+group by OwnerID, BirthYear, DeathYear
+having tuple_total > 1
 ----
 
 Thus, joining these queries and selecting results and joining them  `where total_names != tuple_total` never returns anything:
@@ -35,22 +35,26 @@ Thus, joining these queries and selecting results and joining them  `where total
 [source, sql]
 ----
 select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
-  from 
+  from
+   
   (SELECT 
-     OwnerID,
-     count(*) as total_names
+    OwnerID,
+    count(*) as total_names
    from NameTable
    group by OwnerID
-     having total_names > 1) as r1
+   having total_names > 1) as r1
+
  join
+
    (SELECT 
       OwnerID,
       BirthYear,
       DeathYear,
       count(*) as tuple_total
     from NameTable
-      group by OwnerID, BirthYear, DeathYear
-        having tuple_total > 1) as r2
+    group by OwnerID, BirthYear, DeathYear
+    having tuple_total > 1) as r2
+
  on r1.OwnerID=r2.OwnerID
- WHERE total_names!=tuple_total;
+ where total_names !=t uple_total;
 ----
