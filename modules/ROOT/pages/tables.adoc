@@ -1,7 +1,7 @@
 = Family Relationships Tables
 
 
-NOTE: `primary keys` are not actually implemented. Not sure why.
+NOTE: Primary keys are not actually implemented. Not sure why.
 
 == PersonTable
 
