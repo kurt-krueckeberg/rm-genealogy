@@ -3,7 +3,7 @@
 == Links
 
 * https://sqlitetoolsforrootsmagic.com/understanding-the-roots-magic-8-database-database-diagram/[Understanding the Roots Magic 8 Database – Database Diagram]
-* https://sqlitetoolsforrootsmagic.com/rm8-data-definitions-spreadsheet-database-datadefinitions/[RM8 Data Definitions Spreadsheet]
+* https://docs.google.com/spreadsheets/d/1ZqZfLtir2fZ1QAVY_TZ-MNXmAjSVusM4/edit?pli=1#gid=659623635[RM8 Data Definitions Spreadsheet]
 * https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-type-decodes/[Understanding the RootsMagic 8 database - Type decodes]
 * https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-ownership/[Understanding the RootsMagic 8 database – Ownership]
 * https://sqlitetoolsforrootsmagic.com/media-users-list-query/[Media Users List Query]
