@@ -1,4 +1,4 @@
-= Ancestry Media Tables
+= Tables for Managing Downloaded Ancestry Media
 
 I believe this information helps use how to understand and extract from/copy from theo Ancestry.com media that Roots Magic downloads.
 
