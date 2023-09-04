@@ -5,6 +5,7 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 * The path and name of each file
 * the person to whom it corresponds.
 
++
 .AncestryTable
 [%autowidth,frame="none"]
 |===
