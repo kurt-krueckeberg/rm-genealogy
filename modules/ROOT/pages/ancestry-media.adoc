@@ -5,8 +5,9 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 * The path and name of each file
 * the person to whom it corresponds.
 
-+
-.AncestryTable
+:table-caption: AncestryTable
+
+.Ancestry.com related data
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -39,65 +40,9 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
-.EventTable
-[%autowidth,frame="none"]
-|===
-|Name|Type
+:table-caption: MediaLinkTable
 
-|EventID
-|Int, Primary key
-
-|EventType
-|Int
-
-|OwnerType
-|Int
-
-|OwnerID
-|Int
-
-|FamilyID
-|Int
-
-|PlaceID
-|Int
-
-|SiteID
-|Int
-
-|Date
-|Text
-
-|SortDate
-|BigInt
-
-|IsPrimary
-|Int
-
-|IsPrivate
-|Int
-
-|Proof
-|Int
-
-|Status
-|Int
-
-|Sentence
-|Text
-
-|Details
-|Text
-
-|Note
-|Text
-
-|UTCModDate
-|FLOAT
-
-|===
-
-.MediaLinkTable
+.Join table for between media files and their owner (and owner type) the Ancestry table
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -151,7 +96,9 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
-.MultimediaTable
+:table-caption: MultimediaTable
+
+.The actual media table with the path and file name
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -193,7 +140,9 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
-.NameTable
+:table-caption: NameTable
+
+.The table with person's names of those in the tree
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -268,7 +217,9 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |Text
 |===
 
-.PersonTable
+:table-caption: PersonTable
+
+.Data about each person in the tree
 [%autowidth,frame="none"]
 |===
 |Name|Type
