@@ -309,17 +309,12 @@ These mean:
 sqlite> select count(*) from ChildTable as c
  join PersonTable p
    on c.ChildID=p.PersonID;
-
 2147
-
 sqlite> select count(*) from ChildTable;
-
 2147
-
 sqlite> select count(*) from ChildTable as c
  join PersonTable p
  on c.ChildID=p.PersonID;
-
 2147
 ----
 
