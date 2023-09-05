@@ -255,9 +255,6 @@ Create a the sql that queries the EventTable to get the birth and death year and
 
 The `ChildTable` stores relationship to family(ies) for each child. A child may have two or more families, say, a birth and adoptive family. This table provides the links to `PersonTable.PersonID` for the child and to FamilyTable for their parents.
 
-`ChildTable` has key `RecID`; child identifier `ChildID`, a foreign key referencing the `PersonTable.PersonID`; `FamilyID`, a foreign key referencing `FamilyTable.FamilyID`; and `RelFather` and `RelMother`, relationships
-to the father and mother.
-
 .ChildTable
 [%autowidth]
 |===
@@ -285,6 +282,10 @@ to the father and mother.
 |Int
 |===
 
+=== Predicate
+
+`ChildTable` has key `RecID`; child identifier `ChildID`, a foreign key referencing the `PersonTable.PersonID`; `FamilyID`, a foreign key referencing `FamilyTable.FamilyID`; and `RelFather` and `RelMother`, relationships
+to the father and mother.
 There are also other unimportant attributes:
 
 .ChildTable's other attributes
