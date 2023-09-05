@@ -5,11 +5,6 @@ NOTE: Primary keys are not actually implemented. Not sure why.
 
 == PersonTable
 
-**Predicate:** `PersonTable.PersonID` is a primary key indicating this unique individual in the tree, whose sex is `Sex`,
-whose has a unique `UniqueID` (a `GUID` or hash value that is a standard **GEDCOM** field), and whose parent or parents
-are `ParentID` and spouse is `SpouseID`, although it is almost always zero (when it isn't, it functions like a foreign key
-referencing `FamilyTable.familyID`). 
-
 .Person table
 [%autowidth]
 |===
@@ -61,6 +56,11 @@ referencing `FamilyTable.familyID`).
 |Float
 |===
 
+**Predicate:** `PersonTable.PersonID` is a primary key indicating this unique individual in the tree, whose sex is `Sex`,
+whose has a unique `UniqueID` (a `GUID` or hash value that is a standard **GEDCOM** field), and whose parent or parents
+are `ParentID` and spouse is `SpouseID`, although it is almost always zero (when it isn't, it functions like a foreign key
+referencing `FamilyTable.familyID`). 
+
 === Comments
 
 - `Sex` is used as a boolean: `0` if male, and `1` if female.
@@ -96,55 +96,6 @@ NOTE: **SpouseID** is not necessary in determing the family that this person is 
   A note entered from Edit Person screen
 
 == NameTable
-
-=== Predicate
-The `NameTable.NameID` key identifies a unique surname `Surname` plus given name `Given` pair for a given `PersonID`, with `OwnerID` (a foreign key) referring to `PersonTable.PersonID`, the name's owner.
-It has a boolean-like attribute `IsPrimary` set to 1 if this `NameID` is the primary name and 0 if it is an alternate name.  Other self-descriptiive attributes are `Prefix`, `Suffix` and `Nickname`.
-
-Note: `BirthYear` and `DeathYear` are attributes unrleated to the table's predicate, which are present for historical reasons, likely cached here so `EventTable` didn't need to be queried in the days when computer speed was slow
-and memory low. However, this prevents normalizing the table because the same birth and date years are repeated in every row with the same `OwnerID`. To confirm this is the case, consider these two queries 
-
-Comment: The pair `Surname` plus `Given` may not be unique outside of the set of names with the same `OwnerID`. A large Smith family tree, for example, could conceiveably have several people with the same surname and
-given name.
-
-[source, sql]
-----
-SELECT OwnerID, count(*) as total_names from NameTable
-  group by OwnerID having total_names > 1
-   order by OwnerID;
-----
-
-and
-
-[source, sql]
-----
-SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
- from NameTable
- group by OwnerID, BirthYear, DeathYear
-    having tuple_total > 1
-----
-
-The first select rows for persons with more than one name assigned to them. The second query selects rows where any of three attributes *OwnerID, BirthYear or DeathYear* ever diifer. Both queries return the exactly the same 
-results. If their results are joined on `OwnerID` and filtered by a *where clause* where the total number of names is not equal to the total number of the unique groupings of *OwnerID, BirthYear, and DeathYear*.
-The query always returns nothing:
-
-[source, sql]
-----
-select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
- from 
- (SELECT OwnerID, count(*) as total_names
- from NameTable
- group by OwnerID having total_names > 1) as r1
-    join
- (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
- from NameTable
- group by OwnerID, BirthYear, DeathYear
- having tuple_total > 1) as r2
-    on r1.OwnerID=r2.OwnerID
- WHERE total_names!=tuple_total;
-----
-
-NOTE: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.
 
 .NameTable
 [%autowwidth]
@@ -218,6 +169,55 @@ NOTE: The surname can be empty. The BirthYear of DeathYear can be zero, meaning 
 |NicknameMP
 |TEXT
 |===
+
+=== Predicate
+The `NameTable.NameID` key identifies a unique surname `Surname` plus given name `Given` pair for a given `PersonID`, with `OwnerID` (a foreign key) referring to `PersonTable.PersonID`, the name's owner.
+It has a boolean-like attribute `IsPrimary` set to 1 if this `NameID` is the primary name and 0 if it is an alternate name.  Other self-descriptiive attributes are `Prefix`, `Suffix` and `Nickname`.
+
+Note: `BirthYear` and `DeathYear` are attributes unrleated to the table's predicate, which are present for historical reasons, likely cached here so `EventTable` didn't need to be queried in the days when computer speed was slow
+and memory low. However, this prevents normalizing the table because the same birth and date years are repeated in every row with the same `OwnerID`. To confirm this is the case, consider these two queries 
+
+Comment: The pair `Surname` plus `Given` may not be unique outside of the set of names with the same `OwnerID`. A large Smith family tree, for example, could conceiveably have several people with the same surname and
+given name.
+
+[source, sql]
+----
+SELECT OwnerID, count(*) as total_names from NameTable
+  group by OwnerID having total_names > 1
+   order by OwnerID;
+----
+
+and
+
+[source, sql]
+----
+SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
+ from NameTable
+ group by OwnerID, BirthYear, DeathYear
+    having tuple_total > 1
+----
+
+The first select rows for persons with more than one name assigned to them. The second query selects rows where any of three attributes *OwnerID, BirthYear or DeathYear* ever diifer. Both queries return the exactly the same 
+results. If their results are joined on `OwnerID` and filtered by a *where clause* where the total number of names is not equal to the total number of the unique groupings of *OwnerID, BirthYear, and DeathYear*.
+The query always returns nothing:
+
+[source, sql]
+----
+select r1.OwnerID, total_names, r2.BirthYear, r2.DeathYear, tuple_total
+ from 
+ (SELECT OwnerID, count(*) as total_names
+ from NameTable
+ group by OwnerID having total_names > 1) as r1
+    join
+ (SELECT OwnerID, BirthYear,DeathYear, count(*) as tuple_total
+ from NameTable
+ group by OwnerID, BirthYear, DeathYear
+ having tuple_total > 1) as r2
+    on r1.OwnerID=r2.OwnerID
+ WHERE total_names!=tuple_total;
+----
+
+NOTE: The surname can be empty. The BirthYear of DeathYear can be zero, meaning they are unkown.
 
 === Queries
 Select the primary name, birth and death years and sex.
@@ -343,7 +343,7 @@ Question:
 The unique pair `FatherID` plus `MotherID` can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for `FamilyTable` has not been verified.
 Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.
 
-=== EventTable
+== EventTable
 
 :table-caption: EventTable
 
@@ -407,23 +407,25 @@ Genealogical software does not, in general, does not directly concern itslef wit
 Stores details for each Fact/Event with links to Persons, Families having the event and to
 the FactTypeTable for the Fact properties.
 
+* `EventID`   Record number in EventTable. Used to look up witnesses to event (persons sharing the fact) in WitnessTable                                                 
+* `EventType`   Used to look up Fact Type in FactTypeTable. (See Fact/Event Types)
+* `OwnerType`   0 = person 1 = family
+* `OwnerID`   PersonID in PersonTable or FamilyID in FamilyTable
+* `FamilyID `   0 for Person's event, else FamilyID in FamilyTable for parental family event such as Adoption or LDS Seal to Parents
+* `PlaceID`   0 if no Place assigned to event else PlaceID of Place from PlaceTable
+* `SiteID`   0 if no Place Detail assigned to event,  else PlaceID of Place with PlaceType = 2 from PlaceTable
+* `Date`   
+* `SortDate `   Number representing a user entered date that forces an event into a position relative to other events in lists sorted on the Date field.
+* `IsPrimary`   0 is default 1 if checkbox Primary checked in Edit Person Fact pane.  Used to suppress from reports other conflicting facts of same type for a person.     
+* `IsPrivate`   0 is default 1 if checkbox Primary checked in Edit Person Fact pane.  Used to suppress from reports other conflicting facts of same type for a person.
+* `Proof`   Set by Proof listbox in Fact pane of Edit Persons.  0 - blank,  1 - Proven,  2 - Proven False,  3 - Disputed
+* `Status`   0 is default reps status of LDS events:  1 = Submitted 8  = DNS 12 = Cleared
+* `Sentence `   Customised sentence for this event.
+* `Details`   Content of Description field in Edit Person fact/event pane
+* `Note`   Content of Note in fact/event pane of Edit Person.
+* `UTCModDate`  Coordinated Universal Time Modified Date - Date Record (See ConfigTable RecID 1)
+
 === FamilyTable
-
-`FamilyTable` has `FamilyID` key identifying each unique family, each couple that might (has?) produced children. `FatherID` and `MotherID` function like foreign keys referencing `PersonTable.PersonID`, but they
-can be zero, meaning, I believe, that that parent is unknown. It is never true that both `FatherID` and `MotherID` are zero. Thus,
-
-[source, sql]
-----
-select * from FamilyTable where FatherID=0 and MotherID=0;
-----
-
-will never return results. `ChildID` is almost always 0, so I don't know what it means. It references PersonID in a few rarer situations.
-
-Question:
-
-- For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID's in the PersonTable, 
-link to the same row in the FamilyTable?  
-- *{HusbandID, MotherID}* is a key-is it not?
 
 .FamilyTable
 [%autowidth]
@@ -454,7 +456,9 @@ link to the same row in the FamilyTable?
 |Proof
 |Int 
 
-|SpouseLabel Int
+|SpouseLabel
+|Int
+
 |FatherLabel
 |Int 
 
@@ -490,6 +494,18 @@ link to the same row in the FamilyTable?
 - `MotherLabel` Wife label, from Edit Person screen (0 = Mother, 1 = Wife, 2 = Partner).
 - `Note` Note from Edit Person screen
 
-=== Media Table Files
+`FamilyTable` has `FamilyID` key identifying each unique family, each couple that might (has?) produced children. `FatherID` and `MotherID` function like foreign keys referencing `PersonTable.PersonID`, but they
+can be zero, meaning, I believe, that that parent is unknown. It is never true that both `FatherID` and `MotherID` are zero. Thus,
 
-*todo* 
+[source, sql]
+----
+select * from FamilyTable where FatherID=0 and MotherID=0;
+----
+
+will never return results. `ChildID` is almost always 0, so I don't know what it means. It references PersonID in a few rarer situations.
+
+Question:
+
+- For each couple, a "husband" and "wife" (or non-married couple), represented by their separate PersonID's in the PersonTable, 
+link to the same row in the FamilyTable?  
+- *{HusbandID, MotherID}* is a key-is it not?
