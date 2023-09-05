@@ -7,4 +7,5 @@
 * https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-type-decodes/[Roots Magic 8 - decoding database types]
 * https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-ownership/[RootsMagic 8 - database ownership explained]
 * https://sqlitetoolsforrootsmagic.com/media-users-list-query/[Media Users List Query]
+** https://sqlitetoolsforrootsmagic.com/wp-content/uploads/2015/12/Media-UsersList4-RM8.sql[SQL source]
 
