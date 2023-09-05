@@ -41,10 +41,12 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
+`AncestryTable` has data necessary to enable synchronization.
+
 +
 :table-caption: MediaLinkTable
 
-.Join table between media, their owners and Ancestry table
+.Joins media files with persons, places and events
 [%autowidth,frame="none"]
 |===
 |Name|Type
@@ -98,7 +100,9 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
-+
+
+`MediaLinkTable` stores relationship between records in `MultiMediaTable` and Person, Event, Place Tables along with settings for use in reports or scrapbooks, captions, notes (unused?), descriptions.
+
 :table-caption: MultimediaTable
 
 .The actual media table with the path and file name
@@ -143,7 +147,8 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |FLOAT
 |===
 
-+
+Stores path and name to Media files, a type of *media code*, URL (unused as of 5.0.0.6), and binary *thumbnail* for image files. 
+
 :table-caption: NameTable
 
 .The table with person's names of those in the tree
@@ -221,7 +226,8 @@ Below are tables related to managing the downloaded Ancestry..com media files an
 |Text
 |===
 
-+
+Stores *name parts* for persons in tree, including _Alternate Names_ as separate records (unlimited), primary and privacy settings, *birth year* and *death year*.
+
 :table-caption: PersonTable
 
 .Data about each person in the tree

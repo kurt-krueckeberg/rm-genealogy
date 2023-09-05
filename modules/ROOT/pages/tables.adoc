@@ -308,12 +308,17 @@ These mean:
 sqlite> select count(*) from ChildTable as c
  join PersonTable p
    on c.ChildID=p.PersonID;
+
 2147
+
 sqlite> select count(*) from ChildTable;
+
 2147
+
 sqlite> select count(*) from ChildTable as c
  join PersonTable p
  on c.ChildID=p.PersonID;
+
 2147
 ----
 
@@ -337,6 +342,70 @@ select
 Question: 
 The unique pair `FatherID` plus `MotherID` can have zero or more children (I believe). I doubt that a child is required to constitute a family, but this predicate for `FamilyTable` has not been verified.
 Genealogical software does not, in general, does not directly concern itslef with issues like whether the offspring of a realtionship ever live with or grow up with their parents.
+
+=== EventTable
+
+:table-caption: EventTable
+
+.The type of fact or event
+[%autowidth]
+|===
+|Column Name|Data Type
+
+|EventID
+|Int Primary key
+
+|EventType
+|Int
+
+|OwnerType
+|Int
+
+|OwnerID
+|Int
+
+|FamilyID
+|Int
+
+|PlaceID
+|Int
+
+|SiteID
+|Int
+
+|Date
+|Text
+
+|SortDate
+|BigInt
+
+|IsPrimary
+|Int
+
+|IsPrivate
+|Int
+
+|Proof
+|Int
+
+|Status
+|Int
+
+|Sentence
+|Text
+
+|Details
+|Text
+
+|Note
+|Text
+
+|UTCModDate
+|Float
+|===
+
+Stores details for each Fact/Event with links to Persons, Families having the event and to
+the FactTypeTable for the Fact properties.
 
 === FamilyTable
 
