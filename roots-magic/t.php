@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 try {
 
-  $pdo = new PDO('sqlite:/home/kurt/sqlite3-genealogy/roots-magic/rm8-09-06-2023.rmtree');
+//  $pdo = new PDO('sqlite:/home/kurt/sqlite3-genealogy/roots-magic/rm8-09-06-2023.rmtree');
   $lite = new SQLite3('rm8-09-06-2023.rmtree');
 
 } catch(Exception $e) {
@@ -12,8 +12,11 @@ try {
   return;
 }
 
-var_dump($pdo);
-var_dump($lite);
+$lite->createCollation('RMNOCASE', 'strnatcmp');	
+
+$q = file_get_contents("media.sql");
+$result = $lite->query($q);
+var_dump($result);
 return;
 
 /*
