@@ -13,6 +13,7 @@ try {
 }
 
 var_dump($pdo);
+var_dump($lite);
 return;
 
 /*
