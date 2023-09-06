@@ -18,9 +18,10 @@ $q = file_get_contents("media.sql");
 
 $returned_set = $lite->query($q);
 
-while($result = $returned_set->fetchArray()) {
+while($result = $returned_set->fetchArray(SQLITE3_ASSOC)) {
 
-    $returned_set->fetchArray();
+    $row = $returned_set->fetchArray();
+    print_r($row);
 }
 
 return;
