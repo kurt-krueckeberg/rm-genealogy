@@ -15,8 +15,14 @@ try {
 $lite->createCollation('RMNOCASE', 'strnatcmp');	
 
 $q = file_get_contents("media.sql");
-$result = $lite->query($q);
-var_dump($result);
+
+$returned_set = $lite->query($q);
+
+while($result = $returned_set->fetchArray()) {
+
+    $returned_set->fetchArray();
+}
+
 return;
 
 /*
