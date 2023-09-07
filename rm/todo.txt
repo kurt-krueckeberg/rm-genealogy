@@ -1,0 +1,2 @@
+Need to determine the type of event -- if any -- for each media file.
+We have the person and the file name.

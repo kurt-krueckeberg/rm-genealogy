@@ -1,25 +1,22 @@
 <?php
 declare(strict_types=1);
 
-class Displayer {
+static $media_names = array( 1 => 'Image', 2 => 'File', 3 => 'Sound', 4 => 'Video');
 
-    private static $media_names = array( 1 => 'Image', 2 => 'File', 3 => 'Sound', 4 => 'Video');
+static $col_names = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
 
-    private static $col_names = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
+function display_row(array $ar) 
+{
+    foreach($col_names as $key => $attrib) {
 
-    public function __invoke(array $ar) 
-    {
-        foreach(self::$col_names as $key => $attrib) {
+      if ($key == 0)
+         echo "MediaType = " . $media_names[$ar['MediaType']] . "\n"; 
 
-          if ($key == 0)
-             echo "MediaType = " . self::$media_names[$ar['MediaType']] . "\n"; 
-
-          else 
-             echo $attrib . " = " . $ar[$attrib] . "\n";
-        }
-
-        echo "------------------------\n";
+      else 
+         echo $attrib . " = " . $ar[$attrib] . "\n";
     }
+
+    echo "------------------------\n";
 }
 
 try {
@@ -44,11 +41,12 @@ function fetch_media(SQLite3 $lite) : SQLite3Result
   
 $result = fetch_media($lite);
 
-$display = new Displayer();
+while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
 
-while ($row = $result->fetchArray(SQLITE3_ASSOC))
-
-    $display($row);
+    //display_row($row);
+    print_r($row); 
+    echo "----------------\n";
+}
 
 return;
 
