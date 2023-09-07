@@ -31,19 +31,3 @@ while($result = $returned_set->fetchArray(SQLITE3_ASSOC)) {
 }
 
 return;
-
-/*
-  Use strnatcmp to implement RMNOCASE.
- */
-$db->sqliteCreateCollation('RMNOCASE', 'strnatcmp'); 
-
-return;
-
-foreach ($db->query("SELECT col1 FROM test ORDER BY col1") as $row) {
-  echo $row['col1'] . "\n";
-}
-echo "\n";
-foreach ($db->query("SELECT col1 FROM test ORDER BY col1 COLLATE NATURAL_CMP") as $row) {
-  echo $row['col1'] . "\n";
-}
-?>
