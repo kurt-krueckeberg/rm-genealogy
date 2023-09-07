@@ -18,10 +18,16 @@ $q = file_get_contents("media.sql");
 
 $returned_set = $lite->query($q);
 
+$cols = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
+
 while($result = $returned_set->fetchArray(SQLITE3_ASSOC)) {
-     foreach($result as $key => $value)
-         echo $key . "\n";
-    return;
+
+     foreach($cols as $attrib) {
+    
+       echo $attrib . " = " . $result[$attrib] . "\n";
+     }
+     
+     echo "------------------------\n";
 }
 
 return;
