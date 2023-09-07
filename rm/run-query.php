@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 try {
 
-//  $pdo = new PDO('sqlite:/home/kurt/sqlite3-genealogy/roots-magic/rm8-09-06-2023.rmtree');
+//  $pdo = new PDO('sqlite:/home/kurt/sqlite3-genealogy/rm/rm8-09-06-2023.rmtree');
   $lite = new SQLite3('rm8-09-06-2023.rmtree');
 
 } catch(Exception $e) {
@@ -19,9 +19,9 @@ $q = file_get_contents("media.sql");
 $returned_set = $lite->query($q);
 
 while($result = $returned_set->fetchArray(SQLITE3_ASSOC)) {
-
-    $row = $returned_set->fetchArray();
-    print_r($row);
+     foreach($result as $key => $value)
+         echo $key . "\n";
+    return;
 }
 
 return;
