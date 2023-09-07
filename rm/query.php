@@ -43,20 +43,24 @@ $media_result = fetch_media($lite);
 $cols = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
 
 while($media_row = $media_result->fetchArray(SQLITE3_ASSOC)) {
+   
+     $row = array();
 
-     /*
      foreach($cols as $attrib) {
               
-        
-       echo $attrib . " = " . $media_row[$attrib] . "\n";
+       $row[$attrib]  =  $media_row[$attrib];
      }
      
      //  todo: Use the Fact/Event Type id to look up the FactType Name
-   
-     $factType['MediaType']
-     */
-     print_r($media_row);
+     if (array_key_exits($media_row['MediaType'], $factTypes) === false)
+            echo $media_row['MediaType'] . "<== not found in factTypes array!\n";
+
+     print_r($row);
      echo "------------------------\n";
 }
+
+echo "These are the FactTypes:\n";
+
+print_r($factTypes);
 
 return;
