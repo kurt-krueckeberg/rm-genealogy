@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+/*
+
+todo: Can I get --<F12> or is it availabe even -- the fact/event type?
+
+  */
+
 try {
 
 //  $pdo = new PDO('sqlite:/home/kurt/sqlite3-genealogy/rm/rm8-09-06-2023.rmtree');
@@ -51,11 +57,11 @@ while($media_row = $media_result->fetchArray(SQLITE3_ASSOC)) {
        $row[$attrib]  =  $media_row[$attrib];
      }
      
-     //  todo: Use the Fact/Event Type id to look up the FactType Name
+     //  todo: Logic Error: factTypes are not MediaTypes
      if (array_key_exists($media_row['MediaType'], $factTypes) === false)
             echo $media_row['MediaType'] . "<== not found in factTypes array!\n";
 
-     print_r($row);
+     print_r($media_row);
      echo "------------------------\n";
 }
 
