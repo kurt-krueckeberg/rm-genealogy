@@ -1,7 +1,23 @@
 <?php
 declare(strict_types=1);
 
-include "code.php";
+class Displayer {
+
+    private static $media_names = array( 1 => 'Image', 2 => 'File', 3 => 'Sound', 4 => 'Video');
+
+    private static $col_names = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
+
+    public function __invoke(array $ar) 
+    {
+        foreach(self::$col_names as $attrib)
+                
+          echo $attrib . " = " . $ar[$attrib] . "\n";
+
+        echo "MediaType Name = " . self::$media_names[$ar['MediaType']] . "\n"; 
+
+        echo "------------------------\n";
+    }
+}
 
 try {
 
@@ -23,20 +39,13 @@ function fetch_media(SQLite3 $lite) : SQLite3Result
   return $lite->query($media_query);
 }
   
-$media_result = fetch_media($lite);
+$result = fetch_media($lite);
 
-$iter = new ResultIterator($media_result);
+$display = new Displayer();
 
-$display = new ResultDisplayer();
-
-foreach ($iter as $row) {
+while ($row = $result->fetchArray(SQLITE3_ASSOC))
 
     $display($row);
-}
-
-
-echo "These are the FactTypes:\n";
-
-print_r($factTypes);
 
 return;
+
