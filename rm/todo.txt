@@ -13,3 +13,8 @@ Occurances | Type of owner
     896 OwnerTypeDesc = Person
 
 Is a person always referenced when an event or citation is?
+
+Well, just save those whose EventOwner is Person, whether .jpg/.pdf/.docx files, and then see if among the
+remaining list of filenames (for Citations, etc), there are any exceptions.
+
+This approach is straight forward.
