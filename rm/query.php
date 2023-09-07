@@ -9,11 +9,13 @@ class Displayer {
 
     public function __invoke(array $ar) 
     {
-        foreach(self::$col_names as $attrib)
+        foreach(self::$col_names as $key => $attrib) {
                 
           echo $attrib . " = " . $ar[$attrib] . "\n";
 
-        echo "MediaType Name = " . self::$media_names[$ar['MediaType']] . "\n"; 
+          if ($key == 0)
+             echo "MediaType Name = " . self::$media_names[$ar['MediaType']] . "\n"; 
+        }
 
         echo "------------------------\n";
     }
