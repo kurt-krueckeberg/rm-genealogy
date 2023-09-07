@@ -55,7 +55,7 @@ while($media_row = $media_result->fetchArray(SQLITE3_ASSOC)) {
    
      $factType['MediaType']
      */
-     print_r($medida_row);
+     print_r($media_row);
      echo "------------------------\n";
 }
 
