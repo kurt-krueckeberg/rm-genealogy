@@ -52,7 +52,7 @@ while($media_row = $media_result->fetchArray(SQLITE3_ASSOC)) {
      }
      
      //  todo: Use the Fact/Event Type id to look up the FactType Name
-     if (array_key_exits($media_row['MediaType'], $factTypes) === false)
+     if (array_key_exists($media_row['MediaType'], $factTypes) === false)
             echo $media_row['MediaType'] . "<== not found in factTypes array!\n";
 
      print_r($row);
