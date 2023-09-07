@@ -1,11 +1,7 @@
 <?php
 declare(strict_types=1);
 
-/*
-
-todo: Can I get --<F12> or is it availabe even -- the fact/event type?
-
-  */
+include "code.php";
 
 try {
 
@@ -26,44 +22,18 @@ function fetch_media(SQLite3 $lite) : SQLite3Result
 
   return $lite->query($media_query);
 }
-
-function fetch_factTypes(SQLite3 $lite) : array
-{
-  static $query = "select FactTypeID as id, Name from FactTypeTable";
-
-  $result = $lite->query($query);
-
-  $output = array();
-
-  while($row = $result->fetchArray(SQLITE3_ASSOC))
-      
-     $output[$row['id']] = $row['Name'];
-
-  return $output;
-}
-
-$factTypes = fetch_factTypes($lite);
-
+  
 $media_result = fetch_media($lite);
 
-$cols = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
+$iter = new ResultIterator($media_result);
 
-while($media_row = $media_result->fetchArray(SQLITE3_ASSOC)) {
-   
-     $row = array();
+$display = new ResultDisplayer();
 
-     foreach($cols as $attrib) {
-              
-       $row[$attrib]  =  $media_row[$attrib];
-     }
-     
-     //  todo: Logic Error: factTypes are not MediaTypes
-     if (array_key_exists($media_row['MediaType'], $factTypes) === false)
-            echo $media_row['MediaType'] . "<== not found in factTypes array!\n";
+foreach ($iter as $row) {
 
-     print_r($media_row);
-     echo "------------------------\n";
+    $display($row);
 }
+
 
 echo "These are the FactTypes:\n";
 
