@@ -1,2 +1,15 @@
-Need to determine the type of event -- if any -- for each media file.
-We have the person and the file name.
+For OwnerName:
+
+1. Change the uppercase of surnames to lowercase - except first letter.
+2. Remove the dash and what follows from the OwnerName
+
+Some/many files change are references by several people and by more than one type of owner, as follows: 
+
+
+Occurances | Type of owner
+     16 OwnerTypeDesc = Alternate Name
+   9714 OwnerTypeDesc = Citation
+    330 OwnerTypeDesc = Event
+    896 OwnerTypeDesc = Person
+
+Is a person always referenced when an event or citation is?
