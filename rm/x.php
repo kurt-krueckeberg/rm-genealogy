@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+include "vendor/autoload.php";
+
 static $media_names = array( 1 => 'Image', 2 => 'File', 3 => 'Sound', 4 => 'Video');
 
 static $col_names = array("MediaType", 'MediaPath', 'MediaFile', 'OwnerTypeDesc', 'OwnerName','MediaDate');
@@ -19,13 +21,14 @@ function display_row(array $ar)
     echo "------------------------\n";
 }
 
-if ($argc ! == 2) 
-   die("Enter config file name");
+if (file_exists('config.xml') 
+   die("No config.xml exists");
 
 try {
 
+  $c = new Config('config.xml');
 //  $pdo = new PDO('sqlite:/home/kurt/sqlite3-genealogy/rm/rm8-09-06-2023.rmtree');
-  $lite = new SQLite3('rm8-09-06-2023.rmtree');
+  $lite = new SQLite3($c->filename);
 
 } catch(Exception $e) {
 
@@ -37,7 +40,7 @@ $lite->createCollation('RMNOCASE', 'strnatcmp');
 
 function fetch_media(SQLite3 $lite) : SQLite3Result
 {
-  $media_query = file_get_contents("media.sql");
+  $media_query = file_get_contents("new-media.sql");
 
   return $lite->query($media_query);
 }

@@ -6,13 +6,13 @@ class Config {
 
    private \SimpleXMLElement $xml;
 
-   public readonly string $file_name;
+   public readonly string $filename;
 
    public function __construct(string $fname)
    {   
       $this->xml = simplexml_load_file($fname);
 
-      $this->base_url = (string) $this->xml->file_name;
+      $this->filename = (string) $this->xml->file_name;
    }
 
 }
