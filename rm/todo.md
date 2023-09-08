@@ -12,7 +12,8 @@ Occurances | Type of owner
     330 OwnerTypeDesc = Event
     896 OwnerTypeDesc = Person
 
-There are no duplicate files in the Ancestry image files in ~/d/genealogy/roots-magic-medablahblah. So I just need to
+There are no duplicate files (obivously filesystems don't have duplicates) among the 1057 Ancestry image files in
+~/d/genealogy/roots-magic-medablahblah. So I just need to
 
 * Create a folder for the right person person's name: `/Surnane-given-names`. Organize per the bookmarked article
 by the librarian.
