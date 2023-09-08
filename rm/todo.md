@@ -1,20 +1,20 @@
 # Overview
 
-Obvivously filesystems don't have duplicates. There are no duplicate Ancestry.com media files among
-the 1057 Ancestry.com jpg, png, docx, pdf, etc files RootsMagic downloaded to
-`~/d/genealogy/roots-magic-09-06-2023_media/` during synchronization.
+There are 1057 Ancestry.com jpg, png, docx, pdf, etc files that RootsMagic downloaded during
+tree synchronization to `~/d/genealogy/roots-magic-09-06-2023_media/`.
 
-Thus, some of these files occur with slightly different OwnerNames in this way:
-
-When the OwnerTypeDesc = Person, OwnerName is simply the name written in this form: 
+Thus, some of these files occur with with more than one OnwerTypeDesc-OwnerName pair.
+When the `OwnerTypeDesc = Person`, `OwnerName` is simply the name written in this order 
+and manner: 
 
 1. Surname all in caps
 2. followed by a comma
 3. followed by the given names
-4. followed by a '-' and then OwnerID, which I assume is the personid
+4. followed by a '-' and then `OwnerID` (which I assume is the `PersonID`)
 
-When the OwnerTypeDesc is not Person, when it is an Event or a Citation, for example, there is
-also a ':' and more information after it. This table summarizes all the OwnerTypeDesc's used:
+When `OwnerTypeDesc` is `Event` or `Citation`, the `OwnerName` is followed by a suffix that begins with a `:` 
+followed by more information. The other `OwnerTyepDesc` is `Alt Name`. This table summarizes all the
+`OwnerTypeDesc` and their number of occurances:
 
 Occurances | Type of owner
      16 OwnerTypeDesc = Alt. Name
@@ -22,7 +22,7 @@ Occurances | Type of owner
     330 OwnerTypeDesc = Event
     896 OwnerTypeDesc = Person
 
-**Note:** There is no EventType given in this complex query.
+**Note:** There is no `EventType` given in the media.sql query.
 
 ## Plan
 
@@ -31,7 +31,7 @@ For the `OwnerName`:
 1. Change the uppercase of surnames to lowercase - except first letter.
 2. Remove the dash and what follows from the OwnerName
 
-Some/many files change are references by several people and by more than one type of owner, as follows: 
+Some/many files change are references by other people and by more than one type of owner, as follows: 
 
 * Create a folder for the right person person's name: `/Surnane-given-names`. Organize per the bookmarked article
 by the librarian.
