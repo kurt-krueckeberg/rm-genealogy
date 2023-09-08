@@ -12,6 +12,14 @@ Occurances | Type of owner
     330 OwnerTypeDesc = Event
     896 OwnerTypeDesc = Person
 
+There are no duplicate files in the Ancestry image files in ~/d/genealogy/roots-magic-medablahblah. So I just need to
+
+* Create a folder for the right person person's name: `/Surnane-given-names`. Organize per the bookmarked article
+by the librarian.
+
+Then either keep the current file name, if descriptive enough, or use the OwnerName if it isn't. I couldn't
+figure out the event(s) the image is for.
+
 Is a person always referenced when an event or citation is?
 
 Well, just save those whose EventOwner is Person, whether .jpg/.pdf/.docx files, and then see if among the
