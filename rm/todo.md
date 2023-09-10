@@ -1,19 +1,32 @@
 # Overview
 
-There are 1057 Ancestry.com jpg, png, docx, pdf, etc files that RootsMagic downloaded during
-tree synchronization to `~/d/genealogy/roots-magic-09-06-2023_media/`.
+Roots MAgic sychronization with Ancestry.com downloaded 1057 files--jpg, png, docx, pdf, etc--to `~/d/genealogy/roots-magic-09-06-2023_media/`.
 
-Thus, some of these files occur with with more than one OnwerTypeDesc-OwnerName pair.
-When the `OwnerTypeDesc = Person`, `OwnerName` is simply the name written in this order 
-and manner: 
+`media.sql`, from <https://sqlitetoolsforrootsmagic.com/>, lists where media items are used and their key properties. 
 
-1. Surname all in caps
+In the query results, some of file names, `MediaFile`, occur more than once.
+
+## OwnerTypeDesc and OwerName formats
+
+Upon examinig the results, the field pair `OwnerTypeDesc-OwnerName` differs among duplicate `MediaFile` names.
+
+The format of `OwnerName`, the person's name, when `OwnerTypeDesc = Person` is:
+
+```
+OwnerName = RIEHL, Anna E-3132
+```
+
+The format is:
+
+1. First, the surname all in caps
 2. followed by a comma
 3. followed by the given names
-4. followed by a '-' and then `OwnerID` (which I assume is the `PersonID`)
+4. followed by a '-' and then the `OwnerID` (which I assume is the `PersonID`)
 
-When `OwnerTypeDesc` is `Event` or `Citation`, the `OwnerName` is followed by a suffix that begins with a `:` 
-followed by more information. The other `OwnerTyepDesc` is `Alt Name`. This table summarizes all the
+But when `OwnerTypeDesc` is `Event` or `Citation`, the `OwnerName` has an additional suffix introduced with `:` 
+followed by extra information.
+
+In the case of `OwnerTyepDesc = Alt Name`. This table summarizes all the
 `OwnerTypeDesc` and their number of occurances:
 
 Occurances | Type of owner
