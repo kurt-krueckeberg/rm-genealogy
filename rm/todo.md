@@ -23,9 +23,8 @@ Occurances | Type of owner
 
 ## Analysis of OwnerTypeDesc and OwnerName
 
-Upon examinig the results, the field pair `OwnerTypeDesc-OwnerName` differs among duplicate `MediaFile` names.
-
-The format of `OwnerName`, of the person's name, when `OwnerTypeDesc = Person` or `OwerTypeDesc = Alt. Name` is:
+The `OwnerName` differs depending on the `OwnerTypeDesc`. The format of `OwnerName`, of the person's name, when `OwnerTypeDesc = Person`
+or `OwerTypeDesc = Alt. Name` is:
 
 ```
 OwnerName = RIEHL, Anna E-3132
@@ -38,13 +37,20 @@ The format is:
 3. followed by the given names
 4. followed by a '-' and then the `OwnerID` (which I assume is the `PersonID`)
 
-When `OwnerTypeDesc` is `Event`, the `OwnerName` has an additional suffix introduced with `:` 
-followed by extra information.
+When `OwnerTypeDesc` is `Event` or `Citation`, the `OwnerName` has an additional suffix information introduced with `:`.
+The `OwnerName` suffix for `OwnerTypeDesc = Event` is a subset of at least one of the `OwerTypeDesc = Citation` as shown below:
 
-In the case of `OwnerTyepDesc = Alt Name`.
+`Event` suffix information examples:
 
+```
+OwnerTypeDesc = Event
+OwnerName = WEBER, Emilie F-3176:  AUGUST W. BUSSE
 
-**Note:** There is no `EventType` given in the media.sql query.
+OwnerTypeDesc = Event
+OwnerName = WEBER, Emilie F-3176:  AUGUST W. BUSSE
+```
+
+Question: For every `OwnerTypeDesc = Event` is there also a `OwerTypeDesc = Citation` entry?
 
 ## Plan
 
