@@ -64,8 +64,9 @@ OwnerName = WEBER, Emilie F-3176:  AUGUST W. BUSSE
 Question: For every `OwnerTypeDesc = Event` is there also a `OwerTypeDesc = Citation` entry?
 A: Who knows. Likely, yes. The thing I really want is the EventType/FactTypeID for each
 
-## Plan
+== Plan
 
-For those media files that have an associated Event, ge the Event name.
+For those media files that have an associated Event, get the Event name. See what the Roots Magic shows as the event and
+if it includes a thumnail of or the actual Ancestry.com image (or docx, pdf, etc).
 
 
