@@ -13,8 +13,9 @@ In the query results, some of file names, `MediaFile`, occur more than once. Thi
 
 They occur with this frequency:
 
+Occurances of `OnwerTypeDesc`:
+
 ```
-Occurances | Type of owner
      16 OwnerTypeDesc = Alt. Name
    9714 OwnerTypeDesc = Citation
     330 OwnerTypeDesc = Event
@@ -51,6 +52,7 @@ OwnerName = WEBER, Emilie F-3176:  AUGUST W. BUSSE
 ```
 
 Question: For every `OwnerTypeDesc = Event` is there also a `OwerTypeDesc = Citation` entry?
+A: Who knows. Likely, yes. The thing I really want is the EventType/FactTypeID for each
 
 ## Plan
 
