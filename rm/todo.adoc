@@ -17,7 +17,7 @@ Occurances of `OnwerTypeDesc`:
 
 [%autowidths]
 |===
-| Occurances  | OwnerTypeDesc |
+| Occurances  | OwnerTypeDesc 
 
 |   16
 | Alt. Name
