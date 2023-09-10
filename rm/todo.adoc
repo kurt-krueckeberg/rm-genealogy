@@ -1,6 +1,6 @@
 = Overview
 
-NOTE: all-jpgs.txt has the counts for all the uniquely named `.jpg` files in ~/d/genealogy. There are not duplicates.
+NOTE: all-jpgs.txt has the counts for all the uniquely named `.jpg` files in `~/d/genealogy` and its subfolders. There are not duplicates.
 But some files may be the same as on Ancestry. I will only learn this empirically by checking.
 
 Roots MAgic sychronization with Ancestry.com downloaded 1057 files--jpg, png, docx, pdf, etc--to `~/d/genealogy/roots-magic-09-06-2023_media/`.
