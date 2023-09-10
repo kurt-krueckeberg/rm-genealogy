@@ -4,13 +4,28 @@ Roots MAgic sychronization with Ancestry.com downloaded 1057 files--jpg, png, do
 
 `media.sql`, from <https://sqlitetoolsforrootsmagic.com/>, lists where media items are used and their key properties. 
 
-In the query results, some of file names, `MediaFile`, occur more than once.
+In the query results, some of file names, `MediaFile`, occur more than once. This is because there are four possible `OwnerTypeDesc` values:
 
-## OwnerTypeDesc and OwerName formats
+1. Alt. Name
+2. Citation
+3. Event
+4. Person
+
+They occur with this frequency:
+
+```
+Occurances | Type of owner
+     16 OwnerTypeDesc = Alt. Name
+   9714 OwnerTypeDesc = Citation
+    330 OwnerTypeDesc = Event
+    896 OwnerTypeDesc = Person
+```
+
+## Analysis of OwnerTypeDesc and OwnerName
 
 Upon examinig the results, the field pair `OwnerTypeDesc-OwnerName` differs among duplicate `MediaFile` names.
 
-The format of `OwnerName`, the person's name, when `OwnerTypeDesc = Person` is:
+The format of `OwnerName`, of the person's name, when `OwnerTypeDesc = Person` or `OwerTypeDesc = Alt. Name` is:
 
 ```
 OwnerName = RIEHL, Anna E-3132
@@ -23,17 +38,11 @@ The format is:
 3. followed by the given names
 4. followed by a '-' and then the `OwnerID` (which I assume is the `PersonID`)
 
-But when `OwnerTypeDesc` is `Event` or `Citation`, the `OwnerName` has an additional suffix introduced with `:` 
+When `OwnerTypeDesc` is `Event`, the `OwnerName` has an additional suffix introduced with `:` 
 followed by extra information.
 
-In the case of `OwnerTyepDesc = Alt Name`. This table summarizes all the
-`OwnerTypeDesc` and their number of occurances:
+In the case of `OwnerTyepDesc = Alt Name`.
 
-Occurances | Type of owner
-     16 OwnerTypeDesc = Alt. Name
-   9714 OwnerTypeDesc = Citation
-    330 OwnerTypeDesc = Event
-    896 OwnerTypeDesc = Person
 
 **Note:** There is no `EventType` given in the media.sql query.
 

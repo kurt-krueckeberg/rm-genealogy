@@ -1,0 +1,101 @@
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = PEPPLER, Betty J-2293
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = GRIEBLE, Justine Justina L-2373
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = ALBERSMEYER, Louise-3007
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = FELT, Lena-2234
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = BEHRMAN , Heinrich "henry"-3234
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = BEPPLER, Johann Jakob-3237
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = GROTE, Johann Heinrich Wilhelm Carl -3264
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = BEPPLER/PEPPLER, Johann Jakob-3237
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = KRüCKEBERG, Johann Heinrich-3268
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = FELT, Catherine-2382
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = FELD, Margarethe Katharine-2075
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName =  PLATT, Maria Magdalene-3238
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = GINTHER, Mathilda-2246
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = ALBERSMEYER, Christian H-2254
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = BEPPLER/PEPPLER, Johann Jakob-3237
+--
+output.txt:OwnerTypeDesc = Alt. Name
+output.txt-OwnerName = ALBERSMEIER, Wilhelmine "Minnie"-3008
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = PEPPLER, Betty J-2293
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = GRIEBLE, Justine Justina L-2373
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = ALBERSMEYER, Louise-3007
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = FELT, Lena-2234
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = BEHRMAN , Heinrich "henry"-3234
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = BEPPLER, Johann Jakob-3237
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = GROTE, Johann Heinrich Wilhelm Carl -3264
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = BEPPLER/PEPPLER, Johann Jakob-3237
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = KRüCKEBERG, Johann Heinrich-3268
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = FELT, Catherine-2382
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = FELD, Margarethe Katharine-2075
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName =  PLATT, Maria Magdalene-3238
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = GINTHER, Mathilda-2246
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = ALBERSMEYER, Christian H-2254
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = BEPPLER/PEPPLER, Johann Jakob-3237
+--
+alt:output.txt:OwnerTypeDesc = Alt. Name
+alt-output.txt-OwnerName = ALBERSMEIER, Wilhelmine "Minnie"-3008
+--
+alt:todo.md:     16 OwnerTypeDesc = Alt. Name
+alt-todo.md-   9714 OwnerTypeDesc = Citation
+--
+todo.md:     16 OwnerTypeDesc = Alt. Name
+todo.md-   9714 OwnerTypeDesc = Citation
