@@ -1,4 +1,4 @@
-# Overview
+= Overview
 
 Roots MAgic sychronization with Ancestry.com downloaded 1057 files--jpg, png, docx, pdf, etc--to `~/d/genealogy/roots-magic-09-06-2023_media/`.
 
@@ -15,21 +15,31 @@ They occur with this frequency:
 
 Occurances of `OnwerTypeDesc`:
 
-| Occurances   | OwnerTypeDesc |
-| ----------- : | :----------- |
-|    16 | Alt. Name|
-|  9714 | Citation|
-|   330 | Event|
-|   896 | Person|
+[%autowidths]
+|===
+| Occurances  | OwnerTypeDesc |
+
+|   16
+| Alt. Name
+
+| 9714
+| Citation
+
+|  330
+| Event
+
+|  896
+| Person
+|===
 
 ## Analysis of OwnerTypeDesc and OwnerName
 
 The `OwnerName` differs depending on the `OwnerTypeDesc`. The format of `OwnerName`, of the person's name, when `OwnerTypeDesc = Person`
 or `OwerTypeDesc = Alt. Name` is:
 
-```
+----
 OwnerName = RIEHL, Anna E-3132
-```
+----
 
 The format is:
 
@@ -43,13 +53,13 @@ The `OwnerName` suffix for `OwnerTypeDesc = Event` is a subset of at least one o
 
 `Event` suffix information examples:
 
-```
+----
 OwnerTypeDesc = Event
 OwnerName = WEBER, Emilie F-3176:  AUGUST W. BUSSE
 
 OwnerTypeDesc = Event
 OwnerName = WEBER, Emilie F-3176:  AUGUST W. BUSSE
-```
+----
 
 Question: For every `OwnerTypeDesc = Event` is there also a `OwerTypeDesc = Citation` entry?
 A: Who knows. Likely, yes. The thing I really want is the EventType/FactTypeID for each
