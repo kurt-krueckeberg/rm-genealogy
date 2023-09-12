@@ -1,0 +1,22 @@
+{
+    "name": "kurt-krueckeberg/ancestry-media-reworked",
+    "description": "PHP classes for Ancestry.com media download",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "RootsMagic\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "^8.1",
+        "ext-sqlite3": ">=8.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kurt Krueckeberg",
+            "email": "kurt.krueckeberg@gmail.com"
+        }
+    ]
+}
