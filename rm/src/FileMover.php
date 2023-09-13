@@ -4,29 +4,25 @@ namespace RootsMagic;
 
 class FileMover {
 
-   public function __construct()
+   public function __construct(string $srcDir)
    {
-   }
-
-   private function mkDirName(string $surname, string $given) : string
-   {
-
-       return "xyz";
-   }
-
-   private function cp(string $fileName, string $dir)
-   {
-
+      $this->src_dir = $srcDir;
    }
 
    public function __invoke(string $fileName, string $surname, string $given)
    {
-      $dir = $this->mkDirName($surname, $given); 
+      $dir = $surname . ", " $given; 
 
       if (!is_dir($dir))
           mkdir($dir, 0777);
 
-      if (!file_exists($dir . "/" . $fileName)) 
-          $this->cp($fileName, $dir);
+      $destName =  $dir . "/" . $fileName;
+     
+      if (!file_exists($destName))  {
+
+          $fromName = $this->srcDir . "/" . $fileName;
+
+          copy($fromName, $destName);
+      } 
    }
 }
