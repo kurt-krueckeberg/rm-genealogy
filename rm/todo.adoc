@@ -1,9 +1,12 @@
 = Overview
 
+I need the FactType for the image!
+
+
 NOTE: all-jpgs.txt has the counts for all the uniquely named `.jpg` files in `~/d/genealogy` and its subfolders. There are not duplicates.
 But some files may be the same as on Ancestry. I will only learn this empirically by checking.
 
-Roots MAgic sychronization with Ancestry.com downloaded 1057 files--jpg, png, docx, pdf, etc--to `~/d/genealogy/roots-magic-09-06-2023_media/`.
+Roots Magic sychronization with Ancestry.com downloaded 1057 files--jpg, png, docx, pdf, etc--to `~/d/genealogy/roots-magic-09-06-2023_media/`.
 
 `media.sql`, from <https://sqlitetoolsforrootsmagic.com/>, lists where media items are used and their key properties. 
 
@@ -69,7 +72,7 @@ A: Who knows. Likely, yes. The thing I really want is the EventType/FactTypeID f
 
 == Plan
 
-For those media files that have an associated Event, get the Event name. See what the Roots Magic shows as the event and
+For those media files that have an associated Event, I need the FactType's string representation. See what the Roots Magic shows as the event and
 if it includes a thumnail of or the actual Ancestry.com image (or docx, pdf, etc).
 
 

@@ -8,23 +8,28 @@ $file = new FileReader('output.txt');
 
 $image = '';
 
-function process(string $imageFile, string $namePart)
-{
-   $comma_pos = strpos($namePart, ',');
+class FileMover {
 
-   $surname = substr($namePart, 0, $comma_pos);
+   public function __construct()
+   {
+   }
 
-   // + 2 enables us to skip over ", "
-   $givenNames = substr($namePart, $comma_pos + 2); 
+   private function mkDirName(string $surname, string $given) : string
+   {
 
-   $givenNames = substr($givenNames, 0, strpos($givenNames, "-"));
+       return "xyz";
+   }
 
-  // Todo: mv $imageFile to surname subdir, if not exists.
-}
+   public function __invoke(string $fileName, string $surname, string $given)
+   {
+      $dir = $this->mkDirName($surname, $given): 
 
-function (string $fileName, string $surname, string $givenNames)
-{
+      if (!is_dir($dir)
+          mkdir($dir, 0777);
 
+      if (!file_exists($dir . "/" . $fileName)) 
+          $this->cp($fileName, $dir);
+   }
 }
 
 class MediaBlockFunctor {
@@ -33,12 +38,12 @@ class MediaBlockFunctor {
   private string   $media_file;
   private string $surname;
   private string $givenNames;
-  private callable $functor;
+  private callable $file_mover;
 
   public __construct(callable $func)
   {
       $this->media_file = '';
-      $this->functor = $func;
+      $this->file_mover = $func;
   }
 
   private function create_person_name(string $nameStr)
@@ -69,13 +74,13 @@ class MediaBlockFunctor {
 
       $this->create_person_name($namePart);  
 
-      $this->functor($this->media_file, $this->surname, $this->givenNames);
+      $this->file_mover($this->media_file, $this->surname, $this->givenNames);
   }
 }
 
 locale_set_default('de_DE');
 
-$processMedia = new MediaBlockFunctor();
+$processMedia = new MediaBlockFunctor(new FileMover());
 
 foreach ($file as $no => $line) 
      process($line);
