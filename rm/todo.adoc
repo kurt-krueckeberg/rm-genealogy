@@ -1,7 +1,7 @@
 = Overview
 
-I need the FactType for the image!
-
+There are only about 6 or 7 files with FactTypes < 1000; i.e., not user-defined events. Of thesee, something like three are marriages 
+and two or three are military service.
 
 NOTE: all-jpgs.txt has the counts for all the uniquely named `.jpg` files in `~/d/genealogy` and its subfolders. There are not duplicates.
 But some files may be the same as on Ancestry. I will only learn this empirically by checking.
