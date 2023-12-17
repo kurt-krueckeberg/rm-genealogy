@@ -6,7 +6,7 @@
 ** xref:tables.adoc[]
 *** xref:person.adoc[]
 *** xref:name.adoc[]
-** xref:temp.adoc[TEST]
+** xref:new-tables.adoc[New Tables Page]
 ** xref:ancestry-media.adoc[]
 ** xref:queries.adoc[]
 ** xref:person-ideas.adoc[]
