@@ -1,6 +1,6 @@
 = Name table Explained
 
-A person in the Persons table may have more than one associated name. `NameTable.OwnerID` is a foreign key refering to Persons.occurs more than once in `NameTable`.
+A person in the Persons table may have more than one associated name. `NameTable.OwnerID` is a foreign key refering to `PersonsTable.PersonID` occurs more than once in `NameTable`.
 The `BirthYear` and `DeathYear` attributes, however, are always the same.
 
 To reach this conclusion, these queries were done. First, if you count the number rows selected by the query
