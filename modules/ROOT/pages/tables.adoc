@@ -171,8 +171,9 @@ NOTE: **SpouseID** is not necessary in determing the family that this person is 
 |===
 
 === Predicate
-The `NameTable.NameID` key identifies a unique surname `Surname` plus given name `Given` pair for a given `PersonID`, with `OwnerID` (a foreign key) referring to `PersonTable.PersonID`, the name's owner.
-It has a boolean-like attribute `IsPrimary` set to 1 if this `NameID` is the primary name and 0 if it is an alternate name.  Other self-descriptiive attributes are `Prefix`, `Suffix` and `Nickname`.
+`NameTable.NameID` key identifies unique given name-surname name pairs. To implement the possible many names (presumed name and alternate names) that an individual
+might have, `NameTable.OwnerID` is a foreign key that reference `PersonTable.PersonID`. The boolean-like attribute `IsPrimary` is **1** if this `NameID` is the primary
+name and **0** if it is an alternate name.  Other self-descriptiive attributes are `Prefix`, `Suffix` and `Nickname`.
 
 Note: `BirthYear` and `DeathYear` are attributes unrleated to the table's predicate, which are present for historical reasons, likely cached here so `EventTable` didn't need to be queried in the days when computer speed was slow
 and memory low. However, this prevents normalizing the table because the same birth and date years are repeated in every row with the same `OwnerID`. To confirm this is the case, consider these two queries 
