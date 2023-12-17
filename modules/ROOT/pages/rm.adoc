@@ -1,8 +1,7 @@
 = Roots Magic Database
 
-Roots Magic has always used and still uses a SQLite database. It uses a custom collation sequence
-`RMNOCASE` that  prevents `order by` from working in SQL statements. As a workaround, use `lower(column-name)`
-for in `order by` clauses or for string comparisons.
+Roots Magic uses a SQLite database with acustom collation sequence `RMNOCASE`, which prevents the SQL `order by` clause from working. The workaround
+is to add `lower(column-name)` for those columns mentioned in the `order by`, so the string comparisions will be done on lowercase'ed strings.
 
 The following pages explain aspects of the Roots Magic database tables. Much of this
 information came from https://sqlitetoolsforrootsmagic.com/[SQLite Tools for Roots Magic].
