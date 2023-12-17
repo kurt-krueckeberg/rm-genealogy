@@ -1,8 +1,10 @@
 = Name table Explained
 
-A person in the Persons table may have more than one associated name. `NameTable.OwnerID` is a foreign key that references `PersonsTable.PersonID`. It implements that many-to-one relationship between the pair of attributes [`NameTable.Given`, `NameTable.Surname`] and specific `PersonTable.PersonID`.
+A person `PersonTable.PersonID` may have more than one associated name. To implement this many-to-one relationship between the names an individual person, the 
+`NameTable` has a foreign key `NameTable.OwnerID` that references `PersonsTable.PersonID`. The pair of attributes [`NameTable.Given`, `NameTable.Surname`] in each
+row of `NameTable` is one of the `PersonTable.PersonID` possible names.
 
-The `BirthYear` and `DeathYear` attributes, however, are always the same.
+I'm not sure why `NameTable` has `BirthYear` and `DeathYear` attributes, but these attribute are always the same for a given `NameID`.
 
 To reach this conclusion, these queries were done. First, if you count the number rows selected by the query
 
