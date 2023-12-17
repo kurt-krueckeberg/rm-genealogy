@@ -1,11 +1,11 @@
 site:
   title: Understand the Roots Magic SQLite Schema
   # the 404 page and sitemap files only get generated when the url property is set
-  url: https://kurt-krueckeberg.github.io/sqlite3-genealogy
+  url: https://kurt-krueckeberg.github.io/rootsmagic-schema
   start_page: schemas::index.adoc
 content:
   sources:
-    - url: git@github.com:kurt-krueckeberg/sqlite3-genealogy
+    - url: git@github.com:kurt-krueckeberg/rootsmagic-schema
       branches: HEAD
       # start_path: docs
       # setting edit_url to false disables the Edit this Page link for any page that originates from this repository
