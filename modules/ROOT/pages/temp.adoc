@@ -1,4 +1,4 @@
-= Tables
+= Family Relationships Tables
 
 Some basic tables and how family relationships are implemented.
 
@@ -9,58 +9,23 @@ NOTE: Primary keys are not actually implemented. Not sure why.
 .Person table
 [%autowidth]
 |===
-|Atribute|Data type
-
-|PersonID
-| Int (Prim Key) 
-
-|UniqueID 
-|TEXT 
-
-|Sex
-|Int 
-
-|ParentID
-|Int 
-
-|SpouseID 
-|Int
- 
-|Color 
-|Int
- 
-|Relate1 
-|Int
- 
-|Relate2 
-|Int
-
-|Flags 
-|Int
- 
-|Living 
-|Int
- 
-|IsPrivate 
-|Int
- 
-|Proof 
-|Int
- 
-|Bookmark 
-|Int
- 
-|Note
-|TEXT 
-
-|UTCModDate
-|Float
-|===
-
-.Person table
-[%autowidth]
-|===
 |PersonID |UniqueID |Sex |ParentID |SpouseID |Color |Relate1 |Relate2 |Flags |Living |IsPrivate |Proof |Bookmark |Note |UTCModDate
+
+|Int (Prim Key)
+|TEXT 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|Int 
+|TEXT 
+|Float
 |===
 
 
@@ -108,73 +73,28 @@ NOTE: **SpouseID** is not necessary in determing the family that this person is 
 .NameTable
 [%autowwidth]
 |===
-| Column | Data Type
+|NameID |OwnerID |Surname |Given |Prefix |Suffix |Nickname |NameType |Date |SortDate |IsPrimary |IsPrivate |Proof |Sentence |Note |BirthYear |DeathYear |Display |Language |UTCModDate |Float |SurnameMP |GivenMP |NicknameMP 
 
-|NameID 
 |Int (Prim Key) 
-
-|OwnerID 
 |Int
- 
-|Surname 
 |TEXT
- 
-|Given 
 |TEXT
- 
-|Prefix 
 |TEXT
- 
-|Suffix 
 |TEXT
- 
-|Nickname 
 |TEXT
- 
-|NameType Int 
-|Date 
 |TEXT
- 
-|SortDate
-|BigInt 
-
-|IsPrimary
 |Int
- 
-|IsPrivate
 |Int
- 
-|Proof
 |Int 
-
-|Sentence 
 |TEXT
- 
-|Note 
 |TEXT
- 
-|BirthYear
 |Int
- 
-|DeathYear
 |Int
- 
-|Display
 |Int
- 
-|Language 
 |TEXT
-
-|UTCModDate
 |Float
- 
-|SurnameMP
 |TEXT 
-
-|GivenMP
 |TEXT 
-
-|NicknameMP
 |TEXT
 |===
 
