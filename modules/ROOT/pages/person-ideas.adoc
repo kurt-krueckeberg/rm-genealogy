@@ -1,6 +1,6 @@
 = Person table Ideas
 
-If we add a PersonID of 0 to mean the "not-yet known" or unknonw person, then other tables that link to PersonTable.PersonID can be
+If we add a PersonID of 0 to mean the "not-yet known" or unknown person, then other tables that link to PersonTable.PersonID can be
 made foreign keys, thus making the "link" an actual relational constraint. We won't have to alter any other tables, either. They can
 keep there references to 0. Is the meaning of some attributes that use 0 overloaded? And we can then import the RM PersonTable as is,
 and afterward add PeronsID of 0.
