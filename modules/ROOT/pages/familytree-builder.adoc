@@ -1,5 +1,8 @@
 = Family Tree Build (MyHeritage)
 
+It is worth understanding how Gedcom X Conceptual Model's distinguishes Events and Facts. See 
+link:https://github.com/kurt-krueckeberg/understanding-gedcomx/blob/main/gedcomx-links.md[Understanding Gedcom X].
+
 ```sql
 begin transaction;
 
