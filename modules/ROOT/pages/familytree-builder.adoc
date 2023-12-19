@@ -21,14 +21,16 @@ create table if not exists "gene_entities_identifier_main_data" (
 Each person is uniquely identifed in `individual_main_data`.
 
 individual_main_data has the attributes:
-  Each individual's `individual_id`
-  their `gender`
-  their GUID `guid`
+x Each individual's `individual_id`
+x their `gender` either 'M' or 'F'
+  last_update
+  create_timestamp
+x their GUID `guid`
   other flags:
     is_alive
     research_completed
     delete_flag
-    etc 
+    token_on_item_id is mostly NULL 
  */
 create table if not exists "individual_main_data" (
 	"individual_id"	integer not null,
@@ -47,7 +49,7 @@ create table if not exists "individual_main_data" (
 );
 
 /*
- This table associates individuals with their tokens which seems to be their facts.
+ This table is some sort of join-table that associates individuals with their tokens which seems to be their facts.
  */
 create table if not exists "individual_data_set" (
 	"individual_data_set_id"	integer,
@@ -62,8 +64,8 @@ create table if not exists "individual_data_set" (
   individual_lang_data has:
    
   data_language is ( a tinyint identifying) the language.
-  first_name
-  last_name
+x first_name
+x last_name
   former_name
   married_surname
   alias_name
