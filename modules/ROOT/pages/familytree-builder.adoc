@@ -133,11 +133,12 @@ create table if not exists "places_lang_data" (
 );
 
 /*
- individual_fact_main_data has:
-  individual_id of person
-  `token` has either a value like  "ADOP", "BAP", "BIRT", "BURI", etc, "DEAT", "BIRT", "OCCU", "RESI", etc; when the fact_type is not empty, token has "EVEN" and the
-    fact_type has custom values like: "Milirary Service", "Adams County Pioneer Dies", "Arrival", "Departure", "Native Tongue: German", etc
-  age -- which for Krückeberg tree is empty
+  individual_fact_main_data has:
+ `individual_id` of person
+ `token` has either 1.) a value like "ADOP", "BAP", "BIRT", "BURI", "DEAT", "OCCU", "RESI", etc;
+                    2.) when the fact_type is not empty, `token` has "EVEN" and the
+  `fact_type` has a custom value like: "Military Service", "Adams County Pioneer Dies", "Arrival", "Departure", "Native Tongue: German", etc
+  `age` in the Krückeberg tree is empty
   sorted_date
  */
 create table if not exists "individual_fact_main_data" (
