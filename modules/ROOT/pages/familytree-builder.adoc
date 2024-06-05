@@ -163,8 +163,8 @@ create table if not exists "individual_fact_main_data" (
 	foreign key("token_on_item_id") references "token_on_item"("token_on_item_id") on delete set null
 );
 /*
- individual_fact_lang_data
- The `header` attribute holds the fact data for an individual.
+ individual_fact_lang_data:
+ header -- this attribute holds the fact data for an individual.
  */
 create table if not exists "individual_fact_lang_data" (
 	"individual_fact_lang_id"	integer,
